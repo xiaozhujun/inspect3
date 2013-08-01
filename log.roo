@@ -1,0 +1,69 @@
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-07-29 14:46:22
+project --topLevelPackage com.springsource.roo.inspect
+jpa setup --provider HIBERNATE --database MYSQL
+entity jpa --class ~.domain.Dept --testAutomatically
+field string --fieldName name --unique
+field string --fieldName description
+field date --fieldName createtime --type java.util.Date
+entity jpa --class ~.domain.Roles --testAutomatically
+field string --fieldName rolename --unique
+field date --fieldName createtime --type java.util.Date
+entity jpa --class ~.domain.Users --testAutomatically
+field string --fieldName username --unique
+field string --fieldName userpwd --sizeMin 6
+field string --fieldName usersex
+field string --fieldName useraddress
+field date --fieldName birth --type java.util.Date
+field number --fieldName userage --type java.lang.Integer
+field reference --fieldName dept --type ~.domain.Dept
+field reference --fieldName urole --type ~.domain.Roles
+entity jpa --class ~.domain.inspectTable --testAutomatically
+field string --fieldName tname --unique
+field date --fieldName createtime --type java.util.Date
+field reference --fieldName trole --type ~.domain.Roles
+entity jpa --class ~.domain.inspectTag --testAutomatically
+field string --fieldName name --unique
+field string --fieldName description
+field date --fieldName createtime --type java.util.Date
+field string --fieldName numbers
+entity jpa --class ~.domain.inspectItem --testAutomatically
+field string --fieldName name --unique
+field string --fieldName description
+field date --fieldName createtime --type java.util.Date
+field string --fieldName numbers
+field string --fieldName IsInput
+field string --fieldName unit
+field reference --fieldName inspecttable --type ~.domain.inspectTable
+// [failed] entity jpa --class ~.domain.Value --testAutomatically
+entity jpa --class ~.domain.tValue --testAutomatically
+// [failed] field string --fieldName value
+field string --fieldName tvalue
+entity jpa --class ~.domain.inspectItem --testAutomatically
+field string --fieldName name --unique
+field string --fieldName description
+field date --fieldName createtime --type java.util.Date
+field string --fieldName numbers
+field string --fieldName IsInput
+field string --fieldName unit
+field reference --fieldName inspecttable --type ~.domain.inspectTable
+field reference --fieldName tag --type ~.domain.inspectTag
+// [failed] field set --fieldName values --type ~.domain.tValue 
+field set --fieldName tvalues --type ~.domain.tValue 
+entity jpa --class ~.domain.Device --testAutomatically
+field string --fieldName devname --unique
+field string --fieldName description
+field string --fieldName numbers
+entity jpa --class ~.domain.deviceInspectRec --testAutomatically
+field string --fieldName rvalue
+field reference --fieldName device --type ~.domain.Device
+field reference --fieldName item --type ~.domain.inspectItem
+web mvc setup
+web mvc all --package ~.web
+security setup
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-07-29 15:18:31
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-07-29 16:34:19
+perform tests
+perform eclipse
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-07-29 16:37:54

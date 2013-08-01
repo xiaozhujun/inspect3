@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_springsource_roo_inspect_domain_InspectTable" object="${inspecttable}" path="/inspecttables" z="46Y8AM2qQVmU5B5z71ldo5f5sS8=">
+        <field:display field="tname" id="s_com_springsource_roo_inspect_domain_InspectTable_tname" object="${inspecttable}" z="7TlYKt/H8TdwadsSyoCMvYawdqE="/>
+        <field:display date="true" dateTimePattern="${inspectTable_createtime_date_format}" field="createtime" id="s_com_springsource_roo_inspect_domain_InspectTable_createtime" object="${inspecttable}" z="Mz9wFzznHrLMVKz2I6g4zZToH/k="/>
+        <field:display field="trole" id="s_com_springsource_roo_inspect_domain_InspectTable_trole" object="${inspecttable}" z="LerjPTiGYEmDa/HZMR9j6PPKAkM="/>
+    </page:show>
+</div>
