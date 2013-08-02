@@ -59,6 +59,7 @@
             <th></th>
             <spring:eval var="colCounter" expression="colCounter  + 1" />
           </c:if>
+          
         </tr>
       </thead>
       <c:forEach items="${data}" var="item">
@@ -135,7 +136,7 @@
               <spring:url value="${path}/${itemId}" var="download_form_url">
                 <spring:param name="download" />
               </spring:url>
-              <spring:url value="/resources/images/update.png" var="download_image_url" />
+              <spring:url value="/resources/images/generate.png" var="download_image_url" />
               <spring:message arguments="${typeName}" code="entity_genertor" var="download_label" htmlEscape="false" />
               <a href="${download_form_url}" alt="${fn:escapeXml(download_label)}" title="${fn:escapeXml(download_label)}">
                 <img alt="${fn:escapeXml(download_label)}" class="image" src="${download_image_url}" title="${fn:escapeXml(download_label)}" />
@@ -144,7 +145,8 @@
             
             <!-- download --> 
               <td class="new">
-              <spring:url value="/resources/images/update.png" var="download_image_url" />
+              <spring:url value="/resources/images/download.png" var="download_image_url" />
+              <spring:message arguments="${typeName}" code="entity_download" var="download_label" htmlEscape="false" />
              <a href="downSucc.jsp?id=${itemId}" code="download">
              <img alt="${fn:escapeXml(download_label)}" class="image" src="${download_image_url}" title="${fn:escapeXml(download_label)}" />
              </a>
@@ -171,7 +173,7 @@
             <!-- downloadRoleTable --> 
            
               <span class="new">
-              <spring:url value="/resources/images/add.png" var="download_image_url" />
+              <spring:url value="/resources/images/download.png" var="download_image_url" />
              <a href="downRoleTable.jsp" code="download">
              <img alt="${fn:escapeXml(download_label)}" class="image" src="${download_image_url}" title="${fn:escapeXml(download_label)}" />
              </a>

@@ -7,9 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<center><h1>搜索页面</h1>
+<center><h1>报表查询</h1>
 <form action="" method="post">
 <input type="text" name="search">
+<select name="">
+<option>报表类型</option>
+<option>时间</option>
+</select>
 <input type="submit" value="搜索">
 </form>
 </center>

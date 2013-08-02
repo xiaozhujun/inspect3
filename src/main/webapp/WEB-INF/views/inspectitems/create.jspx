@@ -12,6 +12,7 @@
         <field:select field="inspecttable" id="c_com_springsource_roo_inspect_domain_InspectItem_inspecttable" itemValue="id" items="${inspecttables}" path="/inspecttables" z="rURmKfMNKotX8ugudbIQfGpr4/o="/>
         <field:select field="tag" id="c_com_springsource_roo_inspect_domain_InspectItem_tag" itemValue="id" items="${inspecttags}" path="/inspecttags" z="HM8pKGjm+HnDzDE4RyAi4uLb17A="/>
         <field:select field="tvalues" id="c_com_springsource_roo_inspect_domain_InspectItem_tvalues" itemValue="id" items="${tvalues}" multiple="true" path="/tvalues" z="Ez4ON4xIIXnn0qHafGD2T4qF9EI="/>
+        
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_springsource_roo_inspect_domain_InspectItem" render="${not empty dependencies}" z="WD/8Ym3ViRFkrI+O9qzo9cxqXYM="/>
 </div>

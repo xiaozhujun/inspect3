@@ -3,9 +3,25 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_report" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
+            <menu:item id="i_device_list" messageCode="global_search" url="/devices?gosearch" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
+             <menu:item id="i_device_list" messageCode="global_data" url="/devices?upload" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
+        </menu:category>
         <menu:category id="c_roles" z="rs8zfmLS6SJZoIvFFQfrlrSaJVU=">
             <menu:item id="i_roles_new" messageCode="global_menu_new" url="/roleses?form" z="3pwVBouHLA1zzuNbxsmScZYd3Ow="/>
             <menu:item id="i_roles_list" messageCode="global_menu_list" url="/roleses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="hajFcKWAQ9yfIfMWvLv3ooTzCFE="/>
+        </menu:category>
+        <menu:category id="c_users" z="Ysam8XVhG5uotPoUGGxkia1RE/s=">
+            <menu:item id="i_users_new" messageCode="global_menu_new" url="/userses?form" z="utrdLkYms6xk5f4IDxc9zrg5FWs="/>
+            <menu:item id="i_users_list" messageCode="global_menu_list" url="/userses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="tqSwojZmRduyx4xtHWcJzgbgtJk="/>
+        </menu:category>
+        <menu:category id="c_inspecttable" z="X0v5VyoJeESOgInNFYVhtANlLl8=">
+            <menu:item id="i_inspecttable_new" messageCode="global_menu_new" url="/inspecttables?form" z="pzZxkaG65iSNQK3j+XQbmI8cSg8="/>
+            <menu:item id="i_inspecttable_list" messageCode="global_menu_list" url="/inspecttables?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9n+DLy75FZohgEN9J581yInab7Q="/>
+        </menu:category>
+        <menu:category id="c_inspecttag" z="PF7A4bOGwErpBUkm2qzAmuYLPZk=">
+            <menu:item id="i_inspecttag_new" messageCode="global_menu_new" url="/inspecttags?form" z="CmS6WPqQuSou6/ZVXwZGkZE+biM="/>
+            <menu:item id="i_inspecttag_list" messageCode="global_menu_list" url="/inspecttags?page=1&amp;size=${empty param.size ? 10 : param.size}" z="IVkPJ/JT/KlEiI7jnQJ8a1oliiU="/>
         </menu:category>
         <menu:category id="c_tvalue" z="+A3lrbKcz84rp5yQiZH70LLbdFM=">
             <menu:item id="i_tvalue_new" messageCode="global_menu_new" url="/tvalues?form" z="e8vCNCaysnJYfUVYzEVY5jOooQw="/>
@@ -23,39 +39,15 @@
             <menu:item id="i_deviceinspectrec_new" messageCode="global_menu_new" url="/deviceinspectrecs?form" z="YCh9GzOcrNlxUiIGt03R77H9tFs="/>
             <menu:item id="i_deviceinspectrec_list" messageCode="global_menu_list" url="/deviceinspectrecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="cLLuWMMMBoBBbsHU//SCKi2X+0w="/>
         </menu:category>
-        <menu:category id="c_inspecttable" z="X0v5VyoJeESOgInNFYVhtANlLl8=">
-            <menu:item id="i_inspecttable_new" messageCode="global_menu_new" url="/inspecttables?form" z="pzZxkaG65iSNQK3j+XQbmI8cSg8="/>
-            <menu:item id="i_inspecttable_list" messageCode="global_menu_list" url="/inspecttables?page=1&amp;size=${empty param.size ? 10 : param.size}" z="9n+DLy75FZohgEN9J581yInab7Q="/>
-        </menu:category>
-        <menu:category id="c_users" z="Ysam8XVhG5uotPoUGGxkia1RE/s=">
-            <menu:item id="i_users_new" messageCode="global_menu_new" url="/userses?form" z="utrdLkYms6xk5f4IDxc9zrg5FWs="/>
-            <menu:item id="i_users_list" messageCode="global_menu_list" url="/userses?page=1&amp;size=${empty param.size ? 10 : param.size}" z="tqSwojZmRduyx4xtHWcJzgbgtJk="/>
-        </menu:category>
-        <menu:category id="c_inspecttag" z="PF7A4bOGwErpBUkm2qzAmuYLPZk=">
-            <menu:item id="i_inspecttag_new" messageCode="global_menu_new" url="/inspecttags?form" z="CmS6WPqQuSou6/ZVXwZGkZE+biM="/>
-            <menu:item id="i_inspecttag_list" messageCode="global_menu_list" url="/inspecttags?page=1&amp;size=${empty param.size ? 10 : param.size}" z="IVkPJ/JT/KlEiI7jnQJ8a1oliiU="/>
-        </menu:category>
+        
+        
+        
         <menu:category id="c_device" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
             <menu:item id="i_device_new" messageCode="global_menu_new" url="/devices?form" z="J2ebcm2NAeVzA9aPlvjk8cZGsGA="/>
-            <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?upload" z="user-managed"/>
+            <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?list" z="user-managed"/>
         </menu:category>
-        <menu:category id="c_device" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
-            <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?upload" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
-        </menu:category>
-        <menu:category id="c_device" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
-            <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?gosearch" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
-        </menu:category>
-        <menu:category id="c_inspectitemrecord" z="7dooXHNedQx0UQdE8uVdynJOYuY=">
-            <menu:item id="i_inspectitemrecord_new" messageCode="global_menu_new" url="/inspectitemrecords?form" z="PMFfXhfwMZJXOxQg84fAIpV+24M="/>
-            <menu:item id="i_inspectitemrecord_list" messageCode="global_menu_list" url="/inspectitemrecords?page=1&amp;size=${empty param.size ? 10 : param.size}" z="O313WXFeXBat1tBnezLXdf5KlGQ="/>
-        </menu:category>
-        <menu:category id="c_inspectitemrec" z="QQBIZOI6M4CwK03n8JSzpJvCqVg=">
-            <menu:item id="i_inspectitemrec_new" messageCode="global_menu_new" url="/inspectitemrecs?form" z="wyD6Wd5uriQOWor41BtZwgdJQCs="/>
-            <menu:item id="i_inspectitemrec_list" messageCode="global_menu_list" url="/inspectitemrecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="TwWHhMNJ+QfCUfNPZOcNfTLgOkA="/>
-        </menu:category>
-        <menu:category id="c_inspecttablerecord" z="1GtOR4wm4J2xASyO6ulcQHQP/wU=">
-            <menu:item id="i_inspecttablerecord_new" messageCode="global_menu_new" url="/inspecttablerecords?form" z="eO2epZ3sx5GNLIuppA9jB1dvnII="/>
-            <menu:item id="i_inspecttablerecord_list" messageCode="global_menu_list" url="/inspecttablerecords?page=1&amp;size=${empty param.size ? 10 : param.size}" z="wyLLzeKAGAQaaXMlyMp6GtSr/GA="/>
-        </menu:category>
+       
+        
+        
     </menu:menu>
 </div>

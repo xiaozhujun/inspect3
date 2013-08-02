@@ -5,15 +5,28 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+#nav{
+background-color: highlight;
+height: 30px;
+
+}
+a:LINK{
+color: white;
+font-size: 15px;
+}
+
+</style>
 </head>
 <body>
-<center><h1>点检上传</h1>
-<form action="MultipartTServlet" enctype="multipart/form-data" method="post">
-    
-     <input type="file" name="myfile" /><br/>
-    
-     <input type="submit" value="上传"/>
-    </form>
-    </center>
+<div id="nav">
+<center>
+<span><a href="#">首页</a></span>|<span><a href="#">系统简介</a></span>|<span><a href="#">关于我们</a></span>
+
+
+</center>
+
+
+</div>
 </body>
 </html>

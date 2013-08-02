@@ -188,3 +188,5 @@ field reference --fieldName worker --type ~.domain.Users
 web mvc all --package ~.web
 quit
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 19:36:08
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-02 17:20:49
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-02 17:23:48
