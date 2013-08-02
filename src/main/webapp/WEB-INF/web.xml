@@ -105,6 +105,17 @@
    <servlet-name>MultipartServlet</servlet-name>
    <url-pattern>/MultipartServlet</url-pattern>
    </servlet-mapping>
+   
+   <servlet>
+      <servlet-name>MultipartTServlet</servlet-name>
+      <servlet-class>upload.MultipartTServlet</servlet-class>
+</servlet>
+   <servlet-mapping>
+   <servlet-name>MultipartTServlet</servlet-name>
+   <url-pattern>/MultipartTServlet</url-pattern>
+   </servlet-mapping>
+   
+   
     <session-config>
         <session-timeout>10</session-timeout>
     </session-config>

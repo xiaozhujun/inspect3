@@ -37,17 +37,25 @@
         </menu:category>
         <menu:category id="c_device" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
             <menu:item id="i_device_new" messageCode="global_menu_new" url="/devices?form" z="J2ebcm2NAeVzA9aPlvjk8cZGsGA="/>
-            <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?page=1&amp;size=${empty param.size ? 10 : param.size}" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
+            <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?upload" z="user-managed"/>
         </menu:category>
-        <!-- 数据管理功能 -->
         <menu:category id="c_device" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
-            
             <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?upload" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
         </menu:category>
-         <!-- 搜索功能 -->
         <menu:category id="c_device" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
-            
             <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?gosearch" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
+        </menu:category>
+        <menu:category id="c_inspectitemrecord" z="7dooXHNedQx0UQdE8uVdynJOYuY=">
+            <menu:item id="i_inspectitemrecord_new" messageCode="global_menu_new" url="/inspectitemrecords?form" z="PMFfXhfwMZJXOxQg84fAIpV+24M="/>
+            <menu:item id="i_inspectitemrecord_list" messageCode="global_menu_list" url="/inspectitemrecords?page=1&amp;size=${empty param.size ? 10 : param.size}" z="O313WXFeXBat1tBnezLXdf5KlGQ="/>
+        </menu:category>
+        <menu:category id="c_inspectitemrec" z="QQBIZOI6M4CwK03n8JSzpJvCqVg=">
+            <menu:item id="i_inspectitemrec_new" messageCode="global_menu_new" url="/inspectitemrecs?form" z="wyD6Wd5uriQOWor41BtZwgdJQCs="/>
+            <menu:item id="i_inspectitemrec_list" messageCode="global_menu_list" url="/inspectitemrecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="TwWHhMNJ+QfCUfNPZOcNfTLgOkA="/>
+        </menu:category>
+        <menu:category id="c_inspecttablerecord" z="1GtOR4wm4J2xASyO6ulcQHQP/wU=">
+            <menu:item id="i_inspecttablerecord_new" messageCode="global_menu_new" url="/inspecttablerecords?form" z="eO2epZ3sx5GNLIuppA9jB1dvnII="/>
+            <menu:item id="i_inspecttablerecord_list" messageCode="global_menu_list" url="/inspecttablerecords?page=1&amp;size=${empty param.size ? 10 : param.size}" z="wyLLzeKAGAQaaXMlyMp6GtSr/GA="/>
         </menu:category>
     </menu:menu>
 </div>

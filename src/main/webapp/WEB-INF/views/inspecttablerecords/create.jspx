@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_springsource_roo_inspect_domain_InspectTableRecord" modelAttribute="inspectTableRecord" path="/inspecttablerecords" render="${empty dependencies}" z="EIZ/Gz4Bw6LghIb5B6QMpSt33Bs=">
+        <field:datetime dateTimePattern="${inspectTableRecord_createtime_date_format}" field="createtime" id="c_com_springsource_roo_inspect_domain_InspectTableRecord_createtime" z="Pvim5B6DIWoP/JruBQpGbZZs7rA="/>
+        <field:input field="faultcount" id="c_com_springsource_roo_inspect_domain_InspectTableRecord_faultcount" validationMessageCode="field_invalid_integer" z="uwYaPgBFnjCPdNhOVzAOZ/CImTg="/>
+        <field:select field="inspecttable" id="c_com_springsource_roo_inspect_domain_InspectTableRecord_inspecttable" itemValue="id" items="${inspecttables}" path="/inspecttables" z="gs/6J7HzohdqxoJlUkVcuE/MJw4="/>
+        <field:select field="worker" id="c_com_springsource_roo_inspect_domain_InspectTableRecord_worker" itemValue="id" items="${userses}" path="/userses" z="YtQJYCJdDs70lLId1F6REQcGAEM="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_springsource_roo_inspect_domain_InspectTableRecord" render="${not empty dependencies}" z="EVG6aE8w9ACYkAgdkkUA6D7bPEU="/>
+</div>

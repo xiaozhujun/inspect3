@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_springsource_roo_inspect_domain_InspectTableRecord" items="${inspecttablerecords}" z="56uQBvhyYlvgTeyPDKZPE4p6prw=">
+        <table:table data="${inspecttablerecords}" id="l_com_springsource_roo_inspect_domain_InspectTableRecord" path="/inspecttablerecords" z="OGFyFs3A+E5++9OWp5u9hQPP4YA=">
+            <table:column date="true" dateTimePattern="${inspectTableRecord_createtime_date_format}" id="c_com_springsource_roo_inspect_domain_InspectTableRecord_createtime" property="createtime" z="XfhdLteKa4pIwVYNZp4vdKJ5w98="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTableRecord_faultcount" property="faultcount" z="QlCQEamEN2n4xxHCO3pMTj9VvWU="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTableRecord_inspecttable" property="inspecttable" z="Vw8TcaDzt7n+cMY9R5B6SZb8SS8="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTableRecord_worker" property="worker" z="M3kCly3hHAOf0rbfZxmjmRSFlgQ="/>
+        </table:table>
+    </page:list>
+</div>

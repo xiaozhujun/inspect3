@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_springsource_roo_inspect_domain_InspectTableRecord" object="${inspecttablerecord}" path="/inspecttablerecords" z="Efw+T/0JCQsNmV0LVtONZu/HZOI=">
+        <field:display date="true" dateTimePattern="${inspectTableRecord_createtime_date_format}" field="createtime" id="s_com_springsource_roo_inspect_domain_InspectTableRecord_createtime" object="${inspecttablerecord}" z="MiJmIoQ/UwgEZa34U65rpRFkG80="/>
+        <field:display field="faultcount" id="s_com_springsource_roo_inspect_domain_InspectTableRecord_faultcount" object="${inspecttablerecord}" z="nNKB+OGRGF2Y8SnuWgCzDjJqMKU="/>
+        <field:display field="inspecttable" id="s_com_springsource_roo_inspect_domain_InspectTableRecord_inspecttable" object="${inspecttablerecord}" z="jsNaGDVzrG5H26r+ufmRpMaFT1s="/>
+        <field:display field="worker" id="s_com_springsource_roo_inspect_domain_InspectTableRecord_worker" object="${inspecttablerecord}" z="6I+BjBP2GUAMP2nkUoFqZ/Hvat4="/>
+    </page:show>
+</div>

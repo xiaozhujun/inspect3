@@ -33,9 +33,16 @@ public class insertToRolesTableXml {
 	}
 	
 	try{
+//		OutputFormat format=OutputFormat.createPrettyPrint();
+//		format.setEncoding("gb2312");
+//		XMLWriter writer=new XMLWriter(new FileWriter(new File(pathname)),format);
+//		writer.write(doc);
+//		writer.close();
 		OutputFormat format=OutputFormat.createPrettyPrint();
-		format.setEncoding("gb2312");
-		XMLWriter writer=new XMLWriter(new FileWriter(new File(pathname)),format);
+		String ENCODING="UTF-8";
+		format.setEncoding(ENCODING);
+		format.setNewlines(true);
+		XMLWriter writer=new XMLWriter(new java.io.FileOutputStream(pathname),format);
 		writer.write(doc);
 		writer.close();
 		b=true;

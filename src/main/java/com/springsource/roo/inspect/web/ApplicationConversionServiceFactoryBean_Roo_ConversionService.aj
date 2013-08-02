@@ -7,7 +7,10 @@ import com.springsource.roo.inspect.domain.Dept;
 import com.springsource.roo.inspect.domain.Device;
 import com.springsource.roo.inspect.domain.DeviceInspectRec;
 import com.springsource.roo.inspect.domain.InspectItem;
+import com.springsource.roo.inspect.domain.InspectItemRec;
+import com.springsource.roo.inspect.domain.InspectItemRecord;
 import com.springsource.roo.inspect.domain.InspectTable;
+import com.springsource.roo.inspect.domain.InspectTableRecord;
 import com.springsource.roo.inspect.domain.InspectTag;
 import com.springsource.roo.inspect.domain.Roles;
 import com.springsource.roo.inspect.domain.TValue;
@@ -117,6 +120,54 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<InspectItemRec, String> ApplicationConversionServiceFactoryBean.getInspectItemRecToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.springsource.roo.inspect.domain.InspectItemRec, java.lang.String>() {
+            public String convert(InspectItemRec inspectItemRec) {
+                return new StringBuilder().append(inspectItemRec.getCreatetime()).append(' ').append(inspectItemRec.getIvalue()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, InspectItemRec> ApplicationConversionServiceFactoryBean.getIdToInspectItemRecConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.springsource.roo.inspect.domain.InspectItemRec>() {
+            public com.springsource.roo.inspect.domain.InspectItemRec convert(java.lang.Long id) {
+                return InspectItemRec.findInspectItemRec(id);
+            }
+        };
+    }
+    
+    public Converter<String, InspectItemRec> ApplicationConversionServiceFactoryBean.getStringToInspectItemRecConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.springsource.roo.inspect.domain.InspectItemRec>() {
+            public com.springsource.roo.inspect.domain.InspectItemRec convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), InspectItemRec.class);
+            }
+        };
+    }
+    
+    public Converter<InspectItemRecord, String> ApplicationConversionServiceFactoryBean.getInspectItemRecordToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.springsource.roo.inspect.domain.InspectItemRecord, java.lang.String>() {
+            public String convert(InspectItemRecord inspectItemRecord) {
+                return new StringBuilder().append(inspectItemRecord.getCreatetime()).append(' ').append(inspectItemRecord.getIvalue()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, InspectItemRecord> ApplicationConversionServiceFactoryBean.getIdToInspectItemRecordConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.springsource.roo.inspect.domain.InspectItemRecord>() {
+            public com.springsource.roo.inspect.domain.InspectItemRecord convert(java.lang.Long id) {
+                return InspectItemRecord.findInspectItemRecord(id);
+            }
+        };
+    }
+    
+    public Converter<String, InspectItemRecord> ApplicationConversionServiceFactoryBean.getStringToInspectItemRecordConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.springsource.roo.inspect.domain.InspectItemRecord>() {
+            public com.springsource.roo.inspect.domain.InspectItemRecord convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), InspectItemRecord.class);
+            }
+        };
+    }
+    
     public Converter<InspectTable, String> ApplicationConversionServiceFactoryBean.getInspectTableToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.springsource.roo.inspect.domain.InspectTable, java.lang.String>() {
             public String convert(InspectTable inspectTable) {
@@ -137,6 +188,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         return new org.springframework.core.convert.converter.Converter<java.lang.String, com.springsource.roo.inspect.domain.InspectTable>() {
             public com.springsource.roo.inspect.domain.InspectTable convert(String id) {
                 return getObject().convert(getObject().convert(id, Long.class), InspectTable.class);
+            }
+        };
+    }
+    
+    public Converter<InspectTableRecord, String> ApplicationConversionServiceFactoryBean.getInspectTableRecordToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.springsource.roo.inspect.domain.InspectTableRecord, java.lang.String>() {
+            public String convert(InspectTableRecord inspectTableRecord) {
+                return new StringBuilder().append(inspectTableRecord.getCreatetime()).append(' ').append(inspectTableRecord.getFaultcount()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, InspectTableRecord> ApplicationConversionServiceFactoryBean.getIdToInspectTableRecordConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.springsource.roo.inspect.domain.InspectTableRecord>() {
+            public com.springsource.roo.inspect.domain.InspectTableRecord convert(java.lang.Long id) {
+                return InspectTableRecord.findInspectTableRecord(id);
+            }
+        };
+    }
+    
+    public Converter<String, InspectTableRecord> ApplicationConversionServiceFactoryBean.getStringToInspectTableRecordConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.springsource.roo.inspect.domain.InspectTableRecord>() {
+            public com.springsource.roo.inspect.domain.InspectTableRecord convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), InspectTableRecord.class);
             }
         };
     }
@@ -250,9 +325,18 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getInspectItemToStringConverter());
         registry.addConverter(getIdToInspectItemConverter());
         registry.addConverter(getStringToInspectItemConverter());
+        registry.addConverter(getInspectItemRecToStringConverter());
+        registry.addConverter(getIdToInspectItemRecConverter());
+        registry.addConverter(getStringToInspectItemRecConverter());
+        registry.addConverter(getInspectItemRecordToStringConverter());
+        registry.addConverter(getIdToInspectItemRecordConverter());
+        registry.addConverter(getStringToInspectItemRecordConverter());
         registry.addConverter(getInspectTableToStringConverter());
         registry.addConverter(getIdToInspectTableConverter());
         registry.addConverter(getStringToInspectTableConverter());
+        registry.addConverter(getInspectTableRecordToStringConverter());
+        registry.addConverter(getIdToInspectTableRecordConverter());
+        registry.addConverter(getStringToInspectTableRecordConverter());
         registry.addConverter(getInspectTagToStringConverter());
         registry.addConverter(getIdToInspectTagConverter());
         registry.addConverter(getStringToInspectTagConverter());

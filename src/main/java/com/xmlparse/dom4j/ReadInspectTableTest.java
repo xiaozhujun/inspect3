@@ -46,7 +46,7 @@ public class ReadInspectTableTest {
 	            u.setId(rs.getInt(6));
 	            u.setTname(rs.getString(7));
 	            tid=u.getId();
-	            System.out.println(tid+"������");
+	          
 	            
 //	            statement=connection.prepareStatement(sql1);
 //	            statement.setInt(1, tid);

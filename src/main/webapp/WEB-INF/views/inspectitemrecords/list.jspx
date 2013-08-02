@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_springsource_roo_inspect_domain_InspectItemRecord" items="${inspectitemrecords}" z="B3O1tiVDI4Yt7kBNTlayEFAKaNw=">
+        <table:table data="${inspectitemrecords}" id="l_com_springsource_roo_inspect_domain_InspectItemRecord" path="/inspectitemrecords" z="LW6GyysrUds50zlwW+Ex/exVtyg=">
+            <table:column date="true" dateTimePattern="${inspectItemRecord_createtime_date_format}" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_createtime" property="createtime" z="p+xerLP0tGOgZPVIGz7z7NEC3Vw="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectItemRecord_ivalue" property="ivalue" z="nR8TRC0NAwiPzkGlcMxi6Ig9Fvw="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectItemRecord_inspecttable" property="inspecttable" z="oXu7z7pOgVGBH+1Xt7TL5LJ8oVk="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectItemRecord_tag" property="tag" z="aKfd1tKOgjIzFDYyz1iUo4NCYEc="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectItemRecord_item" property="item" z="3N0czeQu4kF3A6bRRjP+JQuoDTo="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectItemRecord_inspecttablerec" property="inspecttablerec" z="+e8XoboVnoT6kS1HqYxRvphAGhQ="/>
+        </table:table>
+    </page:list>
+</div>

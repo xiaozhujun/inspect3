@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:spring="http://www.springframework.org/tags" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:create id="fc_com_springsource_roo_inspect_domain_InspectItemRec" modelAttribute="inspectItemRec" path="/inspectitemrecs" render="${empty dependencies}" z="pA5CC4QfUI3M0BDq6ZQ81XBGcVQ=">
+        <field:datetime dateTimePattern="${inspectItemRec_createtime_date_format}" field="createtime" id="c_com_springsource_roo_inspect_domain_InspectItemRec_createtime" z="RsPGVrtYDZa9KHGik5m7idEdo+U="/>
+        <field:input field="ivalue" id="c_com_springsource_roo_inspect_domain_InspectItemRec_ivalue" z="LtE+YrZEUZdyfjgnhAgfG23nphs="/>
+        <field:select field="inspecttable" id="c_com_springsource_roo_inspect_domain_InspectItemRec_inspecttable" itemValue="id" items="${inspecttables}" path="/inspecttables" z="DZTQyPyk23zXTWYPXK9h5B9uTD0="/>
+        <field:select field="tag" id="c_com_springsource_roo_inspect_domain_InspectItemRec_tag" itemValue="id" items="${inspecttags}" path="/inspecttags" z="AYEYl7O7p9+CoSSSimnmzy779UM="/>
+        <field:select field="item" id="c_com_springsource_roo_inspect_domain_InspectItemRec_item" itemValue="id" items="${inspectitems}" path="/inspectitems" z="YOgbQyOSTaksehtCyF0aXTc53Nk="/>
+        <field:select field="inspecttablerecord" id="c_com_springsource_roo_inspect_domain_InspectItemRec_inspecttablerecord" itemValue="id" items="${inspecttablerecords}" path="/inspecttablerecords" z="wXLn4W8GBJJyuy9Wxi7chQdTNXo="/>
+        <field:select field="worker" id="c_com_springsource_roo_inspect_domain_InspectItemRec_worker" itemValue="id" items="${userses}" path="/userses" z="xLtVAf6v1GFSGddsueqp9j1Hyn8="/>
+    </form:create>
+    <form:dependency dependencies="${dependencies}" id="d_com_springsource_roo_inspect_domain_InspectItemRec" render="${not empty dependencies}" z="bZ9abpUThJADOdBcz8re0az/qdQ="/>
+</div>

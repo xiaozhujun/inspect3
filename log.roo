@@ -67,3 +67,124 @@ perform tests
 perform eclipse
 quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-07-29 16:37:54
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-08-01 14:37:58
+// [failed] field date --fieldName createtime --type java.util.Date
+entity jpa --class ~.domain.InspectTableRecord
+// [failed] field date --fieldName createtime --type java.util.Date
+// [failed] field date --fieldName createtime --type java.util.Date
+field date --fieldName createtime --type java.util.Date
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 15:36:37
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 15:42:36
+entity jpa --class ~.domain.InspectTableRecord
+field date --fieldName createtime --type java.util.Date
+field string --fieldName faultcount
+// [failed] field reference --fieldName table --type ~.domain.inspectTable
+field reference --fieldName inspecttable --type ~.domain.inspectTable
+field reference --fieldName worker --type ~.domain.Users
+entity jpa --class ~.domain.InspectItemRec
+field date --fieldName createtime --type java.util.Date
+field reference --fieldName inspecttable --type ~.domain.inspectTable
+field reference --fieldName tag --type ~.domain.inspectTag
+field reference --fieldName item --type ~.domain.inspectItem
+field string --fieldName ivalue
+// [failed] field reference --fieldName inspectTableRec --type ~.domain.inspectTableRec
+field reference --fieldName inspectTableRec --type ~.domain.inspectTableRecord
+field reference --fieldName worker --type ~.domain.Users
+hint
+// [failed] web mvc all --package ~.web
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-01 15:53:09
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 16:00:30
+hint
+help
+hint
+hint web mvc
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 16:08:45
+entity jpa --class ~.domain.inspectTableRecord --testAutomatically
+field date --fieldName createtime --type java.util.Date
+field string --fieldName faultcount
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName worker --type ~.domain.Users
+entity jpa --class ~.domain.InspectItemRec --testAutomatically
+field date --fieldName createtime --type java.util.Date
+field string --fieldName ivalue
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName tag --type ~.domain.InspectTag
+field reference --fieldName item --type ~.domain.InspectItem
+field reference --fieldName inspecttablerec --type ~.domain.InspectTableRecord
+field reference --fieldName worker --type ~.domain.Users
+// [failed] web mvc all --package ~.web
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-01 16:24:30
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 16:24:38
+perform eclipse
+help
+hint
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-01 16:33:09
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 16:36:54
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-08-01 16:37:44
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 16:40:02
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-01 16:40:08
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 16:43:51
+entity jpa --class ~.domain.InspectTableRecord --testAutomatically
+field date --fieldName createtime --type java.util.Date
+field number --fieldName faultcount --type java.lang.Integer
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName worker --type ~.domain.Users
+entity jpa --class ~.domain.InspectItemRec --testAutomatically
+field date --fieldName createtime --type java.util.Date
+field string --fieldName ivalue
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName tag --type ~.domain.InspectTag
+field reference --fieldName item --type ~.domain.InspectItem
+field reference --fieldName inspecttablerecord --type ~.domain.InspectTableRecord
+field reference --fieldName worker --type ~.domain.Users
+// [failed] web mvc all --package ~.web
+// [failed] web mvc finder add --class ~.web.InspectTableRecordController --formBackingType ~.domain.InspectTableRecord
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-01 17:22:31
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 17:22:46
+entity jpa --class ~.domain.InspectTableRecord 
+field date --fieldName createtime --type java.util.Date
+field number --fieldName faultcount --type java.lang.Integer
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName worker --type ~.domain.Users
+entity jpa --class ~.domain.InspectItemRecord 
+field date --fieldName createtime --type java.util.Date
+field string --fieldName ivalue
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName tag --type ~.domain.InspectTag
+field reference --fieldName item --type ~.domain.InspectItem
+field reference --fieldName inspecttablerec --type ~.domain.InspectTableRecord
+field reference --fieldName worker --type ~.domain.Users
+// [failed] web mvc scaffold --class ~.web.InspectTableRecordController
+// [failed] web mvc all --package ~.web
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-08-01 18:13:39
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 18:14:30
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-08-01 18:14:40
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 18:39:28
+// [failed] web mvc all --package ~.web
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-08-01 18:40:50
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-01 18:52:34
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 18:55:17
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-08-01 18:55:32
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 18:58:57
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log opened at 2013-08-01 18:59:11
+entity jpa --class ~.domain.InspectTableRecord
+field date --fieldName createtime --type java.util.Date
+field number --fieldName faultcount --type java.lang.Integer
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName worker --type ~.domain.Users
+entity jpa --class ~.domain.InspectItemRecord 
+field date --fieldName createtime --type java.util.Date
+field string --fieldName ivalue
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName tag --type ~.domain.InspectTag
+field reference --fieldName item --type ~.domain.InspectItem
+field reference --fieldName inspecttablerec --type ~.domain.InspectTableRecord
+field reference --fieldName worker --type ~.domain.Users
+web mvc all --package ~.web
+quit
+// Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 19:36:08

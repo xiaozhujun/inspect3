@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_springsource_roo_inspect_domain_InspectItemRec" object="${inspectitemrec}" path="/inspectitemrecs" z="Elj4c2cwk9hcNSSKAf/iS5jjF/A=">
+        <field:display date="true" dateTimePattern="${inspectItemRec_createtime_date_format}" field="createtime" id="s_com_springsource_roo_inspect_domain_InspectItemRec_createtime" object="${inspectitemrec}" z="7ipo7BEOzhJPpvQB3TqMdFapqf4="/>
+        <field:display field="ivalue" id="s_com_springsource_roo_inspect_domain_InspectItemRec_ivalue" object="${inspectitemrec}" z="jdMwd12dhNfPTAm3iMILdMrUmqo="/>
+        <field:display field="inspecttable" id="s_com_springsource_roo_inspect_domain_InspectItemRec_inspecttable" object="${inspectitemrec}" z="2uViNkJTDY8NcKXaWtez15Ew8ew="/>
+        <field:display field="tag" id="s_com_springsource_roo_inspect_domain_InspectItemRec_tag" object="${inspectitemrec}" z="B/Ei3SfKODslzbE7oB4xwEOQ8W8="/>
+        <field:display field="item" id="s_com_springsource_roo_inspect_domain_InspectItemRec_item" object="${inspectitemrec}" z="iyABIm4GXUdUfrdE1QhQMVPQtn4="/>
+        <field:display field="inspecttablerecord" id="s_com_springsource_roo_inspect_domain_InspectItemRec_inspecttablerecord" object="${inspectitemrec}" z="4CRkiE1e3VqSg087/H81ZCvTQNE="/>
+        <field:display field="worker" id="s_com_springsource_roo_inspect_domain_InspectItemRec_worker" object="${inspectitemrec}" z="d9qTOp/8qP0fLQgbFDQqdA3vVeI="/>
+    </page:show>
+</div>

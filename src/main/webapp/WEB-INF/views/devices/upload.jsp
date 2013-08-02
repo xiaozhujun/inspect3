@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>哈哈</h1>
-<form action="MultipartServlet" enctype="multipart/form-data" method="post">
+<form action="MultipartTServlet" enctype="multipart/form-data" method="post">
     
      <input type="file" name="myfile" /><br/>
     

@@ -52,8 +52,7 @@ public class insertToTableTestXml {
 //			Element tableEle=cEle.addElement("field name='"+u.getItemname()+"' isInput='"+u.getIsinput()+"' description='"+u.getDescription()+"' unit='"+u.getUnit()+"'");
 //			tableEle.addElement("value name='"+u.getValue()+"'");
 	
-			//在这之中，根据itemid来查其对应的tagname,若一样，则合并，不一样，则跳转
-			//怎么比较两个itemid的tagname是否相同
+			
 			
 			Element tableEle=a3.addElement("field");
             tableEle.addAttribute("name", u.getItemname());
@@ -62,7 +61,7 @@ public class insertToTableTestXml {
             tableEle.addAttribute("unit", u.getUnit());
             tableEle.addElement("value").addAttribute("name", "正常");
             tableEle.addElement("value").addAttribute("name", "异常");
-            tableEle.addElement("value").addAttribute("name", "无");
+            tableEle.addElement("value").addAttribute("name", "无 ");
 			
 		}
 		   }
