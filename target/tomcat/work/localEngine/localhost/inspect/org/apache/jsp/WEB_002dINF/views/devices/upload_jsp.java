@@ -58,13 +58,14 @@ public final class upload_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<title>Insert title here</title>\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("<h1>哈哈</h1>\r\n");
+      out.write("<center><h1>点检上传</h1>\r\n");
       out.write("<form action=\"MultipartTServlet\" enctype=\"multipart/form-data\" method=\"post\">\r\n");
       out.write("    \r\n");
       out.write("     <input type=\"file\" name=\"myfile\" /><br/>\r\n");
       out.write("    \r\n");
-      out.write("     <input type=\"submit\" />\r\n");
+      out.write("     <input type=\"submit\" value=\"上传\"/>\r\n");
       out.write("    </form>\r\n");
+      out.write("    </center>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {

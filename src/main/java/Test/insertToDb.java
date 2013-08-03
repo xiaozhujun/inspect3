@@ -18,7 +18,8 @@ public class insertToDb {
     //在上传的同时，将数据插入到数据库中
 	private MyDataSource ds=new MyDataSource();
 	public void insertToDB(String tname,String tag,String item,String value,String worker,Date time){
-		System.out.println(item+"标签");
+		System.out.println(tag+"标签");
+		System.out.println(item+"点检项");
 		System.out.println(tname+"表名");
 		System.out.println(value+"值");
 		System.out.println(worker+"工作人员");
@@ -142,8 +143,8 @@ public class insertToDb {
 		int id=0;
 		try{
 			statement=connection.prepareStatement(sql);
-			statement.setInt(1, tagid);
-			statement.setInt(2, tid);
+			statement.setInt(1, tid);
+			statement.setInt(2, tagid);
 			statement.setString(3, name);
 			rs=statement.executeQuery();
 			while(rs.next()){
@@ -208,7 +209,7 @@ public class insertToDb {
         
 		//d1.parse("2010/5/4");
 		System.out.println(d1);
-		d.insertToDB("机修人员点检表", "标签1", "铁鞋、锚定", "正常", "工作人员1", d1);
+		d.insertToDB("机修人员点检表", "标签1", "滑轮", "无", "工作人员1", d1);
 		
 	}
 	

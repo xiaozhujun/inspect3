@@ -81,12 +81,18 @@ public final class default_jspx extends org.apache.jasper.runtime.HttpJspBase
       out.write("<div id=\"wrapper\">");
       if (_jspx_meth_tiles_005finsertAttribute_005f0(_jspx_page_context))
         return;
+      out.write("<div id=\"nav\">");
       if (_jspx_meth_tiles_005finsertAttribute_005f1(_jspx_page_context))
         return;
+      out.write("</div>");
       out.write("<div id=\"main\">");
       if (_jspx_meth_tiles_005finsertAttribute_005f2(_jspx_page_context))
         return;
       if (_jspx_meth_tiles_005finsertAttribute_005f3(_jspx_page_context))
+        return;
+      out.write("</div>");
+      out.write("<div id=\"footer\">");
+      if (_jspx_meth_tiles_005finsertAttribute_005f4(_jspx_page_context))
         return;
       out.write("</div>");
       out.write("</div>");
@@ -202,10 +208,10 @@ public final class default_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.apache.tiles.jsp.taglib.InsertAttributeTag _jspx_th_tiles_005finsertAttribute_005f1 = new org.apache.tiles.jsp.taglib.InsertAttributeTag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f1);
     _jspx_th_tiles_005finsertAttribute_005f1.setJspContext(_jspx_page_context);
-    // /WEB-INF/layouts/default.jspx(21,58) name = ignore type = boolean reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    // /WEB-INF/layouts/default.jspx(22,57) name = ignore type = boolean reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
     _jspx_th_tiles_005finsertAttribute_005f1.setIgnore(true);
-    // /WEB-INF/layouts/default.jspx(21,58) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_tiles_005finsertAttribute_005f1.setName("menu");
+    // /WEB-INF/layouts/default.jspx(22,57) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_tiles_005finsertAttribute_005f1.setName("nav");
     _jspx_th_tiles_005finsertAttribute_005f1.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f1);
     return false;
@@ -219,8 +225,10 @@ public final class default_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.apache.tiles.jsp.taglib.InsertAttributeTag _jspx_th_tiles_005finsertAttribute_005f2 = new org.apache.tiles.jsp.taglib.InsertAttributeTag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f2);
     _jspx_th_tiles_005finsertAttribute_005f2.setJspContext(_jspx_page_context);
-    // /WEB-INF/layouts/default.jspx(23,44) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_tiles_005finsertAttribute_005f2.setName("body");
+    // /WEB-INF/layouts/default.jspx(25,58) name = ignore type = boolean reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_tiles_005finsertAttribute_005f2.setIgnore(true);
+    // /WEB-INF/layouts/default.jspx(25,58) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_tiles_005finsertAttribute_005f2.setName("menu");
     _jspx_th_tiles_005finsertAttribute_005f2.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f2);
     return false;
@@ -234,12 +242,27 @@ public final class default_jspx extends org.apache.jasper.runtime.HttpJspBase
     org.apache.tiles.jsp.taglib.InsertAttributeTag _jspx_th_tiles_005finsertAttribute_005f3 = new org.apache.tiles.jsp.taglib.InsertAttributeTag();
     org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f3);
     _jspx_th_tiles_005finsertAttribute_005f3.setJspContext(_jspx_page_context);
-    // /WEB-INF/layouts/default.jspx(24,60) name = ignore type = boolean reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_tiles_005finsertAttribute_005f3.setIgnore(true);
-    // /WEB-INF/layouts/default.jspx(24,60) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
-    _jspx_th_tiles_005finsertAttribute_005f3.setName("footer");
+    // /WEB-INF/layouts/default.jspx(26,44) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_tiles_005finsertAttribute_005f3.setName("body");
     _jspx_th_tiles_005finsertAttribute_005f3.doTag();
     org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f3);
+    return false;
+  }
+
+  private boolean _jspx_meth_tiles_005finsertAttribute_005f4(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  tiles:insertAttribute
+    org.apache.tiles.jsp.taglib.InsertAttributeTag _jspx_th_tiles_005finsertAttribute_005f4 = new org.apache.tiles.jsp.taglib.InsertAttributeTag();
+    org.apache.jasper.runtime.AnnotationHelper.postConstruct(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f4);
+    _jspx_th_tiles_005finsertAttribute_005f4.setJspContext(_jspx_page_context);
+    // /WEB-INF/layouts/default.jspx(30,62) name = ignore type = boolean reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_tiles_005finsertAttribute_005f4.setIgnore(true);
+    // /WEB-INF/layouts/default.jspx(30,62) name = name type = null reqTime = true required = false fragment = false deferredValue = false expectedTypeName = null deferredMethod = false methodSignature = null
+    _jspx_th_tiles_005finsertAttribute_005f4.setName("footer");
+    _jspx_th_tiles_005finsertAttribute_005f4.doTag();
+    org.apache.jasper.runtime.AnnotationHelper.preDestroy(_jsp_annotationprocessor, _jspx_th_tiles_005finsertAttribute_005f4);
     return false;
   }
 }
