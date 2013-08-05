@@ -35,6 +35,16 @@ public class DOMAnalysisXml {
             Element e1=root.element("devicetype");
             System.out.println(e1.getName()+":"+e1.attribute("name").getValue());
             //这里要一个循环
+            SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+     		Date t1;
+    		try {
+    			t1 = sdf.parse(t);
+    			 d.insertToDB1(t1);
+    		} catch (ParseException e12) {
+    			// TODO Auto-generated catch block
+    			e12.printStackTrace();
+    		}
+           
             List<Element> e2=e1.elements();
             Iterator<Element> it2=e2.iterator();
             while(it2.hasNext()){
@@ -55,11 +65,11 @@ public class DOMAnalysisXml {
                     //通过使用e.attribute(" ").getValue()获得属性的值  
                     System.out.println(ge.getName() + " : " + ge.attribute("name").getValue());  
                     value=ge.attribute("name").getValue();
-                    SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat sdf1=new SimpleDateFormat("yyyy-MM-dd");
              		Date d1;
             		try {
-            			d1 = sdf.parse(t);
-            			System.out.println(d1);
+            			d1 = sdf1.parse(t);
+            			
             	 		d.insertToDB(tname, tag, item, value, worker, d1);
             		} catch (ParseException e11) {
             			// TODO Auto-generated catch block
