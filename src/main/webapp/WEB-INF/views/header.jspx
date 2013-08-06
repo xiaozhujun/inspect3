@@ -5,10 +5,10 @@
   <spring:url var="banner" value="/resources/images/banner-graphic.png" />
   <spring:url var="home" value="/" />
   <spring:url var="logo" value="/resources/images/logo.png" />
-  <div style="border:1px #648C1D"><img src="${logo}" width="800px" height="100px"/></div>
+  <div style="border:1px #648C1D"><img src="${logo}" width="1200px" height="100px"/></div>
   <spring:message code="button_home" var="home_label" htmlEscape="false" />
   <a href="${home}" name="${fn:escapeXml(home_label)}" title="${fn:escapeXml(home_label)}">
     
-    <img src="${banner}" width="800px" height="350px"/>
+    <img src="${banner}" width="1200px" height="350px"/>
   </a>
 </div> 

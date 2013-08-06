@@ -71,12 +71,12 @@ static {
       if (_jspx_meth_spring_005furl_005f2(_jspx_page_context))
         return;
       out.write("<div style=\"border:1px #648C1D\">");
-      out.write("<img height=\"100px\" width=\"800px\" src=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${logo}", java.lang.String.class, (PageContext)_jspx_page_context, null, false) + "\"/>");
+      out.write("<img height=\"100px\" width=\"1200px\" src=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${logo}", java.lang.String.class, (PageContext)_jspx_page_context, null, false) + "\"/>");
       out.write("</div>");
       if (_jspx_meth_spring_005fmessage_005f0(_jspx_page_context))
         return;
       out.write("<a title=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:escapeXml(home_label)}", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false) + "\" name=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${fn:escapeXml(home_label)}", java.lang.String.class, (PageContext)_jspx_page_context, _jspx_fnmap_0, false) + "\" href=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${home}", java.lang.String.class, (PageContext)_jspx_page_context, null, false) + "\">");
-      out.write("<img height=\"350px\" width=\"800px\" src=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${banner}", java.lang.String.class, (PageContext)_jspx_page_context, null, false) + "\"/>");
+      out.write("<img height=\"350px\" width=\"1200px\" src=\"" + (java.lang.String) org.apache.jasper.runtime.PageContextImpl.proprietaryEvaluate("${banner}", java.lang.String.class, (PageContext)_jspx_page_context, null, false) + "\"/>");
       out.write("</a>");
       out.write("</div>");
     } catch (Throwable t) {

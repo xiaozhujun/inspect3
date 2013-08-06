@@ -30,16 +30,16 @@ function test(){
 	alert(tid);
 	 switch(t.charAt(0)){
 	case "p":
-		window.location.href="queryresult.jsp?type=pdf&stime="+stime+"&tid="+tid+"&etime="+etime;
+		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=pdf&stime="+stime+"&tid="+tid+"&etime="+etime;
 		break;
 	case "h":
-		window.location.href="queryresult.jsp?type=html&stime="+stime+"&tid="+tid+"&etime="+etime;
+		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=html&stime="+stime+"&tid="+tid+"&etime="+etime;
 		break;
 	case "e":
-		window.location.href="queryresult.jsp?type=excel&stime="+stime+"&tid="+tid+"&etime="+etime;
+		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=excel&stime="+stime+"&tid="+tid+"&etime="+etime;
 		break;
 	case "w":
-		window.location.href="queryresult.jsp?type=word&stime="+stime+"&tid="+tid+"&etime="+etime;
+		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=word&stime="+stime+"&tid="+tid+"&etime="+etime;
 		break;
 	} 
 	
