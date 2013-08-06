@@ -39,6 +39,53 @@ public class DBImpl {
 		
 		
 	}
+	public List<InspectTableRecord> getTable(){
+		String sql="select tb.id,tb.tname from inspect_table_record r,inspect_table tb where r.inspecttable=tb.id group by tb.tname";
+		InspectTableRecord r = null;
+		List<InspectTableRecord> list=new ArrayList<InspectTableRecord>();
+		try{
+			statement=connection.prepareStatement(sql);
+			rs=statement.executeQuery();
+			while(rs.next()){
+				r=new InspectTableRecord();
+				r.setTid(rs.getInt(1));
+				r.setTname(rs.getString(2));
+				list.add(r);
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		return list;
+		
+	}
+	public List<InspectTableRecord> getR(Date starttime,Date endtime,int tid){
+		
+	     String sql="select tb.id,tb.tname,u.id,u.username,itr.createtime from inspect_item_record itr,inspect_table_record tr,inspect_tag tag,inspect_item it,inspect_Table tb,Users u,tvalue v,inspect_item_tvalues tv where itr.createtime=tr.createtime and itr.inspecttable=tb.id and itr.tag=tag.id and itr.item=it.id and itr.worker=u.id and it.id=tv.inspect_item and v.id=tv.tvalues and itr.inspecttable=? and itr.createtime between ? and ? group by itr.createtime";
+	     InspectTableRecord r = null;
+			List<InspectTableRecord> list=new ArrayList<InspectTableRecord>();
+			try{
+				statement=connection.prepareStatement(sql);
+				statement.setInt(1, tid);
+				statement.setDate(2, new java.sql.Date(starttime.getTime()));
+				statement.setDate(3, new java.sql.Date(endtime.getTime()));
+				rs=statement.executeQuery();
+				while(rs.next()){
+					r=new InspectTableRecord();
+					r.setTid(rs.getInt(1));
+					r.setTname(rs.getString(2));
+				    r.setUid(rs.getInt(3));
+					r.setUsername(rs.getString(4));
+				    r.setCreatetime(rs.getDate(5));
+					list.add(r);
+				}
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			
+			return list;
+	}
+	
 	public static void main(String[] args) {
 		DBImpl d=new DBImpl();
 		List<InspectTableRecord> list=d.getTim();
