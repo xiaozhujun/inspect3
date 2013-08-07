@@ -9,4 +9,5 @@
             <table:column id="c_com_springsource_roo_inspect_domain_Device_numbers" property="numbers" z="sMhCBsYKizvcnD0V8LQdJcRbjXU="/>
         </table:table>
     </page:list>
+    
 </div>

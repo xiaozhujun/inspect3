@@ -17,37 +17,40 @@ public class insertToDb {
 	// values值，
 	// 在上传的同时，将数据插入到数据库中
 	private MyDataSource ds = new MyDataSource();
-    public void insertToDB1(Date t){
-    	Connection connection = ds.getConnection();
+
+	public void insertToDB1(Date t) {
+		Connection connection = ds.getConnection();
 		PreparedStatement statement = null;
-    	String sql2="insert into inspect_table_record(createtime)values(?)";
-    	try {
+		String sql2 = "insert into inspect_table_record(createtime)values(?)";
+		try {
 			statement = connection.prepareStatement(sql2);
 			statement.setDate(1, new java.sql.Date(t.getTime()));
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO: handle exception
 		}
-    }
+	}
+
 	public void insertToDB(String tname, String tag, String item, String value,
 			String worker, Date time) {
 
-//		/String sql1 = "insert into inspect_table_record(inspecttable,createtime)values(?,?)";
+		// /String sql1 =
+		// "insert into inspect_table_record(inspecttable,createtime)values(?,?)";
 
 		String sql1 = "insert into inspect_Item_Record (inspecttable,tag,item,ivalue,createtime,worker) values (?,?,?,?,?,?)";
-        
-      //  String sql3="";
-        String sql3="update inspect_item_record it,inspect_table_record t set it.inspecttablerec=? where it.createtime=t.createtime and t.createtime=?";
+
+		// String sql3="";
+		String sql3 = "update inspect_item_record it,inspect_table_record t set it.inspecttablerec=? where it.createtime=t.createtime and t.createtime=?";
 		Connection connection = ds.getConnection();
 		PreparedStatement statement = null;
-		
+
 		int tid = getTid(tname);
 		int tagid = getTagid(tag);
 		int itemid = getItemid(tagid, tid, item);
 		int vid = getVid(value);
 		int uid = getUid(worker);
-		int id=getTRecId(time);
-	    try {
+		int id = getTRecId(time);
+		try {
 			statement = connection.prepareStatement(sql1);
 			statement.setInt(1, tid);
 			statement.setInt(2, tagid);
@@ -60,12 +63,10 @@ public class insertToDb {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-	    
-	   
-	    
-	    try {
+
+		try {
 			statement = connection.prepareStatement(sql3);
-			statement.setInt(1,id);
+			statement.setInt(1, id);
 			statement.setDate(2, new java.sql.Date(time.getTime()));
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -82,7 +83,7 @@ public class insertToDb {
 		int tid = 0;
 		try {
 			statement = connection.prepareStatement(sql);
-		    statement.setDate(1, new java.sql.Date(t.getTime()));
+			statement.setDate(1, new java.sql.Date(t.getTime()));
 			rs = statement.executeQuery();
 			while (rs.next()) {
 				tid = rs.getInt(1);

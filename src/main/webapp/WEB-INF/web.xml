@@ -97,6 +97,14 @@
    <servlet-name>MultipartTestServlet</servlet-name>
    <url-pattern>/inspecttables/MultipartTestServlet</url-pattern>
    </servlet-mapping>
+    <servlet>
+      <servlet-name>MServlet</servlet-name>
+      <servlet-class>upload.MServlet</servlet-class>
+</servlet>
+   <servlet-mapping>
+   <servlet-name>MServlet</servlet-name>
+   <url-pattern>/MServlet</url-pattern>
+   </servlet-mapping>
    <servlet>
       <servlet-name>MultipartServlet</servlet-name>
       <servlet-class>upload.MultipartServlet</servlet-class>

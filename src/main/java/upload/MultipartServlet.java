@@ -25,57 +25,63 @@ public class MultipartServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			   throws ServletException, IOException {
-			
-			request.setCharacterEncoding("UTF-8");
-			
-			RequestContext requestContext = new ServletRequestContext(request);
-		
-			if(FileUpload.isMultipartContent(requestContext)){
+			throws ServletException, IOException {
 
-			   DiskFileItemFactory factory = new DiskFileItemFactory();
-			
-			   factory.setRepository(new File("d:/tmp/"));
-			   ServletFileUpload upload = new ServletFileUpload(factory);
-			 
-			   upload.setSizeMax(100*1024*1024);
-			   List items = new ArrayList();
-			    try {
-			      
-			     items = upload.parseRequest(request);
-			    } catch (FileUploadException e1) {
-			     System.out.println("error" + e1.getMessage());
-			    }
-			    
-			   Iterator it = items.iterator();
-			   while(it.hasNext()){
-			    FileItem fileItem = (FileItem) it.next();
-			    
-			    if(fileItem.isFormField()){  
-			     System.out.println(fileItem.getFieldName() + "   " + fileItem.getName() + "   " + new String(fileItem.getString().getBytes("iso8859-1"), "UTF-8"));
-			    }else{
-			     System.out.println(fileItem.getFieldName() + "   " +
-			        fileItem.getName() + "   " +
-			        fileItem.isInMemory() + "    " +
-			        fileItem.getContentType() + "   " +
-			        fileItem.getSize());
-			 
-			     if(fileItem.getName()!=null && fileItem.getSize()!=0){
-			      File fullFile = new File(fileItem.getName());
-			      File newFile = new File("d:/temp/" + fullFile.getName());
-			      try {
-			       fileItem.write(newFile);
-			      } catch (Exception e) {
-			       e.printStackTrace();
-			      }
-			     }else{
-			      System.out.println("文件没有选择 或 文件内容为空");
-			     }
-			    }
+		request.setCharacterEncoding("UTF-8");
 
-			   }
+		RequestContext requestContext = new ServletRequestContext(request);
+
+		if (FileUpload.isMultipartContent(requestContext)) {
+
+			DiskFileItemFactory factory = new DiskFileItemFactory();
+
+			factory.setRepository(new File("d:/tmp/"));
+			ServletFileUpload upload = new ServletFileUpload(factory);
+
+			upload.setSizeMax(100 * 1024 * 1024);
+			List items = new ArrayList();
+			try {
+
+				items = upload.parseRequest(request);
+			} catch (FileUploadException e1) {
+				System.out.println("error" + e1.getMessage());
 			}
+
+			Iterator it = items.iterator();
+			while (it.hasNext()) {
+				FileItem fileItem = (FileItem) it.next();
+
+				if (fileItem.isFormField()) {
+					System.out.println(fileItem.getFieldName()
+							+ "   "
+							+ fileItem.getName()
+							+ "   "
+							+ new String(fileItem.getString().getBytes(
+									"iso8859-1"), "UTF-8"));
+				} else {
+					System.out.println(fileItem.getFieldName() + "   "
+							+ fileItem.getName() + "   "
+							+ fileItem.isInMemory() + "    "
+							+ fileItem.getContentType() + "   "
+							+ fileItem.getSize());
+
+					if (fileItem.getName() != null && fileItem.getSize() != 0) {
+						File fullFile = new File(fileItem.getName());
+						File newFile = new File("d:/temp/" + fullFile.getName());
+						try {
+							fileItem.write(newFile);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					} else {
+						System.out.println("文件没有选择 或 文件内容为空");
+					}
+				}
+
 			}
-	
+		}
+	}
+
 }

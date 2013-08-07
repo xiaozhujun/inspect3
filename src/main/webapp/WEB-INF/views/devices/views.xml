@@ -19,4 +19,7 @@
      <definition extends="default" name="devices/gosearch">
         <put-attribute name="body" value="/WEB-INF/views/devices/gosearch.jsp"/>
     </definition>
+     <definition extends="default" name="devices/queryresult">
+        <put-attribute name="body" value="/WEB-INF/views/devices/queryresult.jsp"/>
+    </definition>
 </tiles-definitions>

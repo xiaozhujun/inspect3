@@ -1,3 +1,4 @@
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.springsource.roo.inspect.dao.DBImpl"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="model.InspectTableRecord"%>
@@ -16,54 +17,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script language="javascript" type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-<script type="text/javascript">
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 
-function test(){
-	var t=document.getElementById("t").value; //格式
-	var stime=document.getElementById("s").value;
-	var etime=document.getElementById("e").value;
-	var tid=document.getElementById("table").value;
-	alert(t);
-	alert(stime);
-	alert(etime);
-	alert(tid);
-	 switch(t.charAt(0)){
-	case "p":
-		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=pdf&stime="+stime+"&tid="+tid+"&etime="+etime;
-		break;
-	case "h":
-		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=html&stime="+stime+"&tid="+tid+"&etime="+etime;
-		break;
-	case "e":
-		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=excel&stime="+stime+"&tid="+tid+"&etime="+etime;
-		break;
-	case "w":
-		window.location.href="/WEB-INF/views/devices/queryresult.jsp?type=word&stime="+stime+"&tid="+tid+"&etime="+etime;
-		break;
-	} 
-	
-}
-
-
-
-</script>
 </head>
 <body>
 <center>
 
 <h1>报表查询</h1>
 <hr>
+<form  method="post" action="MServlet">
 
 起始时间:
 
-<input type="text" id="s" class="Wdate" onClick="WdatePicker()">
+<input type="text" id="s" class="Wdate" onClick="WdatePicker()" name="stime">
 终止时间:
-<input type="text" id="e" class="Wdate" onClick="WdatePicker()"><br>
+<input type="text" id="e" class="Wdate" onClick="WdatePicker()" name="etime"><br>
 <hr>
 
 报表:
-<select id="table">
+<select id="table" name="tid">
 <%
     DBImpl d1=new DBImpl();
     List<InspectTableRecord> tlist=d1.getTable();
@@ -80,16 +52,23 @@ function test(){
 %>
 </select>
 格式:
-<select id="t">
+<select id="t" name="type">
 <option value="pdf">pdf格式</option>
 <option value="html">html格式</option>
 <option value="excel">Excel格式</option>
 <option value="word">Word格式</option>
 </select>
 
-<input type="button" value="查询" onclick="test()">
-
+<input type="submit" value="查询">
+</form>
 </center>
 <hr>
+<center>
+
+
+
+
+</center>
+
 </body>
 </html>

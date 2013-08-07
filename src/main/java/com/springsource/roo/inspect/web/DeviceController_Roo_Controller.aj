@@ -68,6 +68,8 @@ privileged aspect DeviceController_Roo_Controller {
         return "devices/list";
     }
     
+    
+    
     @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
     public String DeviceController.update(@Valid Device device, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
         if (bindingResult.hasErrors()) {
