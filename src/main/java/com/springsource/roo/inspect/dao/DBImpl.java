@@ -120,7 +120,32 @@ public class DBImpl {
 		return list;
 
 	}
+	public InspectTableRecord getT(int tid, Date cretime) {
+		String sql = "SELECT tb.id, tb.tname,u.id,u.username,itr.createtime FROM inspect_item_record itr,inspect_table_record tr,inspect_tag tag,inspect_item it,inspect_Table tb,Users u,tvalue v,inspect_item_tvalues tv WHERE itr.createtime=tr.createtime and itr.inspecttable=tb.id and itr.tag=tag.id and itr.item=it.id and itr.worker=u.id  and it.id=tv.inspect_item  and v.id=tv.tvalues and itr.inspecttable=? and itr.createtime=? group by tb.id ";
+		InspectTableRecord r = null;
+		
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, tid);
+			statement.setDate(2, new java.sql.Date(cretime.getTime()));
 
+			rs = statement.executeQuery();
+			while (rs.next()) {
+				r = new InspectTableRecord();
+				r.setTid(rs.getInt(1));
+				r.setTname(rs.getString(2));
+                r.setUid(rs.getInt(3));
+				r.setUsername(rs.getString(4));
+				r.setCreatetime(rs.getDate(5));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return r;
+
+	}
 	public static void main(String[] args) {
 		DBImpl d = new DBImpl();
 		List<InspectTableRecord> list = d.getTim();

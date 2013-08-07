@@ -19,6 +19,7 @@
 }
 
 .zebra .alternate,.zebra tbody tr:nth-child(even) {
+    width:300px;
 	text-align: center;
 	background: #f5f5f5;
 	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
@@ -31,7 +32,7 @@
 }
 
 .zebra th {
-	width: 150px; text-align : center;
+	width: 300px; text-align : center;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 	border-bottom: 1px solid #ccc;
 	background-color: #eee;
@@ -84,19 +85,40 @@
 	<center>
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="nav.jsp"></jsp:include>
-		<h1>点检表的详细信息:</h1>
+		
+		<div class="demo">
+		<div>
+		<%
+		String ss = request.getParameter("stime");
+		String ee = request.getParameter("etime");
+		String tt = request.getParameter("tid");
+		String type1 = request.getParameter("type");
+		String ct1 = request.getParameter("ct");
+		if (ss != null && ee != null && tt != null && type1 != null) {
+			int tid1 = Integer.parseInt(tt);
+			SimpleDateFormat sf1 = new SimpleDateFormat("yyyy-MM-dd");
+			Date cretime1 = sf1.parse(ct1);
+			DBImpl d1 = new DBImpl();
+			r=d1.getT(tid1, cretime1);
+			
+		%>
+		<div><%=r.getTname() %><div>
+		<div style="margin-top: 10px"><span style="width: 150px;float: left;margin-left: 300px">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 200px">点检时间:<%=r.getCreatetime() %></span></div></div>
+		<%
+		}else{
+			System.out.println("error");
+		}
+		%>
+		</div>
+		</div>
+		</div>
 		<div class="demo">
 			<table class="zebra">
 				<thead>
 					<tr>
-
-						<th>点检表</th>
-						<th>点检区域</th>
+					    <th>机构</th>
 						<th>点检项</th>
 						<th>点检结果</th>
-						<th>点检人员</th>
-						<th>时间</th>
-
 					</tr>
 				</thead>
 				<tbody>
@@ -119,12 +141,11 @@
 						%>
 
 
-						<td><%=r.getTname()%></td>
+						
 						<td><%=r.getTagname()%></td>
 						<td><%=r.getItemname()%></td>
 						<td><%=r.getTvalue()%></td>
-						<td><%=r.getUsername()%></td>
-						<td><%=r.getCreatetime()%></td>
+						
 
 
 					</tr>
