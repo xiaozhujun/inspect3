@@ -1,4 +1,4 @@
-package Test;
+package com.execute;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,13 +18,14 @@ public class insertToDb {
 	// 在上传的同时，将数据插入到数据库中
 	private MyDataSource ds = new MyDataSource();
 
-	public void insertToDB1(Date t) {
+	public void insertToDB1(Date t,int tid) {
 		Connection connection = ds.getConnection();
 		PreparedStatement statement = null;
-		String sql2 = "insert into inspect_table_record(createtime)values(?)";
+		String sql2 = "insert into inspect_table_record(createtime,inspecttable)values(?,?)";
 		try {
 			statement = connection.prepareStatement(sql2);
 			statement.setDate(1, new java.sql.Date(t.getTime()));
+			statement.setInt(2, tid);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO: handle exception

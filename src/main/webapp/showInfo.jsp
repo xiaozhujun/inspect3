@@ -6,6 +6,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib uri="/WEB-INF/pagingTag.tld" prefix="pt"%>
 <jsp:useBean id="r" class="model.InspectTableRecord"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,9 +14,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+table{border-collapse:collapse;}
 .zebra td,.zebra th {
 	padding: 10px;
 	border-bottom: 1px solid #f2f2f2;
+	border: 1px solid #000000;
 }
 
 .zebra .alternate,.zebra tbody tr:nth-child(even) {
@@ -103,7 +106,7 @@
 			
 		%>
 		<div><%=r.getTname() %><div>
-		<div style="margin-top: 10px"><span style="width: 150px;float: left;margin-left: 300px">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 200px">点检时间:<%=r.getCreatetime() %></span></div></div>
+		<div style="margin-top: 10px"><span style="width: 150px;float: left;margin-left: 380px">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 350px">点检时间:<%=r.getCreatetime() %></span></div></div>
 		<%
 		}else{
 			System.out.println("error");
@@ -113,12 +116,12 @@
 		</div>
 		</div>
 		<div class="demo">
-			<table class="zebra">
+			<table  border="1"  style="border-collapse:collapse;">
 				<thead>
 					<tr>
-					    <th>机构</th>
-						<th>点检项</th>
-						<th>点检结果</th>
+					    <th width="150px">机构</th>
+						<th width="400px">点检项</th>
+						<th width="400px">点检结果</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -134,22 +137,31 @@
 								SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 								Date cretime = sf.parse(ct);
 								DBImpl d = new DBImpl();
-								List<InspectTableRecord> l = d.getInfo(tid, cretime);
+								List<InspectTableRecord> l = d.getTag(tid,cretime);
 								Iterator it = l.iterator();
 								while (it.hasNext()) {
 									r = (InspectTableRecord) it.next();
+									List<InspectTableRecord> l1 = d.getT(r.getTagid(), tid, cretime);
 						%>
 
 
 						
-						<td><%=r.getTagname()%></td>
-						<td><%=r.getItemname()%></td>
-						<td><%=r.getTvalue()%></td>
+						<td align="center" rowspan="<%=l1.size() %>"><%=r.getTagname()%></td>
+						<%
+						    
+						     Iterator it1 = l1.iterator();
+						     while (it1.hasNext()) {
+									r = (InspectTableRecord) it1.next();
+						%>
+						
+						<td align="center"><%=r.getItemname()%></td>
+						<td align="center"><%=r.getTvalue()%></td>
 						
 
 
 					</tr>
 					<%
+						     }
 						}
 						} else {
 							System.out.println("出错了!");
@@ -157,6 +169,7 @@
 					%>
 				</tbody>
 			</table>
+			<pt:pageOut pageIndex="1" url="showInfo.jsp?" pageMax="10"/>
 		</div>
 	</center>
 </body>

@@ -89,7 +89,7 @@ public class DBImpl {
 	}
 
 	public List<InspectTableRecord> getInfo(int tid, Date cretime) {
-		String sql = "SELECT tb.id, tb.tname,tag.id,tag.name,it.id,it.name,u.id,u.username,v.id,v.tvalue,itr.createtime FROM inspect_item_record itr,inspect_table_record tr,inspect_tag tag,inspect_item it,inspect_Table tb,Users u,tvalue v,inspect_item_tvalues tv WHERE itr.createtime=tr.createtime and itr.inspecttable=tb.id and itr.tag=tag.id and itr.item=it.id and itr.worker=u.id  and it.id=tv.inspect_item  and v.id=tv.tvalues and itr.inspecttable=?  and itr.createtime=? ORDER BY tb.id ASC";
+		String sql = "select  tb.id, tb.tname,tag.id,tag.name,it.id,it.name,u.id,u.username,v.id,v.tvalue,itr.createtime FROM inspect_item_record itr,inspect_table_record tr,inspect_tag tag,inspect_item it,inspect_Table tb,Users u,tvalue v WHERE itr.createtime=tr.createtime and itr.inspecttable=tb.id and itr.tag=tag.id and itr.item=it.id and itr.worker=u.id  and itr.ivalue=v.id and itr.inspecttable=?  and itr.createtime=?  group by tag.name,it.id";
 		InspectTableRecord r = null;
 		List<InspectTableRecord> list = new ArrayList<InspectTableRecord>();
 		try {
@@ -146,6 +146,59 @@ public class DBImpl {
 		return r;
 
 	}
+	public List<InspectTableRecord> getTag(int tid, Date cretime) {
+		String sql = "select tag.id,tag.name from inspect_Item_Record itr,inspect_Tag tag where itr.tag=tag.id and itr.createtime=? and itr.inspecttable=? group by itr.tag ";
+		InspectTableRecord r = null;
+		List<InspectTableRecord> list=new ArrayList<InspectTableRecord>();
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setDate(1, new java.sql.Date(cretime.getTime()));
+			statement.setInt(2, tid);
+		    rs = statement.executeQuery();
+			while (rs.next()) {
+				r = new InspectTableRecord();
+				r.setTagid(rs.getInt(1));
+				r.setTagname(rs.getString(2));
+				list.add(r);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+	public List<InspectTableRecord> getT(int tagid,int tid, Date cretime) {
+		System.out.println(tagid+"标签");
+		System.out.println(tid+"表");
+		System.out.println(cretime+"时间");
+		String sql = "select it.id,it.name,v.id,v.tvalue from inspect_Item_Record itr,inspect_Item it,tValue v where itr.item=it.id and itr.ivalue=v.id and itr.tag=? and itr.createtime=? and itr.inspecttable=?";
+		InspectTableRecord r = null;
+		List<InspectTableRecord> list=new ArrayList<InspectTableRecord>();
+		try {
+			statement = connection.prepareStatement(sql);
+			statement.setInt(1, tagid);
+			statement.setDate(2, new java.sql.Date(cretime.getTime()));
+			statement.setInt(3, tid);
+		    rs = statement.executeQuery();
+			while (rs.next()) {
+				r = new InspectTableRecord();
+				r.setItemid(rs.getInt(1));
+				r.setItemname(rs.getString(2));
+				r.setVid(rs.getInt(3));
+				r.setTvalue(rs.getString(4));
+				list.add(r);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+	
 	public static void main(String[] args) {
 		DBImpl d = new DBImpl();
 		List<InspectTableRecord> list = d.getTim();

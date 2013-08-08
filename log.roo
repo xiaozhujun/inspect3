@@ -190,3 +190,42 @@ quit
 // Spring Roo 1.2.1.RELEASE [rev 6eae723] log closed at 2013-08-01 19:36:08
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-02 17:20:49
 // Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-02 17:23:48
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-07 17:15:20
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-07 17:18:22
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-07 17:23:43
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-07 17:25:18
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-07 18:18:10
+// [failed] entity jpa --class ~.domain.InspectItemRecord
+// [failed] entity jpa --class ~.domain.InspectItemRecord
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-07 19:09:45
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-07 19:10:38
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-07 19:10:53
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-07 19:14:00
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-07 19:14:18
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-07 19:16:28
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-07 19:17:10
+// [failed] entity jpa --class ~.domain.InspectItemRecord
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-07 19:24:56
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-07 19:25:35
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-07 19:28:26
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-07 19:28:30
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-07 19:29:45
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-07 19:33:53
+entity jpa --class ~.domain.InspectItemRecord
+field date --fieldName createtime --type java.util.Date
+field reference --fieldName inspecttable --type ~.domain.InspectTable
+field reference --fieldName tag --type ~.domain.InspectTag
+field reference --fieldName item --type ~.domain.InspectItem
+// [failed] field reference --fieldName ivalue --type ~.domain.Tvalue
+// [failed] field reference --fieldName ivalue --type ~.domain.tvalue
+field reference --fieldName ivalue --type ~.domain.tValue
+field reference --fieldName inspecttablerec --type ~.domain.InspectTableRecord
+field reference --fieldName worker --type ~.domain.Users
+web mvc all --package ~.web
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-07 19:43:47

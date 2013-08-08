@@ -1,4 +1,4 @@
-package Test;
+package com.execute;
 
 
 import java.io.IOException;
@@ -54,7 +54,7 @@ public class insertToTableTestXml {
 				tableEle.addAttribute("unit", u.getUnit());
 				tableEle.addElement("value").addAttribute("name", "正常");
 				tableEle.addElement("value").addAttribute("name", "异常");
-				tableEle.addElement("value").addAttribute("name", "无");
+				tableEle.addElement("value").addAttribute("name", "无 ");
 
 			}
 		}

@@ -51,7 +51,7 @@
 
 <form action="MultipartTServlet" enctype="multipart/form-data" method="post">
    <a class="btn_addPic" href="javascript:void(0);">
-    <span><em>+</em><font color="blank">报表上传</font></span> 
+    <span><em>+</em><font color="blank">点检上传</font></span> 
      <input type="file" name="myfile" class="filePrew" title="支持xml文件上传" tabindex="3" size="3"/>
     </a>
      <input type="submit" value="上传"/>

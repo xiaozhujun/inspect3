@@ -4,10 +4,10 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:update id="fu_com_springsource_roo_inspect_domain_InspectItemRecord" modelAttribute="inspectItemRecord" path="/inspectitemrecords" versionField="Version" z="CKn6wCXPQtbNy1G6AuxHZ/wjQ/M=">
         <field:datetime dateTimePattern="${inspectItemRecord_createtime_date_format}" field="createtime" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_createtime" z="zp9wojsVJu6otJl4Gj6gF6JgZmE="/>
-        <field:input field="ivalue" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_ivalue" z="Ie88FcDMPM7Dh4c67X+x+/E4FYk="/>
         <field:select field="inspecttable" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_inspecttable" itemValue="id" items="${inspecttables}" path="/inspecttables" z="pljl3m1NB+GRRDF1VKYJryqZ7yM="/>
         <field:select field="tag" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_tag" itemValue="id" items="${inspecttags}" path="/inspecttags" z="6sMBomZ4fQ+CYEAqbY0XQ1+sGPY="/>
         <field:select field="item" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_item" itemValue="id" items="${inspectitems}" path="/inspectitems" z="MQQT4Q+lDOt1opb4H5xLrSFB7/Y="/>
+        <field:select field="ivalue" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_ivalue" itemValue="id" items="${tvalues}" path="/tvalues" z="G+kHhkvhs09Z4HoYvyqCiTWaoFg="/>
         <field:select field="inspecttablerec" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_inspecttablerec" itemValue="id" items="${inspecttablerecords}" path="/inspecttablerecords" z="1kGXsjF00UQ6kaw7mH5yMKbMBiQ="/>
         <field:select field="worker" id="c_com_springsource_roo_inspect_domain_InspectItemRecord_worker" itemValue="id" items="${userses}" path="/userses" z="qbpHXXFy+dum1QYXjQHpSKu/lZc="/>
     </form:update>

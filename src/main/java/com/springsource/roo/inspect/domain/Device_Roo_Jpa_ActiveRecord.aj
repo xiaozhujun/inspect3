@@ -36,7 +36,7 @@ privileged aspect Device_Roo_Jpa_ActiveRecord {
     public static List<Device> Device.findDeviceEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Device o", Device.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
-   
+    
     @Transactional
     public void Device.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();

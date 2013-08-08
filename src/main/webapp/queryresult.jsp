@@ -9,7 +9,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ taglib uri="/WEB-INF/pagingTag.tld" prefix="pt"%>
 
 <jsp:useBean id="r" class="model.InspectTableRecord"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -200,7 +200,7 @@ function  test1(x){
 							out.println("请输入查询条件!!");
 						}
 					%>
-
+                     
 
 				</tbody>
 
@@ -209,6 +209,7 @@ function  test1(x){
 
 
 			</table>
+			<pt:pageOut pageIndex="1" url="queryresult.jsp?" pageMax="10"/>
 		</div>
 	</center>
 </body>

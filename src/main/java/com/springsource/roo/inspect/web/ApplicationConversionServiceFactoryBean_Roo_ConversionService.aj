@@ -147,7 +147,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<InspectItemRecord, String> ApplicationConversionServiceFactoryBean.getInspectItemRecordToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.springsource.roo.inspect.domain.InspectItemRecord, java.lang.String>() {
             public String convert(InspectItemRecord inspectItemRecord) {
-                return new StringBuilder().append(inspectItemRecord.getCreatetime()).append(' ').append(inspectItemRecord.getIvalue()).toString();
+                return new StringBuilder().append(inspectItemRecord.getCreatetime()).toString();
             }
         };
     }

@@ -8,6 +8,7 @@ import com.springsource.roo.inspect.domain.InspectItemRecord;
 import com.springsource.roo.inspect.domain.InspectTable;
 import com.springsource.roo.inspect.domain.InspectTableRecord;
 import com.springsource.roo.inspect.domain.InspectTag;
+import com.springsource.roo.inspect.domain.TValue;
 import com.springsource.roo.inspect.domain.Users;
 import com.springsource.roo.inspect.web.InspectItemRecordController;
 import java.io.UnsupportedEncodingException;
@@ -104,6 +105,7 @@ privileged aspect InspectItemRecordController_Roo_Controller {
         uiModel.addAttribute("inspecttables", InspectTable.findAllInspectTables());
         uiModel.addAttribute("inspecttablerecords", InspectTableRecord.findAllInspectTableRecords());
         uiModel.addAttribute("inspecttags", InspectTag.findAllInspectTags());
+        uiModel.addAttribute("tvalues", TValue.findAllTValues());
         uiModel.addAttribute("userses", Users.findAllUserses());
     }
     

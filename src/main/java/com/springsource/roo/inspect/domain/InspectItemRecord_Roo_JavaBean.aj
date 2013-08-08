@@ -8,6 +8,7 @@ import com.springsource.roo.inspect.domain.InspectItemRecord;
 import com.springsource.roo.inspect.domain.InspectTable;
 import com.springsource.roo.inspect.domain.InspectTableRecord;
 import com.springsource.roo.inspect.domain.InspectTag;
+import com.springsource.roo.inspect.domain.TValue;
 import com.springsource.roo.inspect.domain.Users;
 import java.util.Date;
 
@@ -19,14 +20,6 @@ privileged aspect InspectItemRecord_Roo_JavaBean {
     
     public void InspectItemRecord.setCreatetime(Date createtime) {
         this.createtime = createtime;
-    }
-    
-    public String InspectItemRecord.getIvalue() {
-        return this.ivalue;
-    }
-    
-    public void InspectItemRecord.setIvalue(String ivalue) {
-        this.ivalue = ivalue;
     }
     
     public InspectTable InspectItemRecord.getInspecttable() {
@@ -51,6 +44,14 @@ privileged aspect InspectItemRecord_Roo_JavaBean {
     
     public void InspectItemRecord.setItem(InspectItem item) {
         this.item = item;
+    }
+    
+    public TValue InspectItemRecord.getIvalue() {
+        return this.ivalue;
+    }
+    
+    public void InspectItemRecord.setIvalue(TValue ivalue) {
+        this.ivalue = ivalue;
     }
     
     public InspectTableRecord InspectItemRecord.getInspecttablerec() {

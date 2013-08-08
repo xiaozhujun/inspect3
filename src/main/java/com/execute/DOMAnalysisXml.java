@@ -1,4 +1,4 @@
-package Test;
+package com.execute;
 
 import java.io.File;
 import java.text.ParseException;
@@ -19,7 +19,7 @@ public class DOMAnalysisXml {
 	public void analysisXml(String fileName) {
 		// String tname,String tag,String item,String value,String worker,Date
 		// time
-		System.out.println(fileName + "文件名");
+
 		String tname = null;
 		String tag = null;
 		String item = null;
@@ -40,12 +40,13 @@ public class DOMAnalysisXml {
 			Element e1 = root.element("devicetype");
 			System.out.println(e1.getName() + ":"
 					+ e1.attribute("name").getValue());
-			// 这里要一个循环
+		
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			int tid=d.getTid(tname);
 			Date t1;
 			try {
 				t1 = sdf.parse(t);
-				d.insertToDB1(t1);
+				d.insertToDB1(t1,tid);
 			} catch (ParseException e12) {
 				// TODO Auto-generated catch block
 				e12.printStackTrace();
@@ -73,10 +74,10 @@ public class DOMAnalysisXml {
 					item = e.attribute("name").getValue();
 					List<Element> group = e.elements();
 					Iterator<Element> git = group.iterator();
-					// 所有的过程其实就是层层解析的过程
+				
 					while (git.hasNext()) {
 						Element ge = git.next();
-						// 通过使用e.attribute(" ").getValue()获得属性的值
+					
 						System.out.println(ge.getName() + " : "
 								+ ge.attribute("name").getValue());
 						value = ge.attribute("name").getValue();
@@ -104,8 +105,5 @@ public class DOMAnalysisXml {
 
 	}
 
-	public static void main(String[] args) {
-		String fileName = "E:/Inspect3/xmlFiles/机修人员点检表.xml";
-		new DOMAnalysisXml().analysisXml(fileName);
-	}
+
 }
