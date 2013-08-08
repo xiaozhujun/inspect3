@@ -4,12 +4,11 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_springsource_roo_inspect_domain_Users" modelAttribute="users" path="/userses" render="${empty dependencies}" z="oxWxJGtZ6tuBkQNi7vrS6CcTi8A=">
         <field:input field="username" id="c_com_springsource_roo_inspect_domain_Users_username" z="Fh0DUKEOfa/QYK/Y/I2+wKRs2yk="/>
-        <field:input field="userpwd" id="c_com_springsource_roo_inspect_domain_Users_userpwd" min="6" required="true" z="kpclBkmC1j4KSnE2v5pea5t0k3I="/>
+        <field:input field="userpwd" id="c_com_springsource_roo_inspect_domain_Users_userpwd" z="Ww7L2kpQLS630sD8WOi/+QcbXNM="/>
         <field:input field="usersex" id="c_com_springsource_roo_inspect_domain_Users_usersex" z="XyTJ4qf5AHDz96uHi2Zdxumf1bk="/>
         <field:input field="useraddress" id="c_com_springsource_roo_inspect_domain_Users_useraddress" z="BBSXiUFBXORF22BMJN601eeMX24="/>
-        <field:datetime dateTimePattern="${users_birth_date_format}" field="birth" id="c_com_springsource_roo_inspect_domain_Users_birth" z="kO3ZTqkzPQuEEGCkXWP2hvfvoDg="/>
+        <field:input field="hascard" id="c_com_springsource_roo_inspect_domain_Users_hascard" z="Fx5pGBw9rWWM+5UyzrYGQ2RsBVs="/>
         <field:input field="userage" id="c_com_springsource_roo_inspect_domain_Users_userage" validationMessageCode="field_invalid_integer" z="skuVhg5sWN6eXUDYjWRe+6bDqyQ="/>
-        <field:select field="dept" id="c_com_springsource_roo_inspect_domain_Users_dept" itemValue="id" items="${depts}" path="/depts" z="HE0BsWyi1RFqR9IbQZJpQP75Doc="/>
         <field:select field="urole" id="c_com_springsource_roo_inspect_domain_Users_urole" itemValue="id" items="${roleses}" path="/roleses" z="9AaLr7+E2pK4LM6575dorVhcnF4="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_springsource_roo_inspect_domain_Users" render="${not empty dependencies}" z="J/sWXqryxCbjj1fR5HYSjONCDmo="/>

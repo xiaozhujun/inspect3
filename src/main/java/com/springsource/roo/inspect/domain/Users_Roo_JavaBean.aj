@@ -3,10 +3,8 @@
 
 package com.springsource.roo.inspect.domain;
 
-import com.springsource.roo.inspect.domain.Dept;
 import com.springsource.roo.inspect.domain.Roles;
 import com.springsource.roo.inspect.domain.Users;
-import java.util.Date;
 
 privileged aspect Users_Roo_JavaBean {
     
@@ -42,12 +40,12 @@ privileged aspect Users_Roo_JavaBean {
         this.useraddress = useraddress;
     }
     
-    public Date Users.getBirth() {
-        return this.birth;
+    public String Users.getHascard() {
+        return this.hascard;
     }
     
-    public void Users.setBirth(Date birth) {
-        this.birth = birth;
+    public void Users.setHascard(String hascard) {
+        this.hascard = hascard;
     }
     
     public Integer Users.getUserage() {
@@ -56,14 +54,6 @@ privileged aspect Users_Roo_JavaBean {
     
     public void Users.setUserage(Integer userage) {
         this.userage = userage;
-    }
-    
-    public Dept Users.getDept() {
-        return this.dept;
-    }
-    
-    public void Users.setDept(Dept dept) {
-        this.dept = dept;
     }
     
     public Roles Users.getUrole() {

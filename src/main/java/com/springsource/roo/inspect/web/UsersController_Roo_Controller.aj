@@ -3,15 +3,12 @@
 
 package com.springsource.roo.inspect.web;
 
-import com.springsource.roo.inspect.domain.Dept;
 import com.springsource.roo.inspect.domain.Roles;
 import com.springsource.roo.inspect.domain.Users;
 import com.springsource.roo.inspect.web.UsersController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import org.joda.time.format.DateTimeFormat;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +39,6 @@ privileged aspect UsersController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String UsersController.show(@PathVariable("id") Long id, Model uiModel) {
-        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("users", Users.findUsers(id));
         uiModel.addAttribute("itemId", id);
         return "userses/show";
@@ -59,7 +55,6 @@ privileged aspect UsersController_Roo_Controller {
         } else {
             uiModel.addAttribute("userses", Users.findAllUserses());
         }
-        addDateTimeFormatPatterns(uiModel);
         return "userses/list";
     }
     
@@ -90,14 +85,8 @@ privileged aspect UsersController_Roo_Controller {
         return "redirect:/userses";
     }
     
-    void UsersController.addDateTimeFormatPatterns(Model uiModel) {
-        uiModel.addAttribute("users_birth_date_format", DateTimeFormat.patternForStyle("M-", LocaleContextHolder.getLocale()));
-    }
-    
     void UsersController.populateEditForm(Model uiModel, Users users) {
         uiModel.addAttribute("users", users);
-        addDateTimeFormatPatterns(uiModel);
-        uiModel.addAttribute("depts", Dept.findAllDepts());
         uiModel.addAttribute("roleses", Roles.findAllRoleses());
     }
     

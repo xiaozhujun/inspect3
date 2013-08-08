@@ -171,7 +171,7 @@ public class insertToDb {
 			statement = connection.prepareStatement(sql);
 			statement.setString(1, name);
 			rs = statement.executeQuery();
-			while (rs.next()) {
+			while(rs.next()){
 				tagid = rs.getInt(1);
 			}
 		} catch (SQLException e) {

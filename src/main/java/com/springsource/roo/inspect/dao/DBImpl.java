@@ -170,9 +170,7 @@ public class DBImpl {
 
 	}
 	public List<InspectTableRecord> getT(int tagid,int tid, Date cretime) {
-		System.out.println(tagid+"标签");
-		System.out.println(tid+"表");
-		System.out.println(cretime+"时间");
+		
 		String sql = "select it.id,it.name,v.id,v.tvalue from inspect_Item_Record itr,inspect_Item it,tValue v where itr.item=it.id and itr.ivalue=v.id and itr.tag=? and itr.createtime=? and itr.inspecttable=?";
 		InspectTableRecord r = null;
 		List<InspectTableRecord> list=new ArrayList<InspectTableRecord>();

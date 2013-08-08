@@ -7,9 +7,8 @@
         <field:display field="userpwd" id="s_com_springsource_roo_inspect_domain_Users_userpwd" object="${users}" z="JQ2YgoH/4+X1k0SFX9wn84IzoMo="/>
         <field:display field="usersex" id="s_com_springsource_roo_inspect_domain_Users_usersex" object="${users}" z="e0hUVDM0+CJwmDBxS+kR/C7BHmk="/>
         <field:display field="useraddress" id="s_com_springsource_roo_inspect_domain_Users_useraddress" object="${users}" z="Ls+Uh8BgHb0mft6furnQu2Phf5M="/>
-        <field:display date="true" dateTimePattern="${users_birth_date_format}" field="birth" id="s_com_springsource_roo_inspect_domain_Users_birth" object="${users}" z="UrSK0aVBL6cx95uHfqWQ+34LqL0="/>
+        <field:display field="hascard" id="s_com_springsource_roo_inspect_domain_Users_hascard" object="${users}" z="fUIqIsnEjHD2UJVzDIjB4q15AkI="/>
         <field:display field="userage" id="s_com_springsource_roo_inspect_domain_Users_userage" object="${users}" z="g3f3BVJdd2hHAPEVp5pMpxqUAcM="/>
-        <field:display field="dept" id="s_com_springsource_roo_inspect_domain_Users_dept" object="${users}" z="gpjbcOEYmWumm+ZbUW7ExcczclA="/>
         <field:display field="urole" id="s_com_springsource_roo_inspect_domain_Users_urole" object="${users}" z="5nLlk2BhZmFdqIGua95389UsfVU="/>
     </page:show>
 </div>

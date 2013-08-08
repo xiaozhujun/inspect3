@@ -3,9 +3,9 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <jsp:output omit-xml-declaration="yes"/>
     <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
-        <menu:category id="c_report" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
-            <menu:item id="i_device_list" messageCode="global_search" url="/devices?gosearch" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
-             <menu:item id="i_device_list" messageCode="global_data" url="/devices?upload" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
+        <menu:category id="c_report" z="user-managed">
+            <menu:item id="i_device_list" messageCode="global_search" url="/devices?gosearch" z="user-managed"/>
+            <menu:item id="i_device_list" messageCode="global_data" url="/devices?upload" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
         </menu:category>
         <menu:category id="c_roles" z="rs8zfmLS6SJZoIvFFQfrlrSaJVU=">
             <menu:item id="i_roles_new" messageCode="global_menu_new" url="/roleses?form" z="3pwVBouHLA1zzuNbxsmScZYd3Ow="/>
@@ -31,23 +31,17 @@
             <menu:item id="i_inspectitem_new" messageCode="global_menu_new" url="/inspectitems?form" z="P5dZ/n2tJQ5ZwgJSdr06cXAGBro="/>
             <menu:item id="i_inspectitem_list" messageCode="global_menu_list" url="/inspectitems?page=1&amp;size=${empty param.size ? 10 : param.size}" z="pN3PbFfgnW/VxBdxM5rp+c4ntFo="/>
         </menu:category>
-        <menu:category id="c_dept" z="Jhf8mHp88CSM05P8kieSX73VrW0=">
-            <menu:item id="i_dept_new" messageCode="global_menu_new" url="/depts?form" z="yVmUzRAJOfCrTz7YZLSS9YswBG8="/>
-            <menu:item id="i_dept_list" messageCode="global_menu_list" url="/depts?page=1&amp;size=${empty param.size ? 10 : param.size}" z="q5Lv0v00XQIHkGkaIhSZazn1Lk0="/>
-        </menu:category>
         <menu:category id="c_deviceinspectrec" z="lr76zCvcWAHEH1AMwpMut/ACLHs=">
             <menu:item id="i_deviceinspectrec_new" messageCode="global_menu_new" url="/deviceinspectrecs?form" z="YCh9GzOcrNlxUiIGt03R77H9tFs="/>
             <menu:item id="i_deviceinspectrec_list" messageCode="global_menu_list" url="/deviceinspectrecs?page=1&amp;size=${empty param.size ? 10 : param.size}" z="cLLuWMMMBoBBbsHU//SCKi2X+0w="/>
         </menu:category>
-        
-        
-        
         <menu:category id="c_device" z="MSnwuh/8KSgMC7e3d68F+WCXnxQ=">
             <menu:item id="i_device_new" messageCode="global_menu_new" url="/devices?form" z="J2ebcm2NAeVzA9aPlvjk8cZGsGA="/>
             <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?list" z="user-managed"/>
         </menu:category>
-       
-        
-        
+        <menu:category id="c_inspecttagrfid" z="4qpJ3hYSzHX0rEFmccAoGuWYbqw=">
+            <menu:item id="i_inspecttagrfid_new" messageCode="global_menu_new" url="/inspecttagrfids?form" z="lJNAGDN1nE/zEQITydNyEwHAm50="/>
+            <menu:item id="i_inspecttagrfid_list" messageCode="global_menu_list" url="/inspecttagrfids?page=1&amp;size=${empty param.size ? 10 : param.size}" z="v3PiIqXTva4QpMd4MUPdglDFb/k="/>
+        </menu:category>
     </menu:menu>
 </div>

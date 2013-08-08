@@ -12,6 +12,7 @@ import com.springsource.roo.inspect.domain.InspectItemRecord;
 import com.springsource.roo.inspect.domain.InspectTable;
 import com.springsource.roo.inspect.domain.InspectTableRecord;
 import com.springsource.roo.inspect.domain.InspectTag;
+import com.springsource.roo.inspect.domain.InspectTagRfId;
 import com.springsource.roo.inspect.domain.Roles;
 import com.springsource.roo.inspect.domain.TValue;
 import com.springsource.roo.inspect.domain.Users;
@@ -240,6 +241,30 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
+    public Converter<InspectTagRfId, String> ApplicationConversionServiceFactoryBean.getInspectTagRfIdToStringConverter() {
+        return new org.springframework.core.convert.converter.Converter<com.springsource.roo.inspect.domain.InspectTagRfId, java.lang.String>() {
+            public String convert(InspectTagRfId inspectTagRfId) {
+                return new StringBuilder().append(inspectTagRfId.getTagname()).append(' ').append(inspectTagRfId.getDescription()).append(' ').append(inspectTagRfId.getNumbers()).append(' ').append(inspectTagRfId.getCreatetime()).toString();
+            }
+        };
+    }
+    
+    public Converter<Long, InspectTagRfId> ApplicationConversionServiceFactoryBean.getIdToInspectTagRfIdConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.springsource.roo.inspect.domain.InspectTagRfId>() {
+            public com.springsource.roo.inspect.domain.InspectTagRfId convert(java.lang.Long id) {
+                return InspectTagRfId.findInspectTagRfId(id);
+            }
+        };
+    }
+    
+    public Converter<String, InspectTagRfId> ApplicationConversionServiceFactoryBean.getStringToInspectTagRfIdConverter() {
+        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.springsource.roo.inspect.domain.InspectTagRfId>() {
+            public com.springsource.roo.inspect.domain.InspectTagRfId convert(String id) {
+                return getObject().convert(getObject().convert(id, Long.class), InspectTagRfId.class);
+            }
+        };
+    }
+    
     public Converter<Roles, String> ApplicationConversionServiceFactoryBean.getRolesToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.springsource.roo.inspect.domain.Roles, java.lang.String>() {
             public String convert(Roles roles) {
@@ -340,6 +365,9 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         registry.addConverter(getInspectTagToStringConverter());
         registry.addConverter(getIdToInspectTagConverter());
         registry.addConverter(getStringToInspectTagConverter());
+        registry.addConverter(getInspectTagRfIdToStringConverter());
+        registry.addConverter(getIdToInspectTagRfIdConverter());
+        registry.addConverter(getStringToInspectTagRfIdConverter());
         registry.addConverter(getRolesToStringConverter());
         registry.addConverter(getIdToRolesConverter());
         registry.addConverter(getStringToRolesConverter());

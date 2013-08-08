@@ -8,7 +8,7 @@
             <table:column id="c_com_springsource_roo_inspect_domain_Users_userpwd" property="userpwd" z="z/3YDjGmeNglvg5RSblOlosaA8o="/>
             <table:column id="c_com_springsource_roo_inspect_domain_Users_usersex" property="usersex" z="JGovvdEAPn8uQ6LpFjJuHJwLM/s="/>
             <table:column id="c_com_springsource_roo_inspect_domain_Users_useraddress" property="useraddress" z="jWRiGjMWkngfhyRDVPzX+EyOVe0="/>
-            <table:column date="true" dateTimePattern="${users_birth_date_format}" id="c_com_springsource_roo_inspect_domain_Users_birth" property="birth" z="6ivynuo8TCjhaUibOP4Fb8gG3d0="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_Users_hascard" property="hascard" z="7Ja4WtXA1rC8wBTQXZ/Ge3vzL2c="/>
             <table:column id="c_com_springsource_roo_inspect_domain_Users_userage" property="userage" z="oRCl+3EwVdqH/L78sGcvbCpDYcY="/>
         </table:table>
     </page:list>

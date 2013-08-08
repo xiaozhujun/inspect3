@@ -171,7 +171,7 @@ function  test1(x){
 							String e = (String) request.getAttribute("e");
 							String t = (String) request.getAttribute("t");
 							String type = (String) request.getAttribute("type");
-							if (s != null && e != null && t != null && type != null) {
+							if(s!=null&&e!=null&&t!=null&&type!=null){
 								int tid = Integer.parseInt(t);
 								SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 								Date d11 = sf.parse(s);

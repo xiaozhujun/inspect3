@@ -229,3 +229,33 @@ field reference --fieldName worker --type ~.domain.Users
 web mvc all --package ~.web
 quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-07 19:43:47
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-08 14:24:22
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-08 14:25:21
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-08 14:27:06
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-08 14:27:22
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-08 14:27:49
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-08 14:28:02
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-08 14:30:08
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-08 14:30:27
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-08 14:31:23
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-08 14:31:34
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-08 14:31:58
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log opened at 2013-08-08 14:32:49
+entity jpa --class ~.domain.Users
+field string --fieldName username --unique 
+field string --fieldName userpwd --SizeMin 6
+field string --fieldName usersex
+field string --fieldName useraddress
+field string --fieldName hascard
+field number --fieldName userage --type java.lang.Integer
+field reference --fieldName urole --type ~.domain.Roles
+entity jpa --class ~.domain.InspectTagRfId
+field string --fieldName tagname --unique
+field string --fieldName description
+field string --fieldName numbers
+field date --fieldName createtime --type java.util.Date
+field reference --fieldName tagcag --type ~.domain.InspectTag
+field reference --fieldName device --type ~.domain.Device
+web mvc all --package ~.web
+quit
+// Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-08 14:44:38
