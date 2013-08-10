@@ -24,16 +24,25 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect InspectItemController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String InspectItemController.create(@Valid InspectItem inspectItem, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String InspectItemController.create(@Valid InspectItem inspectItem, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectItem);
+            if(role==1){
             return "inspectitems/create";
+            }else if(role==0){
+            	return "";
+            }
         }
         uiModel.asMap().clear();
         inspectItem.persist();
-        return "redirect:/inspectitems/" + encodeUrlPathSegment(inspectItem.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/inspectitems/" + encodeUrlPathSegment(inspectItem.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "";
+        }
+        return "";
+        }
     
     @RequestMapping(params = "form", produces = "text/html")
     public String InspectItemController.createForm(Model uiModel) {
@@ -41,16 +50,22 @@ privileged aspect InspectItemController_Roo_Controller {
         return "inspectitems/create";
     }
     
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String InspectItemController.show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String InspectItemController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("inspectitem", InspectItem.findInspectItem(id));
         uiModel.addAttribute("itemId", id);
-        return "inspectitems/show";
+        if(role==1){
+        	return "inspectitems/show";
+            }else if(role==0){
+            	return "";
+            }
+            return "";
+        
     }
     
     @RequestMapping(produces = "text/html")
-    public String InspectItemController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String InspectItemController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
@@ -61,19 +76,37 @@ privileged aspect InspectItemController_Roo_Controller {
             uiModel.addAttribute("inspectitems", InspectItem.findAllInspectItems());
         }
         addDateTimeFormatPatterns(uiModel);
-        return "inspectitems/list";
+        if(role==1){
+       	 uiModel.addAttribute("role", 1);
+       	return "inspectitems/list";
+        }else if(role==0){
+       	 uiModel.addAttribute("role", 0);
+       	 return "";
+        }
+        return "";
+        
     }
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String InspectItemController.update(@Valid InspectItem inspectItem, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String InspectItemController.update(@Valid InspectItem inspectItem, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectItem);
+            if(role==1){
             return "inspectitems/update";
+            }else if(role==0){
+            	return "";
+            }
         }
         uiModel.asMap().clear();
         inspectItem.merge();
-        return "redirect:/inspectitems/" + encodeUrlPathSegment(inspectItem.getId().toString(), httpServletRequest);
+        if(role==1){
+        return "redirect:/inspectitems/" + encodeUrlPathSegment(inspectItem.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "";
+        }
+          return "";    
     }
+    
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String InspectItemController.updateForm(@PathVariable("id") Long id, Model uiModel) {
@@ -81,14 +114,22 @@ privileged aspect InspectItemController_Roo_Controller {
         return "inspectitems/update";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String InspectItemController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String InspectItemController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
         InspectItem inspectItem = InspectItem.findInspectItem(id);
         inspectItem.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/inspectitems";
+        if(role==1){
+            uiModel.addAttribute("role",1);
+            return "redirect:/inspectitems";
+            }else if(role==0){
+            	uiModel.addAttribute("role",0);
+            	return "";
+            }
+                return "";
+        
     }
     
     void InspectItemController.addDateTimeFormatPatterns(Model uiModel) {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_springsource_roo_inspect_domain_InspectTagRfId" items="${inspecttagrfids}" z="e6wlRlbnkGeZTFh7VAQNgLTC1po=">
+        <table:usertable data="${inspecttagrfids}" id="l_com_springsource_roo_inspect_domain_InspectTagRfId" path="/inspecttagrfids" z="DhgMA4VCJB8Ur8+d5BbhfTFqsX8=">
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTagRfId_tagname" property="tagname" z="I6QliT6lBmoGDD/4x383FnuliHY="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTagRfId_description" property="description" z="3688B8ri1wy8XIdX5pTd8Trolco="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTagRfId_numbers" property="numbers" z="rNdmQRWUPSjza1uElwKPucLbHEM="/>
+            <table:column date="true" dateTimePattern="${inspectTagRfId_createtime_date_format}" id="c_com_springsource_roo_inspect_domain_InspectTagRfId_createtime" property="createtime" z="HDPKrZ2rEcts4KKJVYDb0CrIaJw="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTagRfId_tagcag" property="tagcag" z="VbIHr96tovc8FQe25GcnzwLWRWQ="/>
+            <table:column id="c_com_springsource_roo_inspect_domain_InspectTagRfId_device" property="device" z="vyJnZbiYx6fqB5YhfppoMT8Kgh0="/>
+        </table:usertable>
+    </page:list>
+</div>

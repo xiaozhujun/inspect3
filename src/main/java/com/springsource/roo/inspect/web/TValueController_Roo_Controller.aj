@@ -19,15 +19,25 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect TValueController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String TValueController.create(@Valid TValue TValue_, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String TValueController.create(@Valid TValue TValue_, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, TValue_);
+            if(role==1){
             return "tvalues/create";
-        }
+            }else if(role==0){
+            	return "";
+            }
+         
+            }
         uiModel.asMap().clear();
         TValue_.persist();
-        return "redirect:/tvalues/" + encodeUrlPathSegment(TValue_.getId().toString(), httpServletRequest);
+        if(role==1){
+        return "redirect:/tvalues/" + encodeUrlPathSegment(TValue_.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        return "";
+        }
+        return "";
     }
     
     @RequestMapping(params = "form", produces = "text/html")
@@ -36,15 +46,20 @@ privileged aspect TValueController_Roo_Controller {
         return "tvalues/create";
     }
     
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String TValueController.show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String TValueController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
         uiModel.addAttribute("tvalue_", TValue.findTValue(id));
         uiModel.addAttribute("itemId", id);
+        if(role==1){
         return "tvalues/show";
+        }else if(role==0){
+        	return "";
+        }
+        return "";
     }
     
     @RequestMapping(produces = "text/html")
-    public String TValueController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String TValueController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role,Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
@@ -54,19 +69,37 @@ privileged aspect TValueController_Roo_Controller {
         } else {
             uiModel.addAttribute("tvalues", TValue.findAllTValues());
         }
-        return "tvalues/list";
-    }
+        if(role==1){
+       	 uiModel.addAttribute("role", 1);
+       	return "tvalues/list";
+        
+        }else if(role==0){
+       	 uiModel.addAttribute("role", 0);
+       	 return "";
+        }
+        return "";
+    }  
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String TValueController.update(@Valid TValue TValue_, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String TValueController.update(@Valid TValue TValue_, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, TValue_);
+            if(role==1){
             return "tvalues/update";
+            }else if(role==0){
+            	return "";
+            }
+           
         }
         uiModel.asMap().clear();
         TValue_.merge();
-        return "redirect:/tvalues/" + encodeUrlPathSegment(TValue_.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/tvalues/" + encodeUrlPathSegment(TValue_.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        return "";	
+        }
+        return "";
+        }
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String TValueController.updateForm(@PathVariable("id") Long id, Model uiModel) {
@@ -74,14 +107,22 @@ privileged aspect TValueController_Roo_Controller {
         return "tvalues/update";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String TValueController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String TValueController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
         TValue TValue_ = TValue.findTValue(id);
         TValue_.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/tvalues";
+        if(role==1){
+            uiModel.addAttribute("role",1);
+            return "redirect:/tvalues";
+            }else if(role==0){
+            	uiModel.addAttribute("role",0);
+            	return "";
+            }
+                return "";
+        
     }
     
     void TValueController.populateEditForm(Model uiModel, TValue TValue_) {

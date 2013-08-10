@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:menu="urn:jsptagdir:/WEB-INF/tags/menu" id="menu" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <menu:menu id="_menu" z="nZaf43BjUg1iM0v70HJVEsXDopc=">
+        <menu:category id="c_userreport" z="user-managed">
+            <menu:item id="i_device_list" messageCode="global_search" url="/devices?gousersearch" z="user-managed"/>
+            <menu:item id="i_device_list" messageCode="global_data" url="/devices?userupload" z="xa/7Yt+ZiiZtoWCjHAIwn3jtlsk="/>
+        </menu:category>
+        <menu:category id="c_user" z="Ysam8XVhG5uotPoUGGxkia1RE/s=">
+            <menu:item id="i_users_new" messageCode="global_menu_new" url="/userses?userform" z="utrdLkYms6xk5f4IDxc9zrg5FWs="/>
+            <menu:item id="i_users_list" messageCode="global_menu_list" url="/userses?page=1&amp;size=${empty param.size ? 10 : param.size}&amp;role=0" z="tqSwojZmRduyx4xtHWcJzgbgtJk="/>
+        </menu:category>
+        <menu:category id="c_project" z="4qpJ3hYSzHX0rEFmccAoGuWYbqw=">
+            <menu:item id="i_inspecttagrfid_new" messageCode="global_menu_new" url="/inspecttagrfids?userform" z="lJNAGDN1nE/zEQITydNyEwHAm50="/>
+            <menu:item id="i_device_new" messageCode="global_menu_new" url="/devices?userform" z="J2ebcm2NAeVzA9aPlvjk8cZGsGA="/>
+            <menu:item id="i_inspecttagrfid_list" messageCode="global_menu_list" url="/inspecttagrfids?page=1&amp;size=${empty param.size ? 10 : param.size}&amp;role=0" z="v3PiIqXTva4QpMd4MUPdglDFb/k="/>
+            <menu:item id="i_device_list" messageCode="global_menu_list" url="/devices?page=1&amp;size=${empty param.size ? 10 : param.size}&amp;role=0" z="user-managed"/>
+        </menu:category>
+    </menu:menu>
+</div>

@@ -36,7 +36,7 @@
 
     <spring:message var="typeName" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_new_label" htmlEscape="false" />
     <spring:message var="typeNamePlural" code="menu_item_${fn:toLowerCase(fn:split(id,'_')[fn:length(fn:split(id,'_')) - 1])}_list_label" htmlEscape="false" />
-    <c:set var="role" value="1"></c:set>
+     <c:set var="role" value="0"/>
     <spring:message arguments="${label}" code="entity_show" var="title_msg" htmlEscape="false" />
     <util:panel id="${id}" title="${title_msg}" openPane="${openPane}">
       <c:choose>
@@ -45,6 +45,7 @@
           <div class="quicklinks">
             <span>
               <c:if test="${delete}">
+             
                 <spring:url value="${path}/${itemId}/${role}" var="delete_form_url" />
                 <spring:url value="/resources/images/delete.png" var="delete_image_url" />
                 <form:form action="${delete_form_url}" method="DELETE">
@@ -61,7 +62,7 @@
             <span>
               <c:if test="${update}">
                 <spring:url value="${path}/${itemId}" var="update_form_url">
-                  <spring:param name="form" />
+                  <spring:param name="userform" />
                 </spring:url>
                 <spring:url value="/resources/images/update.png" var="update_image_url" />
                 <spring:message arguments="${typeName}" code="entity_update" var="update_label" htmlEscape="false" />
@@ -73,7 +74,7 @@
             <span>
               <c:if test="${create}">
                 <spring:url value="${path}" var="create_form_url">
-                  <spring:param name="form" />
+                  <spring:param name="userform" />
                 </spring:url>
                 <spring:url value="/resources/images/create.png" var="create_image_url" />
                 <spring:message arguments="${typeName}" code="entity_create" var="create_label" htmlEscape="false" />
@@ -84,7 +85,7 @@
             </span>
             <span>
               <c:if test="${list}">
-                <spring:url value="${path}?page=1&amp;size=10&amp;role=1" var="list_form_url" />
+                <spring:url value="${path}?page=1&amp;size=10&amp;role=0" var="list_form_url" />
                 <spring:url value="/resources/images/list.png" var="list_image_url" />
                 <spring:message arguments="${typeNamePlural}" code="entity_list_all" var="list_label" htmlEscape="false" />
                 <a href="${list_form_url}" alt="${fn:escapeXml(list_label)}" title="${fn:escapeXml(list_label)}">

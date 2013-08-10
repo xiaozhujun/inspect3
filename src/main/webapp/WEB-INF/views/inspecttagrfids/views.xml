@@ -13,4 +13,16 @@
 <definition extends="default" name="inspecttagrfids/update">
         <put-attribute name="body" value="/WEB-INF/views/inspecttagrfids/update.jspx"/>
     </definition>
+    <definition extends="userdefault" name="inspecttagrfids/usercreate">
+        <put-attribute name="body" value="/WEB-INF/views/inspecttagrfids/usercreate.jspx"/>
+    </definition>
+        <definition extends="userdefault" name="inspecttagrfids/userlist">
+        <put-attribute name="body" value="/WEB-INF/views/inspecttagrfids/userlist.jspx"/>
+    </definition>
+<definition extends="userdefault" name="inspecttagrfids/usershow">
+        <put-attribute name="body" value="/WEB-INF/views/inspecttagrfids/usershow.jspx"/>
+    </definition>
+    <definition extends="userdefault" name="inspecttagrfids/userupdate">
+        <put-attribute name="body" value="/WEB-INF/views/inspecttagrfids/userupdate.jspx"/>
+    </definition>
 </tiles-definitions>

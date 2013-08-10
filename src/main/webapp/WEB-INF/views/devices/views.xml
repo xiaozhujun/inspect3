@@ -16,10 +16,28 @@
     <definition extends="default" name="devices/upload">
         <put-attribute name="body" value="/WEB-INF/views/devices/upload.jsp"/>
     </definition>
+    <definition extends="userdefault" name="devices/userupload">
+        <put-attribute name="body" value="/WEB-INF/views/devices/upload.jsp"/>
+    </definition>
      <definition extends="default" name="devices/gosearch">
+        <put-attribute name="body" value="/WEB-INF/views/devices/gosearch.jsp"/>
+    </definition>
+     <definition extends="userdefault" name="devices/gousersearch">
         <put-attribute name="body" value="/WEB-INF/views/devices/gosearch.jsp"/>
     </definition>
      <definition extends="default" name="devices/queryresult">
         <put-attribute name="body" value="/WEB-INF/views/devices/queryresult.jsp"/>
+    </definition>
+    <definition extends="userdefault" name="devices/userlist">
+        <put-attribute name="body" value="/WEB-INF/views/devices/userlist.jspx"/>
+    </definition>
+<definition extends="userdefault" name="devices/usershow">
+        <put-attribute name="body" value="/WEB-INF/views/devices/usershow.jspx"/>
+    </definition>
+<definition extends="userdefault" name="devices/usercreate">
+        <put-attribute name="body" value="/WEB-INF/views/devices/usercreate.jspx"/>
+    </definition>
+<definition extends="userdefault" name="devices/userupdate">
+        <put-attribute name="body" value="/WEB-INF/views/devices/userupdate.jspx"/>
     </definition>
 </tiles-definitions>

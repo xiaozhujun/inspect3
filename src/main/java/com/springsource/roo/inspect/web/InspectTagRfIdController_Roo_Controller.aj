@@ -6,6 +6,7 @@ package com.springsource.roo.inspect.web;
 import com.springsource.roo.inspect.domain.Device;
 import com.springsource.roo.inspect.domain.InspectTag;
 import com.springsource.roo.inspect.domain.InspectTagRfId;
+import com.springsource.roo.inspect.domain.Users;
 import com.springsource.roo.inspect.web.InspectTagRfIdController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -23,33 +24,54 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect InspectTagRfIdController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String InspectTagRfIdController.create(@Valid InspectTagRfId inspectTagRfId, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String InspectTagRfIdController.create(@Valid InspectTagRfId inspectTagRfId, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectTagRfId);
+            if(role==1){
             return "inspecttagrfids/create";
+            }else if(role==0){
+            	return "inspecttagrfids/usercreate";
+            }
+            
         }
         uiModel.asMap().clear();
         inspectTagRfId.persist();
-        return "redirect:/inspecttagrfids/" + encodeUrlPathSegment(inspectTagRfId.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/inspecttagrfids/" + encodeUrlPathSegment(inspectTagRfId.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "redirect:/inspecttagrfids/" + encodeUrlPathSegment(inspectTagRfId.getId().toString(), httpServletRequest)+"/0";
+        	
+        }
+        return "";
+        }
     
     @RequestMapping(params = "form", produces = "text/html")
     public String InspectTagRfIdController.createForm(Model uiModel) {
         populateEditForm(uiModel, new InspectTagRfId());
         return "inspecttagrfids/create";
     }
-    
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String InspectTagRfIdController.show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(params = "userform", produces = "text/html")
+    public String InspectTagRfIdController.createRForm(Model uiModel) {
+        populateEditForm(uiModel, new InspectTagRfId());
+        return "inspecttagrfids/usercreate";
+    }
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String InspectTagRfIdController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("inspecttagrfid", InspectTagRfId.findInspectTagRfId(id));
         uiModel.addAttribute("itemId", id);
-        return "inspecttagrfids/show";
+        if(role==1){
+        	 return "inspecttagrfids/show";
+        }else if(role==0){
+        	return "inspecttagrfids/usershow";
+        }
+        return "";
+       
     }
     
     @RequestMapping(produces = "text/html")
-    public String InspectTagRfIdController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String InspectTagRfIdController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
@@ -60,34 +82,62 @@ privileged aspect InspectTagRfIdController_Roo_Controller {
             uiModel.addAttribute("inspecttagrfids", InspectTagRfId.findAllInspectTagRfIds());
         }
         addDateTimeFormatPatterns(uiModel);
-        return "inspecttagrfids/list";
+        if(role==1){
+       	 uiModel.addAttribute("role", 1);
+       	return "inspecttagrfids/list";
+        }else if(role==0){
+       	 uiModel.addAttribute("role", 0);
+       	 return "inspecttagrfids/userlist";
+        }
+        return "";
+        
     }
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String InspectTagRfIdController.update(@Valid InspectTagRfId inspectTagRfId, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String InspectTagRfIdController.update(@Valid InspectTagRfId inspectTagRfId, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectTagRfId);
+            if(role==1){
             return "inspecttagrfids/update";
+            }else if(role==0){
+            	return "inspecttagrfids/userupdate";
+            }
         }
         uiModel.asMap().clear();
         inspectTagRfId.merge();
-        return "redirect:/inspecttagrfids/" + encodeUrlPathSegment(inspectTagRfId.getId().toString(), httpServletRequest);
+        if(role==1){
+        return "redirect:/inspecttagrfids/" + encodeUrlPathSegment(inspectTagRfId.getId().toString(), httpServletRequest)+"/1";
+    }else if(role==0){
+    	return "redirect:/inspecttagrfids/" + encodeUrlPathSegment(inspectTagRfId.getId().toString(), httpServletRequest)+"/0";
     }
-    
+        return "";
+    }
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String InspectTagRfIdController.updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, InspectTagRfId.findInspectTagRfId(id));
         return "inspecttagrfids/update";
     }
-    
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String InspectTagRfIdController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}", params = "userform", produces = "text/html")
+    public String InspectTagRfIdController.updateUForm(@PathVariable("id") Long id, Model uiModel) {
+        populateEditForm(uiModel, InspectTagRfId.findInspectTagRfId(id));
+        return "inspecttagrfids/userupdate";
+    }
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String InspectTagRfIdController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
         InspectTagRfId inspectTagRfId = InspectTagRfId.findInspectTagRfId(id);
         inspectTagRfId.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/inspecttagrfids";
+        if(role==1){
+            uiModel.addAttribute("role",1);
+            return "redirect:/inspecttagrfids";
+            }else if(role==0){
+            	uiModel.addAttribute("role",0);
+            	return "redirect:/inspecttagrfids";
+            }
+                return "";
+       
     }
     
     void InspectTagRfIdController.addDateTimeFormatPatterns(Model uiModel) {

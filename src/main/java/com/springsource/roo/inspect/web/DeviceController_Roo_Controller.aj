@@ -4,6 +4,7 @@
 package com.springsource.roo.inspect.web;
 
 import com.springsource.roo.inspect.domain.Device;
+import com.springsource.roo.inspect.domain.Users;
 import com.springsource.roo.inspect.web.DeviceController;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,43 +20,72 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect DeviceController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String DeviceController.create(@Valid Device device, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String DeviceController.create(@Valid Device device, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
+       
+    	if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, device);
+            if(role==1){
             return "devices/create";
+            }else if(role==0){
+            return "devices/usercreate";	
+            }
+           
         }
         uiModel.asMap().clear();
         device.persist();
-        return "redirect:/devices/" + encodeUrlPathSegment(device.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/devices/" + encodeUrlPathSegment(device.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "redirect:/devices/" + encodeUrlPathSegment(device.getId().toString(), httpServletRequest)+"/0";	
+        }
+          return "";
+        }
     
     @RequestMapping(params = "form", produces = "text/html")
     public String DeviceController.createForm(Model uiModel) {
         populateEditForm(uiModel, new Device());
         return "devices/create";
     }
-    
+    @RequestMapping(params = "userform", produces = "text/html")
+    public String DeviceController.createUForm(Model uiModel) {
+        populateEditForm(uiModel, new Device());
+        return "devices/usercreate";
+    }
      @RequestMapping(params = "upload", produces = "text/html")
     public String DeviceController.uploadData(Model uiModel) {
       
         return "devices/upload";
+    }
+     @RequestMapping(params = "userupload", produces = "text/html")
+    public String DeviceController.useruploadData(Model uiModel) {
+      
+        return "devices/userupload";
     }
        @RequestMapping(params = "gosearch", produces = "text/html")
     public String DeviceController.gosearch(Model uiModel) {
       
         return "devices/gosearch";
     }
-   
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String DeviceController.show(@PathVariable("id") Long id, Model uiModel) {
+      @RequestMapping(params = "gousersearch", produces = "text/html")
+    public String DeviceController.gousersearch(Model uiModel) {
+      
+        return "devices/gousersearch";
+    }
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String DeviceController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
         uiModel.addAttribute("device", Device.findDevice(id));
         uiModel.addAttribute("itemId", id);
+        if(role==1){
         return "devices/show";
+        }else if(role==0){
+        	return "devices/usershow";
+        }
+        return "";
     }
     
     @RequestMapping(produces = "text/html")
-    public String DeviceController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String DeviceController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
@@ -65,21 +95,38 @@ privileged aspect DeviceController_Roo_Controller {
         } else {
             uiModel.addAttribute("devices", Device.findAllDevices());
         }
+        if(role==1){
+        	uiModel.addAttribute("role", 1);
         return "devices/list";
+        }else if(role==0){
+        	uiModel.addAttribute("role", 0);
+        return "devices/userlist";	
+        }
+        return "";
     }
     
     
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String DeviceController.update(@Valid Device device, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String DeviceController.update(@Valid Device device, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role ) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, device);
+            if(role==1){
             return "devices/update";
+            }else if(role==0){
+            return "devices/userupdate";
+            }
+          
         }
         uiModel.asMap().clear();
         device.merge();
-        return "redirect:/devices/" + encodeUrlPathSegment(device.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/devices/" + encodeUrlPathSegment(device.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "redirect:/devices/" + encodeUrlPathSegment(device.getId().toString(), httpServletRequest)+"/0";
+        }
+        return "";
+        }
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String DeviceController.updateForm(@PathVariable("id") Long id, Model uiModel) {
@@ -87,14 +134,28 @@ privileged aspect DeviceController_Roo_Controller {
         return "devices/update";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String DeviceController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}", params = "userform", produces = "text/html")
+    public String DeviceController.updateUForm(@PathVariable("id") Long id, Model uiModel) {
+        populateEditForm(uiModel, Device.findDevice(id));
+        return "devices/userupdate";
+    }
+    
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String DeviceController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
         Device device = Device.findDevice(id);
         device.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/devices";
+        if(role==1){
+            uiModel.addAttribute("role",1);
+            return "redirect:/devices";
+            }else if(role==0){
+            	uiModel.addAttribute("role",0);
+            	return "redirect:/devices";
+            }
+                return "";
+        
     }
     
     void DeviceController.populateEditForm(Model uiModel, Device device) {

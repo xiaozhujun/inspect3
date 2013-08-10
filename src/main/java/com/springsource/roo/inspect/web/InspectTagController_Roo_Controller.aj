@@ -21,16 +21,26 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect InspectTagController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String InspectTagController.create(@Valid InspectTag inspectTag, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String InspectTagController.create(@Valid InspectTag inspectTag, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectTag);
+            if(role==1){
             return "inspecttags/create";
+            }else if(role==0){
+            	return "";
+            }
+            return "";
         }
         uiModel.asMap().clear();
         inspectTag.persist();
-        return "redirect:/inspecttags/" + encodeUrlPathSegment(inspectTag.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/inspecttags/" + encodeUrlPathSegment(inspectTag.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "";
+        }
+        return "";
+        }
     
     @RequestMapping(params = "form", produces = "text/html")
     public String InspectTagController.createForm(Model uiModel) {
@@ -38,16 +48,21 @@ privileged aspect InspectTagController_Roo_Controller {
         return "inspecttags/create";
     }
     
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String InspectTagController.show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String InspectTagController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("inspecttag", InspectTag.findInspectTag(id));
         uiModel.addAttribute("itemId", id);
+        if(role==1){
         return "inspecttags/show";
-    }
+        }else if(role==0){
+        	return "";
+        }
+        return "";
+        }
     
     @RequestMapping(produces = "text/html")
-    public String InspectTagController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String InspectTagController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
@@ -58,19 +73,37 @@ privileged aspect InspectTagController_Roo_Controller {
             uiModel.addAttribute("inspecttags", InspectTag.findAllInspectTags());
         }
         addDateTimeFormatPatterns(uiModel);
-        return "inspecttags/list";
+        if(role==1){
+       	 uiModel.addAttribute("role", 1);
+         return "inspecttags/list";
+        }else if(role==0){
+       	 uiModel.addAttribute("role", 0);
+       	 return "";
+        }
+        return "";
+      
     }
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String InspectTagController.update(@Valid InspectTag inspectTag, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String InspectTagController.update(@Valid InspectTag inspectTag, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectTag);
+            if(role==1){
             return "inspecttags/update";
+            }else if(role==0){
+            	return "";
+            }
+            
         }
         uiModel.asMap().clear();
         inspectTag.merge();
-        return "redirect:/inspecttags/" + encodeUrlPathSegment(inspectTag.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/inspecttags/" + encodeUrlPathSegment(inspectTag.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "";
+        }
+        return "";
+        }
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String InspectTagController.updateForm(@PathVariable("id") Long id, Model uiModel) {
@@ -78,14 +111,22 @@ privileged aspect InspectTagController_Roo_Controller {
         return "inspecttags/update";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String InspectTagController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String InspectTagController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
         InspectTag inspectTag = InspectTag.findInspectTag(id);
         inspectTag.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/inspecttags";
+        if(role==1){
+            uiModel.addAttribute("role",1);
+            return "redirect:/inspecttags";
+            }else if(role==0){
+            	uiModel.addAttribute("role",0);
+            	return "";
+            }
+                return "";
+       
     }
     
     void InspectTagController.addDateTimeFormatPatterns(Model uiModel) {

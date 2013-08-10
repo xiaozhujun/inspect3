@@ -21,16 +21,26 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect DeviceInspectRecController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String DeviceInspectRecController.create(@Valid DeviceInspectRec deviceInspectRec, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String DeviceInspectRecController.create(@Valid DeviceInspectRec deviceInspectRec, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, deviceInspectRec);
+            if(role==1){
             return "deviceinspectrecs/create";
-        }
+            }else if(role==0){
+            	return "";
+            }
+            
+            }
         uiModel.asMap().clear();
         deviceInspectRec.persist();
-        return "redirect:/deviceinspectrecs/" + encodeUrlPathSegment(deviceInspectRec.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/deviceinspectrecs/" + encodeUrlPathSegment(deviceInspectRec.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "";
+        }
+        return "";
+        }
     
     @RequestMapping(params = "form", produces = "text/html")
     public String DeviceInspectRecController.createForm(Model uiModel) {
@@ -38,15 +48,21 @@ privileged aspect DeviceInspectRecController_Roo_Controller {
         return "deviceinspectrecs/create";
     }
     
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String DeviceInspectRecController.show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String DeviceInspectRecController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
         uiModel.addAttribute("deviceinspectrec", DeviceInspectRec.findDeviceInspectRec(id));
         uiModel.addAttribute("itemId", id);
-        return "deviceinspectrecs/show";
+        if(role==1){
+        	return "deviceinspectrecs/show";
+            }else if(role==0){
+            	return "";
+            }
+            return "";
+        
     }
     
     @RequestMapping(produces = "text/html")
-    public String DeviceInspectRecController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String DeviceInspectRecController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
@@ -56,19 +72,37 @@ privileged aspect DeviceInspectRecController_Roo_Controller {
         } else {
             uiModel.addAttribute("deviceinspectrecs", DeviceInspectRec.findAllDeviceInspectRecs());
         }
-        return "deviceinspectrecs/list";
+        if(role==1){
+       	 uiModel.addAttribute("role", 1);
+       	return "deviceinspectrecs/list";
+        }else if(role==0){
+       	 uiModel.addAttribute("role", 0);
+       	 return "";
+        }
+        return "";
+        
     }
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String DeviceInspectRecController.update(@Valid DeviceInspectRec deviceInspectRec, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String DeviceInspectRecController.update(@Valid DeviceInspectRec deviceInspectRec, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, deviceInspectRec);
+            if(role==1){
             return "deviceinspectrecs/update";
+            }else if(role==0){
+            	return "";
+            }
+           
         }
         uiModel.asMap().clear();
         deviceInspectRec.merge();
+        if(role==1){
         return "redirect:/deviceinspectrecs/" + encodeUrlPathSegment(deviceInspectRec.getId().toString(), httpServletRequest);
-    }
+        }else if(role==0){
+        	 return "";
+        }
+        return "";
+        }
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String DeviceInspectRecController.updateForm(@PathVariable("id") Long id, Model uiModel) {
@@ -76,14 +110,22 @@ privileged aspect DeviceInspectRecController_Roo_Controller {
         return "deviceinspectrecs/update";
     }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String DeviceInspectRecController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String DeviceInspectRecController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
         DeviceInspectRec deviceInspectRec = DeviceInspectRec.findDeviceInspectRec(id);
         deviceInspectRec.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/deviceinspectrecs";
+        if(role==1){
+            uiModel.addAttribute("role",1);
+            return "redirect:/deviceinspectrecs";
+            }else if(role==0){
+            	uiModel.addAttribute("role",0);
+            	return "";
+            }
+                return "";
+        
     }
     
     void DeviceInspectRecController.populateEditForm(Model uiModel, DeviceInspectRec deviceInspectRec) {

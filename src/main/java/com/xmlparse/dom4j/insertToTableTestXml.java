@@ -27,6 +27,7 @@ public class insertToTableTestXml {
 				p.getTname());
 		cEle.addAttribute("inspecttime", "");
 		cEle.addAttribute("worker", "");
+		cEle.addAttribute("devicenumber", "");
 		cEle.addComment("成功生成check");
 		Element a1 = cEle.addElement("devicetype").addAttribute("name", "门机");
 

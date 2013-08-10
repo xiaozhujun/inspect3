@@ -38,13 +38,18 @@ privileged aspect DeptController_Roo_Controller {
         return "depts/create";
     }
     
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String DeptController.show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/{id}/{user}", produces = "text/html")
+    public String DeptController.show(@PathVariable("id") Long id,@PathVariable("user") int user, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("dept", Dept.findDept(id));
         uiModel.addAttribute("itemId", id);
+        if(user==1){
         return "depts/show";
-    }
+        }else if(user==0){
+        	return "";
+        }
+        return "";
+        }
     
     @RequestMapping(produces = "text/html")
     public String DeptController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {

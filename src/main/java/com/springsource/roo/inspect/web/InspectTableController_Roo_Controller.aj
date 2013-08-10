@@ -24,16 +24,26 @@ import com.springsource.roo.inspect.dao.InspectTableImpl;
 import com.xmlparse.dom4j.insertToRolesTableXml;
 privileged aspect InspectTableController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String InspectTableController.create(@Valid InspectTable inspectTable, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String InspectTableController.create(@Valid InspectTable inspectTable, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
+         System.out.println(role+"HHHH");
+    	if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectTable);
+            if(role==1){
             return "inspecttables/create";
-        }
+            }else if(role==0){
+            	return "";
+            }
+            }
         uiModel.asMap().clear();
         inspectTable.persist();
-        return "redirect:/inspecttables/" + encodeUrlPathSegment(inspectTable.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/inspecttables/" + encodeUrlPathSegment(inspectTable.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "";
+        }
+           return "";
+        }
     
     @RequestMapping(params = "form", produces = "text/html")
     public String InspectTableController.createForm(Model uiModel) {
@@ -41,16 +51,21 @@ privileged aspect InspectTableController_Roo_Controller {
         return "inspecttables/create";
     }
    
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String InspectTableController.show(@PathVariable("id") Long id, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String InspectTableController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
         addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("inspecttable", InspectTable.findInspectTable(id));
         uiModel.addAttribute("itemId", id);
+        if(role==1){
         return "inspecttables/show";
+        }else if(role==0){
+        	return "";
+        }
+        return "";
     }
     
     @RequestMapping(produces = "text/html")
-    public String InspectTableController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    public String InspectTableController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
@@ -61,19 +76,37 @@ privileged aspect InspectTableController_Roo_Controller {
             uiModel.addAttribute("inspecttables", InspectTable.findAllInspectTables());
         }
         addDateTimeFormatPatterns(uiModel);
-        return "inspecttables/list";
+        if(role==1){
+       	 uiModel.addAttribute("role", 1);
+       	return "inspecttables/list";
+        }else if(role==0){
+       	 uiModel.addAttribute("role", 0);
+       	 return "";
+        }
+        return "";
+        
     }
     
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String InspectTableController.update(@Valid InspectTable inspectTable, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String InspectTableController.update(@Valid InspectTable inspectTable, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, inspectTable);
-            return "inspecttables/update";
+            if(role==1){
+            	return "inspecttables/update";
+            }else if(role==0){
+            	return "";
+            }
+            return "";
         }
         uiModel.asMap().clear();
         inspectTable.merge();
-        return "redirect:/inspecttables/" + encodeUrlPathSegment(inspectTable.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/inspecttables/" + encodeUrlPathSegment(inspectTable.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "";
+        }
+          return "";
+        }
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String InspectTableController.updateForm(@PathVariable("id") Long id, Model uiModel) {
@@ -86,26 +119,34 @@ privileged aspect InspectTableController_Roo_Controller {
     public String InspectTableController.downForm(@PathVariable("id") int id) {
         System.out.println("haha");
         System.out.println(id+"ID");
-	//根据这个id求的tablename
+	//锟斤拷锟斤拷锟斤拷id锟斤拷锟絫ablename
         InspectTableImpl t=new InspectTableImpl();
 		System.out.println(t.getNameById(id));
 		String tname=t.getNameById(id);
 	String pathname="E://Inspect3//xmlFiles//"+tname+".xml";
 	new insertToTableTestXml().createXml(pathname,id);
-	//根据这个id求rolename
+	
 	       String rname=t.getRoleNameByTid(id);
 	       String pathname1="E://Inspect3//xmlFiles//RolesTable.xml";
                new insertToRolesTableXml().createXml(pathname1);
         return "inspecttables/downSuccess";
     }
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String InspectTableController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String InspectTableController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
         InspectTable inspectTable = InspectTable.findInspectTable(id);
         inspectTable.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
-        return "redirect:/inspecttables";
+        if(role==1){
+            uiModel.addAttribute("role",1);
+            return "redirect:/inspecttables";
+            }else if(role==0){
+            	uiModel.addAttribute("role",0);
+            	return "";
+            }
+                return "";
+       
     }
     
     void InspectTableController.addDateTimeFormatPatterns(Model uiModel) {

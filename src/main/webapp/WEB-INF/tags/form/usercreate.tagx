@@ -19,7 +19,7 @@
     <c:if test="${multipart}">
       <c:set var="enctype" value="multipart/form-data"/>
     </c:if>
-    <c:set var="role" value="1"></c:set>
+    <c:set var="role" value="0"></c:set>
     <spring:message arguments="${label}" code="entity_create" var="title_msg" htmlEscape="false" />
     <util:panel id="${id}" title="${title_msg}" openPane="${openPane}">
       <spring:url value="${path}/${role}" var="form_url"/>

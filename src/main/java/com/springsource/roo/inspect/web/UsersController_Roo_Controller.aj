@@ -20,33 +20,53 @@ import org.springframework.web.util.WebUtils;
 
 privileged aspect UsersController_Roo_Controller {
     
-    @RequestMapping(method = RequestMethod.POST, produces = "text/html")
-    public String UsersController.create(@Valid Users users, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
+    @RequestMapping(value="/{role}",method = RequestMethod.POST, produces = "text/html")
+    public String UsersController.create(@Valid Users users, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
         if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, users);
+            if(role==1){
             return "userses/create";
+            }else if(role==0){
+            	return "userses/usercreate";
+            }
         }
         uiModel.asMap().clear();
         users.persist();
-        return "redirect:/userses/" + encodeUrlPathSegment(users.getId().toString(), httpServletRequest);
+        if(role==1){
+        return "redirect:/userses/" + encodeUrlPathSegment(users.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	return "redirect:/userses/" + encodeUrlPathSegment(users.getId().toString(), httpServletRequest)+"/0";
+        }
+        return "";
     }
-    
-    @RequestMapping(params = "form", produces = "text/html")
+     @RequestMapping(params = "form", produces = "text/html")
     public String UsersController.createForm(Model uiModel) {
         populateEditForm(uiModel, new Users());
         return "userses/create";
     }
-    
-    @RequestMapping(value = "/{id}", produces = "text/html")
-    public String UsersController.show(@PathVariable("id") Long id, Model uiModel) {
-        uiModel.addAttribute("users", Users.findUsers(id));
-        uiModel.addAttribute("itemId", id);
-        return "userses/show";
+     @RequestMapping(params = "userform", produces = "text/html")
+    public String UsersController.createUForm(Model uiModel) {
+        populateEditForm(uiModel, new Users());
+        return "userses/usercreate";
     }
     
-    @RequestMapping(produces = "text/html")
-    public String UsersController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
+    @RequestMapping(value = "/{id}/{role}", produces = "text/html")
+    public String UsersController.show(@PathVariable("id") Long id,@PathVariable("role") int role, Model uiModel) {
+    	
+        uiModel.addAttribute("users", Users.findUsers(id));
+        uiModel.addAttribute("itemId", id);
+        if(role==1){
+        return "userses/show";
+        }else if(role==0){
+        	return "userses/usershow";
+        }
+        return "";
+    }
+   
+   @RequestMapping(produces="text/html")
+    public String UsersController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@RequestParam(value = "role", required = false) Integer role, Model uiModel) {
         if (page != null || size != null) {
+        	
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
             uiModel.addAttribute("userses", Users.findUsersEntries(firstResult, sizeNo));
@@ -55,34 +75,67 @@ privileged aspect UsersController_Roo_Controller {
         } else {
             uiModel.addAttribute("userses", Users.findAllUserses());
         }
-        return "userses/list";
+         if(role==1){
+        	 uiModel.addAttribute("role", 1);
+         return "userses/list";
+         }else if(role==0){
+        	 uiModel.addAttribute("role", 0);
+        	 return "userses/userlist";
+         }
+         return "";
     }
-    
-    @RequestMapping(method = RequestMethod.PUT, produces = "text/html")
-    public String UsersController.update(@Valid Users users, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
-        if (bindingResult.hasErrors()) {
+   
+    @RequestMapping(value="/{role}",method = RequestMethod.PUT, produces = "text/html")
+    public String UsersController.update(@Valid Users users, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest,@PathVariable("role") int role) {
+          System.out.println(role+"update");
+    	if (bindingResult.hasErrors()) {
             populateEditForm(uiModel, users);
+            if(role==1){
             return "userses/update";
+            }else if(role==0){
+            	return "useres/userupdate";
+            }
+            return "";
         }
         uiModel.asMap().clear();
         users.merge();
-        return "redirect:/userses/" + encodeUrlPathSegment(users.getId().toString(), httpServletRequest);
-    }
+        if(role==1){
+        return "redirect:/userses/" + encodeUrlPathSegment(users.getId().toString(), httpServletRequest)+"/1";
+        }else if(role==0){
+        	 return "redirect:/userses/" + encodeUrlPathSegment(users.getId().toString(), httpServletRequest)+"/0";
+        }
+        return "";
+        }
     
     @RequestMapping(value = "/{id}", params = "form", produces = "text/html")
     public String UsersController.updateForm(@PathVariable("id") Long id, Model uiModel) {
         populateEditForm(uiModel, Users.findUsers(id));
         return "userses/update";
     }
+    @RequestMapping(value = "/{id}", params = "userform", produces = "text/html")
+    public String UsersController.updateUForm(@PathVariable("id") Long id, Model uiModel) {
+        populateEditForm(uiModel, Users.findUsers(id));
+        return "userses/userupdate";
+    }
     
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE, produces = "text/html")
-    public String UsersController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
-        Users users = Users.findUsers(id);
+
+    @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")
+    public String UsersController.delete(@PathVariable("id") Long id, @RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size,@PathVariable("role") int role, Model uiModel) {
+        System.out.println(role+"角色");
+    	Users users = Users.findUsers(id);
         users.remove();
         uiModel.asMap().clear();
         uiModel.addAttribute("page", (page == null) ? "1" : page.toString());
         uiModel.addAttribute("size", (size == null) ? "10" : size.toString());
+       
+        if(role==1){
+        uiModel.addAttribute("role",1);
         return "redirect:/userses";
+        }else if(role==0){
+        	uiModel.addAttribute("role",0);
+        	return "redirect:/userses";
+        }
+            return "";
     }
     
     void UsersController.populateEditForm(Model uiModel, Users users) {

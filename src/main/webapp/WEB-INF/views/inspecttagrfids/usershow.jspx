@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:usershow id="ps_com_springsource_roo_inspect_domain_InspectTagRfId" object="${inspecttagrfid}" path="/inspecttagrfids" z="0C6B6Ir1t60kpJV+nZwA7qd+7hY=">
+        <field:display field="tagname" id="s_com_springsource_roo_inspect_domain_InspectTagRfId_tagname" object="${inspecttagrfid}" z="1FYh+Wwwt+tlvA8OYVmY+N7NDZM="/>
+        <field:display field="description" id="s_com_springsource_roo_inspect_domain_InspectTagRfId_description" object="${inspecttagrfid}" z="yJXmhh5CeiO/JjLS+OeCsgs76RM="/>
+        <field:display field="numbers" id="s_com_springsource_roo_inspect_domain_InspectTagRfId_numbers" object="${inspecttagrfid}" z="rSdUJTWTw69ohHoxl5e2Jaw7PKc="/>
+        <field:display date="true" dateTimePattern="${inspectTagRfId_createtime_date_format}" field="createtime" id="s_com_springsource_roo_inspect_domain_InspectTagRfId_createtime" object="${inspecttagrfid}" z="DvZynaYXA9jbPt6ODirNWMkpNHc="/>
+        <field:display field="tagcag" id="s_com_springsource_roo_inspect_domain_InspectTagRfId_tagcag" object="${inspecttagrfid}" z="KaPPwCZzJSYtg8OZlXXrmklZPhk="/>
+        <field:display field="device" id="s_com_springsource_roo_inspect_domain_InspectTagRfId_device" object="${inspecttagrfid}" z="8xFJI2QA5dJCifZ8SdE2MF1lY78="/>
+    </page:usershow>
+</div>
