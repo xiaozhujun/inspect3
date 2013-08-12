@@ -114,13 +114,15 @@ function  test1(x){
 </script>
 </head>
 <body>
+
 	<center>
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="nav.jsp"></jsp:include>
+		<jsp:include page="leftmenu.jsp"></jsp:include>
 		<p>
 			<font size="5" color="#68C1D">报表查询</font>
 		</p>
-		<hr width="1200">
+		<hr width="950px">
 		<form method="post" action="MServlet">
 
 			起始时间: <input type="text" id="s" class="Wdate" onClick="WdatePicker()"

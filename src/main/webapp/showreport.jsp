@@ -36,6 +36,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+   
 	<%
 		String s = request.getParameter("stime");
 		String e = request.getParameter("etime");

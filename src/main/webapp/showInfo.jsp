@@ -14,83 +14,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-table{border-collapse:collapse;}
-.zebra td,.zebra th {
-	padding: 10px;
-	border-bottom: 1px solid #f2f2f2;
-	border: 1px solid #000000;
+.demo{
+background-color: red;
+width:1129px;
+height: 1200px;
+margin-left: 221px;
+margin-top: 50px;
+
 }
 
-.zebra .alternate,.zebra tbody tr:nth-child(even) {
-    width:300px;
-	text-align: center;
-	background: #f5f5f5;
-	-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
-	-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
-	box-shadow: 0 1px 0 rgba(255, 255, 255, .8) inset;
-}
-
-.zebra tbody tr:nth-child(odd) {
-	text-align: center;
-}
-
-.zebra th {
-	width: 300px; text-align : center;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
-	border-bottom: 1px solid #ccc;
-	background-color: #eee;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#f5f5f5),
-		to(#eee));
-	background-image: -webkit-linear-gradient(top, #f5f5f5, #eee);
-	background-image: -moz-linear-gradient(top, #f5f5f5, #eee);
-	background-image: -ms-linear-gradient(top, #f5f5f5, #eee);
-	background-image: -o-linear-gradient(top, #f5f5f5, #eee);
-	background-image: linear-gradient(top, #f5f5f5, #eee);
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,
-		startColorstr=#f5f5f5, endColorstr=#eeeeee);
-	-ms-filter:
-		"progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#f5f5f5, endColorstr=#eeeeee)";
-	text-align: center;
-}
-
-.zebra th:first-child {
-	-moz-border-radius: 6px 0 0 0;
-	-webkit-border-radius: 6px 0 0 0;
-	border-radius: 6px 0 0 0;
-}
-
-.zebra th:last-child {
-	-moz-border-radius: 0 6px 0 0;
-	-webkit-border-radius: 0 6px 0 0;
-	border-radius: 0 6px 0 0;
-}
-
-.zebra tfoot td {
-	border-bottom: 0;
-	border-top: 1px solid #fff;
-	background-color: #f1f1f1;
-}
-
-.zebra tfoot td:first-child {
-	-moz-border-radius: 0 0 0 6px;
-	-webkit-border-radius: 0 0 0 6px;
-	border-radius: 0 0 0 6px;
-}
-
-.zebra tfoot td:last-child {
-	-moz-border-radius: 0 0 6px 0;
-	-webkit-border-radius: 0 0 6px 0;
-	border-radius: 0 0 6px 0;
-}
 </style>
 </head>
 <body>
 	<center>
-		<jsp:include page="header.jsp"></jsp:include>
-		<jsp:include page="nav.jsp"></jsp:include>
 		
-		<div class="demo">
-		<div>
+		<jsp:include page="nav.jsp"></jsp:include>
+		 <jsp:include page="leftmenu.jsp"></jsp:include>
+		 <div class="demo">
 		<%
 		String ss = request.getParameter("stime");
 		String ee = request.getParameter("etime");
@@ -105,18 +45,16 @@ table{border-collapse:collapse;}
 			r=d1.getT(tid1, cretime1);
 			
 		%>
-		<div><%=r.getTname() %><div>
-		<div style="margin-top: 10px"><span style="width: 150px;float: left;margin-left: 380px">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 350px">点检时间:<%=r.getCreatetime() %></span></div></div>
+		<span style="position: center"><%=r.getTname() %></span>
+		<span style="width: 150px;float: left;margin-left: 380px">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 350px">点检时间:<%=r.getCreatetime() %></span>
 		<%
 		}else{
 			System.out.println("error");
 		}
 		%>
-		</div>
-		</div>
-		</div>
-		<div class="demo">
-			<table  border="1"  style="border-collapse:collapse;">
+	
+		
+			<table  border="1"  style="border-collapse:collapse;margin-left: 20px">
 				<thead>
 					<tr>
 					    <th width="150px">机构</th>
@@ -169,6 +107,7 @@ table{border-collapse:collapse;}
 					%>
 				</tbody>
 			</table>
+			</div>
 			
 		</div>
 	</center>

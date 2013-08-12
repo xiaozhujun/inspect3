@@ -95,6 +95,7 @@ public class MultipartTServlet extends HttpServlet {
 			}
 		}
 		DOMAnalysisXml d = new DOMAnalysisXml();
+		System.out.println(path+"文件");
 		d.analysisXml(path);
 
 	}

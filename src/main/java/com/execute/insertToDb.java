@@ -97,6 +97,7 @@ public class insertToDb {
 	}
 
 	public int getTid(String name) {
+		System.out.println(name+"表名");
 		String sql = "select id from inspect_table where tname=?";
 		Connection connection = ds.getConnection();
 		PreparedStatement statement = null;
