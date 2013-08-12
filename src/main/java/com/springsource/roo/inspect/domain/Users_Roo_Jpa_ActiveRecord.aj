@@ -32,8 +32,7 @@ privileged aspect Users_Roo_Jpa_ActiveRecord {
         if (id == null) return null;
         return entityManager().find(Users.class, id);
     }
-  
-
+    
     public static List<Users> Users.findUsersEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Users o", Users.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }

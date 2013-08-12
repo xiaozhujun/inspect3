@@ -7,11 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<center>
-			<img src="images/logo.png" width="1200px" height="100px"> <img
-				src="images/banner-graphic.png" width="1200px" height="350px">
-		</center>
-	</div>
+	
 </body>
 </html>

@@ -259,3 +259,5 @@ field reference --fieldName device --type ~.domain.Device
 web mvc all --package ~.web
 quit
 // Spring Roo 1.2.4.RELEASE [rev 75337cf] log closed at 2013-08-08 14:44:38
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log opened at 2013-08-12 15:58:03
+// Spring Roo 1.2.3.RELEASE [rev 7fd62b6] log closed at 2013-08-12 16:11:18

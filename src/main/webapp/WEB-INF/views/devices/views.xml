@@ -16,6 +16,7 @@
     <definition extends="default" name="devices/upload">
         <put-attribute name="body" value="/WEB-INF/views/devices/upload.jsp"/>
     </definition>
+   
     <definition extends="userdefault" name="devices/userupload">
         <put-attribute name="body" value="/WEB-INF/views/devices/upload.jsp"/>
     </definition>
