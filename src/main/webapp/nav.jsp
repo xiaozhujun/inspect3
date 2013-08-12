@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="resources/styles/head.css" type="text/css">
+<script type="text/javascript" src='resources/js/jquery-1.7.2.min.js'></script>
 <title>Insert title here</title>
 <style type="text/css">
 #nav {
 	background-color: highlight;
-	height: 30px;
-	width: 1200px;
+	width: 100%;
 	margin-top: 2px;
 }
 
@@ -20,15 +21,19 @@ a:LINK {
 </style>
 </head>
 <body>
-	<div id="nav">
-		<center>
-			<span><a href="#">首页</a></span>|<span><a href="#">系统简介</a></span>|<span><a
-				href="#">关于我们</a></span>|<span><a href="#" onclick="history.go(-1)">返回</a></span>
-
-
-		</center>
-
-
-	</div>
+<div id='titleContainerDiv'>
+        <div id="titleDiv">港口起重机械健康监测与预报可视化系统<span id="devNameDiv"></span></div>
+    </div>
+    <div id='mainHeadDiv'>
+    	<div id='headTab' class='tabs'>
+		    <div class='tabItem' url="integrateManagement.html">港机信息可视化</div>  
+		    <div class='tabItem' ><a href='/inspect/user'>港机智能点检</a></div>
+		    <div class='tabItem mainselected' url="mechanismForcast/health-forecast.html">机构健康监测</div>
+		    <div class='tabItem ' url="structForcast/health-forecast.html">结构健康监测</div>
+		    <div class='tabItem' url="electricalForcast/health-forecast.html">电气健康监测</div>
+		    <div class='tabItem' url="health-forecast.html">健康趋势预报</div>
+		    <div class='tabItem' url="risk-management.html">动态风险评估</div>
+		 </div>
+  	</div>
 </body>
 </html>
