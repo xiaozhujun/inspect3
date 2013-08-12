@@ -117,9 +117,6 @@ privileged aspect InspectTableController_Roo_Controller {
     
      @RequestMapping(value = "/{id}", params = "download", produces = "text/html")
     public String InspectTableController.downForm(@PathVariable("id") int id) {
-        System.out.println("haha");
-        System.out.println(id+"ID");
-	//������id���tablename
         InspectTableImpl t=new InspectTableImpl();
 		System.out.println(t.getNameById(id));
 		String tname=t.getNameById(id);
