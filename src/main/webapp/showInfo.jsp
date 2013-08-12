@@ -169,7 +169,7 @@ table{border-collapse:collapse;}
 					%>
 				</tbody>
 			</table>
-			<pt:pageOut pageIndex="1" url="showInfo.jsp?" pageMax="10"/>
+			
 		</div>
 	</center>
 </body>

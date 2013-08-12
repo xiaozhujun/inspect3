@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/inspecttables")
 @Controller
-@RooWebScaffold(path = "inspecttables", formBackingObject = InspectTable.class)
+@RooWebScaffold(path = "inspecttables", formBackingObject = InspectTable.class,update=false)
 public class InspectTableController {
 }

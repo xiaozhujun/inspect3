@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/devices")
 @Controller
-@RooWebScaffold(path = "devices", formBackingObject = Device.class)
+@RooWebScaffold(path = "devices", formBackingObject = Device.class,update=false)
 public class DeviceController {
 }

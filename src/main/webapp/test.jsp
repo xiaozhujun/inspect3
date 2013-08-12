@@ -8,6 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<pt:pageOut pageIndex="1" url="test.jsp?" pageMax="10"/>
+<jsp:include page="leftmenu.jsp"></jsp:include>
 </body>
 </html>

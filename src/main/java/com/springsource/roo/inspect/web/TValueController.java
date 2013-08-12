@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/tvalues")
 @Controller
-@RooWebScaffold(path = "tvalues", formBackingObject = TValue.class)
+@RooWebScaffold(path = "tvalues", formBackingObject = TValue.class,update=false)
 public class TValueController {
 }
