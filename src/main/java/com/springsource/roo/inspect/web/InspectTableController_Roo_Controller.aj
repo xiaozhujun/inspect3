@@ -116,16 +116,17 @@ privileged aspect InspectTableController_Roo_Controller {
    
     
      @RequestMapping(value = "/{id}", params = "download", produces = "text/html")
-    public String InspectTableController.downForm(@PathVariable("id") int id) {
+    public String InspectTableController.downForm(@PathVariable("id") int id,HttpServletRequest request) {
         InspectTableImpl t=new InspectTableImpl();
 		System.out.println(t.getNameById(id));
 		String tname=t.getNameById(id);
-	String pathname="E://Inspect3//xmlFiles//"+tname+".xml";
+	String pathname=request.getSession().getServletContext().getRealPath("/xmlFile/"+tname+".xml");
 	new insertToTableTestXml().createXml(pathname,id);
 	
 	       String rname=t.getRoleNameByTid(id);
-	       String pathname1="E://Inspect3//xmlFiles//RolesTable.xml";
+	       String pathname1=request.getSession().getServletContext().getRealPath("/xmlFile/RolesTable.xml");
                new insertToRolesTableXml().createXml(pathname1);
+              
         return "inspecttables/downSuccess";
     }
     @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")

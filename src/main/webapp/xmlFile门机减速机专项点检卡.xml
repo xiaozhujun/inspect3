@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<check inspecttype="门机减速机专项点检卡" inspecttime="2013-8-10" worker="工作人员1" devicenumber="">
+  <!--成功生成check-->
+  <devicetype name="门机">
+    <location name="标签1">
+      <field name="1#走行减速箱" isInput="false" description="" unit="">
+        <value name="正常"/>
+       
+      </field>
+      <field name="2#减速机" isInput="false" description="" unit="">
+        
+       
+        <value name="无 "/>
+      </field>
+      <field name="3#走行减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+        
+      </field>
+      <field name="4#走行减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+      
+      </field>
+      <field name="5#走行减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+       
+      </field>
+      <field name="6#走行减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+       
+      </field>
+      <field name="7#走行减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+        
+      </field>
+      <field name="8#走行减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+       
+      </field>
+      <field name="左回转减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+      
+      </field>
+      <field name="右回转减速机" isInput="false" description="" unit="">
+       
+        <value name="无 "/>
+      </field>
+      <field name="支持绳减速机" isInput="false" description="" unit="">
+       
+        <value name="异常"/>
+        
+      </field>
+      <field name="开闭绳减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+      
+      </field>
+      <field name="变幅用减速机" isInput="false" description="" unit="">
+        <value name="正常"/>
+       
+      </field>
+    </location>
+  </devicetype>
+</check>

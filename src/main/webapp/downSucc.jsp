@@ -20,12 +20,12 @@
 		String name = t.getNameById(id);
 		System.out.println(name + "name");
 		String downFilename = name + ".xml";//要下载的文件名称
-		String filepath = "d:/temp/" + downFilename;//要下载的文件完整路径
+		String filepath = request.getSession().getServletContext().getRealPath("/xmlFile/" + downFilename);//要下载的文件完整路径
 		response.setContentType("text/plain");
 		response.setHeader("Location",
 				new String(downFilename.getBytes("GBK"), "UTF-8"));
 		response.setHeader("Content-Disposition", "attachment; filename="
-				+ downFilename);
+				+ new String(downFilename.getBytes("gb2312"),"ISO8859-1"));
 		OutputStream outputStream = response.getOutputStream();
 		InputStream inputStream = new FileInputStream(filepath);
 		byte[] buffer = new byte[1024];

@@ -13,20 +13,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-function  test1(){
-	
-     var x=document.getElementById("c").value;
-	  alert(x);
-     var type=document.getElementById("type").value;
-	 var stime=document.getElementById("s").value;
-	 var tid=document.getElementById("tid").value;
-	 var etime=document.getElementById("e").value;
-	
-	 window.location.href="showreport.jsp?type="+type+"&stime="+stime+"&tid="+tid+"&etime="+etime+"&ct="+x;
- }
-
-</script>
 <style type="text/css">
 .demo{
 
@@ -43,7 +29,7 @@ margin-top: 50px;
 	<center>
 		
 		<jsp:include page="nav.jsp"></jsp:include>
-		 <jsp:include page="leftmenu.jsp"></jsp:include>
+		 <jsp:include page="leftusermenu.jsp"></jsp:include>
 		 <div class="demo">
 		
 		<%
@@ -96,10 +82,7 @@ margin-top: 50px;
 									r = (InspectTableRecord) it.next();
 									List<InspectTableRecord> l1 = d.getT(r.getTagid(), tid, cretime);
 						%>
-                       <span><input type="hidden" id="s" value="'<%=s%>'">
-							<input type="hidden" id="type" value="<%=type%>"> <input
-							type="hidden" id="tid" value="<%=tid%>"> <input
-							type="hidden" id="e" value="'<%=e%>'"> <input type="hidden" id="c" value="<%=ct%>"></span>
+
 
 						
 						<td align="center" rowspan="<%=l1.size() %>"><%=r.getTagname()%></td>
@@ -123,11 +106,6 @@ margin-top: 50px;
 							System.out.println("出错了!");
 						}
 					%>
-					<tr>
-					<td colspan="3"><a class="sb circle text thick-border twitter"
-							onclick="test1()">下载</a></td>
-							</tr>
-							
 				</tbody>
 			</table>
 			</center>

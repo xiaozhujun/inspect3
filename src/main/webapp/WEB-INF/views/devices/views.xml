@@ -24,7 +24,7 @@
         <put-attribute name="body" value="/WEB-INF/views/devices/gosearch.jsp"/>
     </definition>
      <definition extends="userdefault" name="devices/gousersearch">
-        <put-attribute name="body" value="/WEB-INF/views/devices/gosearch.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/views/devices/gousersearch.jsp"/>
     </definition>
      <definition extends="default" name="devices/queryresult">
         <put-attribute name="body" value="/WEB-INF/views/devices/queryresult.jsp"/>

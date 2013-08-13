@@ -1,3 +1,7 @@
+<%@page import="com.springsource.roo.inspect.dao.InspectTableImpl"%>
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.InputStream"%>
+<%@page import="java.io.OutputStream"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -47,14 +51,15 @@
 </head>
 <body>
 <center>
-<h1>生成配置文件成功</h1>
-<form action="MultipartTestServlet" enctype="multipart/form-data" method="post">
+<h1>文件上传成功</h1>
+<!-- <form action="MultipartTestServlet" enctype="multipart/form-data" method="post">
     <a class="btn_addPic" href="javascript:void(0);">
     <span><em>+</em><font color="blank">配置文件上传</font></span> 
      <input type="file" name="myfile" class="filePrew" title="支持xml文件上传" tabindex="3" size="3"/><br/>
     </a>
      <input type="submit" value="上传"/>
-    </form>
+    </form> -->
+    
     </center>
 </body>
 </html>

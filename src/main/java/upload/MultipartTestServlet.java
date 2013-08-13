@@ -38,7 +38,7 @@ public class MultipartTestServlet extends HttpServlet {
 
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 
-			factory.setRepository(new File("d:/tmp/"));
+			factory.setRepository(new File(request.getSession().getServletContext().getRealPath("/xmlFile/")));
 			ServletFileUpload upload = new ServletFileUpload(factory);
 
 			upload.setSizeMax(100 * 1024 * 1024);
@@ -72,7 +72,7 @@ public class MultipartTestServlet extends HttpServlet {
 
 					if (fileItem.getName() != null && fileItem.getSize() != 0) {
 						File fullFile = new File(fileItem.getName());
-						File newFile = new File("d:/temp/" + fullFile.getName());
+						File newFile = new File(request.getSession().getServletContext().getRealPath("/xmlFile/") + fullFile.getName());
 						try {
 							fileItem.write(newFile);
 						} catch (Exception e) {

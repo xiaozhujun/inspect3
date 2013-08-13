@@ -6,15 +6,17 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-
+import java.sql.Connection;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
-
+import model.MyDataSource;
 public class DOMAnalysisXml {
 	private insertToDb d = new insertToDb();
-
+	private MyDataSource ds = new MyDataSource();
+	Connection connection = ds.getConnection();
+	
 	@SuppressWarnings("unchecked")
 	public void analysisXml(String fileName) {
 		// String tname,String tag,String item,String value,String worker,Date
@@ -26,6 +28,7 @@ public class DOMAnalysisXml {
 		String value = null;
 		String t = null;
 		String worker = null;
+		int tableRecid=0;
 		SAXReader saxReader = new SAXReader();
 		try {
 			Document document = saxReader.read(new File(fileName));
@@ -46,7 +49,10 @@ public class DOMAnalysisXml {
 			Date t1;
 			try {
 				t1 = sdf.parse(t);
+				System.out.println("------------开始执行db1---------");
 				d.insertToDB1(t1,tid);
+				tableRecid=d.getTrecord(t1, tid);
+				System.out.println("------------db1执行完------------");
 			} catch (ParseException e12) {
 				// TODO Auto-generated catch block
 				e12.printStackTrace();
@@ -86,8 +92,13 @@ public class DOMAnalysisXml {
 						Date d1;
 						try {
 							d1 = sdf1.parse(t);
-
-							d.insertToDB(tname, tag, item, value, worker, d1);
+                           
+                            
+                            System.out.println("--------------开始执行db------------");
+							d.insertToDB(tname, tag, item, value, worker, d1,tableRecid);
+							System.out.println("--------------db执行完-------------");
+                            
+							
 						} catch (ParseException e11) {
 							// TODO Auto-generated catch block
 							e11.printStackTrace();

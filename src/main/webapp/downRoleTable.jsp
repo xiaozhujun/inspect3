@@ -15,7 +15,7 @@
 		request.setCharacterEncoding("UTF-8");
 		/*根据这个id来查找到表名  */
 		String downFilename = "RolesTable.xml";//要下载的文件名称
-		String filepath = "E://Inspect3//xmlFiles//" + downFilename;//要下载的文件完整路径
+		String filepath = request.getSession().getServletContext().getRealPath("/xmlFile/" + downFilename);//要下载的文件完整路径
 		response.setContentType("text/plain");
 		response.setHeader("Location",
 				new String(downFilename.getBytes("GBK"), "UTF-8"));

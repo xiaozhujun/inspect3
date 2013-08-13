@@ -95,10 +95,17 @@ a:LINK {
 				<li id="c_inspecttagrfid"><h2>标签管理</h2>
 					<ul>
 						<li id="i_inspecttagrfid_new"><a title="添加 标签"
-							href="/inspect/inspecttagrfids?form">添加 标签</a></li>
+							href="/inspect/inspecttagrfids?userform">添加 标签</a></li>
+							<li id="i_device_new"><a title="添加 设备"
+							href="/inspect/devices?userform">添加 设备</a></li>
+					</ul>
+					<ul>
 						<li id="i_inspecttagrfid_list"><a title="查询标签"
-							href="/inspect/inspecttagrfids?page=1&amp;size=10&amp;role=1">查询标签</a></li>
-					</ul></li>
+							href="/inspect/inspecttagrfids?page=1&size=10&role=0">查询标签</a></li>
+						<li id="i_device_list"><a title="查询设备"
+							href="/inspect/devices?page=1&size=10&role=0">查询设备</a></li>
+					</ul>
+			</li>
 			</ul>
 		</div>
 		</div>

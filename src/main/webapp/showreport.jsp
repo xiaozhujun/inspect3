@@ -42,6 +42,7 @@
 		String e = request.getParameter("etime");
 		String t = request.getParameter("tid");
 		String ct = request.getParameter("ct");
+		System.out.println(ct+"时间");
 		String url = "jdbc:mysql://localhost:3306/inspect2";
 		Class.forName("com.mysql.jdbc.Driver");
 		Map parameters = new HashMap();

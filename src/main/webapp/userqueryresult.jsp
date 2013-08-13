@@ -109,7 +109,7 @@ function  test1(x){
 	 var tid=document.getElementById("tid").value;
 	 var etime=document.getElementById("e").value;
 	
-     window.location.href="showInfo.jsp?type="+type+"&stime="+stime+"&tid="+tid+"&etime="+etime+"&ct="+x;
+     window.location.href="usershowInfo.jsp?type="+type+"&stime="+stime+"&tid="+tid+"&etime="+etime+"&ct="+x;
  }
 
 
@@ -121,13 +121,13 @@ function  test1(x){
 	<center>
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="nav.jsp"></jsp:include>
-		<jsp:include page="leftmenu.jsp"></jsp:include>
+		<jsp:include page="leftusermenu.jsp"></jsp:include>
 		<p>
 			<font size="5" color="#68C1D">报表查询</font>
 		</p>
 		
 		<hr width="950px">
-		<form method="post" action="MServlet">
+		<form method="post" action="MMServlet">
 
 			起始时间: <input type="text" id="s" class="Wdate" onClick="WdatePicker()"
 				name="stime"> 终止时间: <input type="text" id="e" class="Wdate"

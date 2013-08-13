@@ -17,10 +17,33 @@ public class insertToDb {
 	// values值，
 	// 在上传的同时，将数据插入到数据库中
 	private MyDataSource ds = new MyDataSource();
-
+    public void closeSource(Connection connection,PreparedStatement statement,ResultSet rs){
+    	if(rs!= null){   // 关闭记录集  
+    			    try{  
+    		        rs.close() ;  
+    		    }catch(SQLException e){  
+    			        e.printStackTrace() ;  
+    			    }  
+    			}  
+    			if(statement!= null){   // 关闭声明  
+    		    try{  
+    		    	statement.close() ;  
+    			    }catch(SQLException e){  
+    		        e.printStackTrace() ;  
+    			    }  
+    			}  
+    			if(connection!= null){  // 关闭连接对象  
+    			    try{  
+    			    	connection.close() ;  
+    			    }catch(SQLException e){  
+    			        e.printStackTrace() ;  
+    			    }  
+    			}
+    }
 	public void insertToDB1(Date t,int tid) {
 		Connection connection = ds.getConnection();
 		PreparedStatement statement = null;
+		ResultSet rs=null;
 		String sql2 = "insert into inspect_table_record(createtime,inspecttable)values(?,?)";
 		try {
 			statement = connection.prepareStatement(sql2);
@@ -29,22 +52,24 @@ public class insertToDb {
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO: handle exception
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 	}
 
 	public void insertToDB(String tname, String tag, String item, String value,
-			String worker, Date time) {
+			String worker, Date time,int rectableid) {
 
 		// /String sql1 =
 		// "insert into inspect_table_record(inspecttable,createtime)values(?,?)";
 
-		String sql1 = "insert into inspect_Item_Record (inspecttable,tag,item,ivalue,createtime,worker) values (?,?,?,?,?,?)";
+		String sql1 = "insert into inspect_Item_Record (inspecttable,tag,item,ivalue,createtime,inspecttablerec,worker) values (?,?,?,?,?,?,?)";
 
 		// String sql3="";
-		String sql3 = "update inspect_item_record it,inspect_table_record t set it.inspecttablerec=? where it.createtime=t.createtime and t.createtime=?";
+		//String sql3 = "update inspect_item_record it,inspect_table_record t set it.inspecttablerec=? where it.createtime=t.createtime and t.createtime=?";
 		Connection connection = ds.getConnection();
 		PreparedStatement statement = null;
-
+		ResultSet rs=null;
 		int tid = getTid(tname);
 		int tagid = getTagid(tag);
 		int itemid = getItemid(tagid, tid, item);
@@ -58,14 +83,15 @@ public class insertToDb {
 			statement.setInt(3, itemid);
 			statement.setInt(4, vid);
 			statement.setDate(5, new java.sql.Date(time.getTime()));
-			statement.setInt(6, uid);
+			statement.setInt(6,rectableid);
+			statement.setInt(7, uid);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
 
-		try {
+		/*try {
 			statement = connection.prepareStatement(sql3);
 			statement.setInt(1, id);
 			statement.setDate(2, new java.sql.Date(time.getTime()));
@@ -73,7 +99,9 @@ public class insertToDb {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}
+		}finally{
+			closeSource(connection, statement, rs);
+		}*/
 	}
 
 	public int getTRecId(Date t) {
@@ -92,6 +120,8 @@ public class insertToDb {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return tid;
 	}
@@ -113,6 +143,8 @@ public class insertToDb {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return tid;
 
@@ -134,6 +166,8 @@ public class insertToDb {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return tagid;
 
@@ -157,6 +191,8 @@ public class insertToDb {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return id;
 
@@ -178,6 +214,8 @@ public class insertToDb {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return tagid;
 
@@ -199,11 +237,34 @@ public class insertToDb {
 		} catch (SQLException e) {
 			// TODO: handle exception
 			e.printStackTrace();
+		}finally{
+			closeSource(connection, statement, rs);
 		}
 		return tagid;
 
 	}
 
+	public int getTrecord(Date t,int tid){
+		Connection connection = ds.getConnection();
+		PreparedStatement statement = null;
+		ResultSet rs=null;
+		int tagid = 0;
+		String sql2 = "select id from inspect_table_record where createtime=? and inspecttable=?";
+		try {
+			statement = connection.prepareStatement(sql2);
+			statement.setDate(1, new java.sql.Date(t.getTime()));
+			statement.setInt(2, tid);
+			rs = statement.executeQuery();
+			while (rs.next()) {
+				tagid = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO: handle exception
+		}finally{
+			closeSource(connection, statement, rs);
+		}
+		return tagid;
+	}
 	public static void main(String[] args) throws ParseException {
 		insertToDb d = new insertToDb();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

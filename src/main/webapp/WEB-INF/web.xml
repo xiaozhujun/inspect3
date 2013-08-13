@@ -106,6 +106,14 @@
    <url-pattern>/MServlet</url-pattern>
    </servlet-mapping>
    <servlet>
+      <servlet-name>MMServlet</servlet-name>
+      <servlet-class>upload.MMServlet</servlet-class>
+</servlet>
+   <servlet-mapping>
+   <servlet-name>MMServlet</servlet-name>
+   <url-pattern>/MMServlet</url-pattern>
+   </servlet-mapping>
+   <servlet>
       <servlet-name>MultipartServlet</servlet-name>
       <servlet-class>upload.MultipartServlet</servlet-class>
 </servlet>

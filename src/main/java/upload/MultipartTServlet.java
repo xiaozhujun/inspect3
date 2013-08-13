@@ -42,7 +42,7 @@ public class MultipartTServlet extends HttpServlet {
 
 			DiskFileItemFactory factory = new DiskFileItemFactory();
 
-			factory.setRepository(new File("d:/tmp/"));
+			factory.setRepository(new File(request.getSession().getServletContext().getRealPath("/xmlFile/")));
 			ServletFileUpload upload = new ServletFileUpload(factory);
 
 			upload.setSizeMax(100 * 1024 * 1024);
@@ -78,10 +78,10 @@ public class MultipartTServlet extends HttpServlet {
 
 					if (fileItem.getName() != null && fileItem.getSize() != 0) {
 						File fullFile = new File(fileItem.getName());
-						File newFile = new File("d:/temp/" + fullFile.getName());
+						File newFile = new File(request.getSession().getServletContext().getRealPath("/xmlFile/") + fullFile.getName());
 						// 以上是上传的文件
 
-						path = "d:/temp/" + fullFile.getName();
+						path = request.getSession().getServletContext().getRealPath("/xmlFile/") + fullFile.getName();
 						try {
 							fileItem.write(newFile);
 						} catch (Exception e) {
@@ -97,13 +97,14 @@ public class MultipartTServlet extends HttpServlet {
 		DOMAnalysisXml d = new DOMAnalysisXml();
 		System.out.println(path+"文件");
 		d.analysisXml(path);
-
+        
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		doPost(request, response);
 	}
 
