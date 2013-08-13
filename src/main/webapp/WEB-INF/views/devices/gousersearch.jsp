@@ -24,7 +24,7 @@
 <center>
 
 <h1>报表查询</h1>
-<hr>
+<hr width="950">
 <form  method="post" action="MMServlet">
 
 起始时间:
@@ -32,7 +32,7 @@
 <input type="text" id="s" class="Wdate" onClick="WdatePicker()" name="stime">
 终止时间:
 <input type="text" id="e" class="Wdate" onClick="WdatePicker()" name="etime"><br>
-<hr>
+<hr width="950">
 
 报表:
 <select id="table" name="tid">
@@ -62,7 +62,7 @@
 <input type="submit" value="查询">
 </form>
 </center>
-<hr>
+<hr width="950">
 <center>
 
 

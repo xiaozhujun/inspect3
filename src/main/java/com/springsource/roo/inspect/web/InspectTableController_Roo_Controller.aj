@@ -126,7 +126,7 @@ privileged aspect InspectTableController_Roo_Controller {
 	       String rname=t.getRoleNameByTid(id);
 	       String pathname1=request.getSession().getServletContext().getRealPath("/xmlFile/RolesTable.xml");
                new insertToRolesTableXml().createXml(pathname1);
-              
+             
         return "inspecttables/downSuccess";
     }
     @RequestMapping(value = "/{id}/{role}", method = RequestMethod.DELETE, produces = "text/html")

@@ -13,6 +13,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="styles/social-buttons.css">
+<script type="text/javascript">
+function  test1(){
+	
+     var x=document.getElementById("c").value;
+
+     var type=document.getElementById("type").value;
+	 var stime=document.getElementById("s").value;
+	 var tid=document.getElementById("tid").value;
+	 var etime=document.getElementById("e").value;
+	
+	 window.location.href="showreport.jsp?type="+type+"&stime="+stime+"&tid="+tid+"&etime="+etime+"&ct="+x;
+ }
+
+</script>
 <style type="text/css">
 .demo{
 
@@ -26,7 +41,7 @@ margin-top: 50px;
 </style>
 </head>
 <body>
-	<center>
+	<div id="wrapper">
 		
 		<jsp:include page="nav.jsp"></jsp:include>
 		 <jsp:include page="leftusermenu.jsp"></jsp:include>
@@ -47,6 +62,8 @@ margin-top: 50px;
 			
 		%>
 		<div ><center><font size="5"><%=r.getTname() %></font></center></div>
+		<div style="margin-left: 800px;"><span><a class="sb circle text thick-border twitter"
+							onclick="test1()">下载</a></span></div>
 		<span style="width: 150px;float: left;margin-left: 180px;">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 240px">点检时间:<%=r.getCreatetime() %></span>
 		<%
 		}else{
@@ -83,7 +100,10 @@ margin-top: 50px;
 									List<InspectTableRecord> l1 = d.getT(r.getTagid(), tid, cretime);
 						%>
 
-
+                         <span><input type="hidden" id="s" value="'<%=s%>'">
+							<input type="hidden" id="type" value="<%=type%>"> <input
+							type="hidden" id="tid" value="<%=tid%>"> <input
+							type="hidden" id="e" value="'<%=e%>'"> <input type="hidden" id="c" value="<%=ct%>"></span>
 						
 						<td align="center" rowspan="<%=l1.size() %>"><%=r.getTagname()%></td>
 						<%
@@ -112,6 +132,6 @@ margin-top: 50px;
 			</div>
 			
 		</div>
-	</center>
+
 </body>
 </html>

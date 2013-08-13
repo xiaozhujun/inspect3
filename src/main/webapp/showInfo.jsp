@@ -13,11 +13,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="styles/social-buttons.css">
 <script type="text/javascript">
 function  test1(){
 	
      var x=document.getElementById("c").value;
-	  alert(x);
+	
      var type=document.getElementById("type").value;
 	 var stime=document.getElementById("s").value;
 	 var tid=document.getElementById("tid").value;
@@ -40,9 +41,8 @@ margin-top: 50px;
 </style>
 </head>
 <body>
-	<center>
-		
-		<jsp:include page="nav.jsp"></jsp:include>
+	<div id="wrapper">
+	     <jsp:include page="nav.jsp"></jsp:include>
 		 <jsp:include page="leftmenu.jsp"></jsp:include>
 		 <div class="demo">
 		
@@ -61,6 +61,8 @@ margin-top: 50px;
 			
 		%>
 		<div ><center><font size="5"><%=r.getTname() %></font></center></div>
+		<div style="margin-left: 800px;"><span><a class="sb circle text thick-border twitter"
+							onclick="test1()">下载</a></span></div>
 		<span style="width: 150px;float: left;margin-left: 180px;">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 240px">点检时间:<%=r.getCreatetime() %></span>
 		<%
 		}else{
@@ -123,10 +125,7 @@ margin-top: 50px;
 							System.out.println("出错了!");
 						}
 					%>
-					<tr>
-					<td colspan="3"><a class="sb circle text thick-border twitter"
-							onclick="test1()">下载</a></td>
-							</tr>
+					
 							
 				</tbody>
 			</table>
@@ -134,6 +133,6 @@ margin-top: 50px;
 			</div>
 			
 		</div>
-	</center>
+	
 </body>
 </html>

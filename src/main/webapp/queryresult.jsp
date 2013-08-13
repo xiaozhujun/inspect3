@@ -118,21 +118,22 @@ function  test1(x){
 </head>
 <body>
 
-	<center>
+	<div id="wrapper">
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="nav.jsp"></jsp:include>
 		<jsp:include page="leftmenu.jsp"></jsp:include>
 		<p>
-			<font size="5" color="#68C1D">报表查询</font>
+			<center><font size="5" color="#68C1D">报表查询</font></center>
 		</p>
 		
 		<hr width="950px">
+		<center>
 		<form method="post" action="MServlet">
 
 			起始时间: <input type="text" id="s" class="Wdate" onClick="WdatePicker()"
 				name="stime"> 终止时间: <input type="text" id="e" class="Wdate"
 				onClick="WdatePicker()" name="etime"><br>
-			<hr width="1200">
+			<hr width="950px">
 
 			报表: <select id="table" name="tid">
 				<%
@@ -157,10 +158,11 @@ function  test1(x){
 			</select> <input type="submit" value="查询">
 		</form>
 	</center>
-	<hr width="1200">
-	<center>
+	<hr width="950px">
+	     
 		<div class="demo">
-			<center><table class="zebra">
+		<center>
+			<table class="zebra">
 				<thead>
 					<tr>
 
@@ -215,11 +217,11 @@ function  test1(x){
 
 
 			</table>
-			
 			</center>
+	
 			
 		</div>
 	
-	</center>
+
 </body>
 </html>

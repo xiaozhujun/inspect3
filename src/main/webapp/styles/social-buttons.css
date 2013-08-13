@@ -664,6 +664,7 @@ a.sb.text,
 	height: 20px;
 	padding: 9px 14px 3px 34px;
 	background-position: 2px center;
+	cursor: pointer;
 }
 *:first-child+html a.sb.text,
 *:first-child+html .sb.text a {
