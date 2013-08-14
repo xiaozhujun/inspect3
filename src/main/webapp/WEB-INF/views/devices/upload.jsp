@@ -5,6 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="styles/styles.css">
 <style type="text/css">
 * {
 	margin: 0;
@@ -84,12 +85,12 @@ a {
 </style>
 </head>
 <body>
-
-	<center>
-
+        <div id="t1">
+        <div id="title"><p>点检上传</div>
+        <div>
 		<form action="MultipartTServlet" enctype="multipart/form-data"
 			method="post">
-			<div style="height: 39px; margin-left: 221px; margin-top: 40px">
+			<div style="height: 39px; margin-left: 10px; margin-top: 40px">
 				<div
 					style="width: 140px; height: 39px; float: left; margin-left: 240px;">
 					<a class="btn_addPic" href="javascript:void(0);"> <span><em>+</em><font
@@ -108,9 +109,10 @@ a {
 					<input type="submit" value="上传" />
 				</div>
 			</div>
-
+         
 		</form>
-
+		 </div>
+        </div>
 		<script
 			src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
 		<script src="http://malsup.github.com/jquery.form.js"></script>
@@ -152,6 +154,6 @@ $('form').ajaxForm({
 _uacct = "UA-850242-2";
 urchinTracker();
 </script>
-	</center>
+
 </body>
 </html>

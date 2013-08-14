@@ -33,7 +33,7 @@ function  test1(){
 
 width:1129px;
 height: 1200px;
-margin-left: 221px;
+margin-left: 120px;
 margin-top: 50px;
 
 }
@@ -61,9 +61,8 @@ margin-top: 50px;
 			r=d1.getT(tid1, cretime1);
 			
 		%>
-		<div ><center><font size="5"><%=r.getTname() %></font></center></div>
-		<div style="margin-left: 800px;"><span><a class="sb circle text thick-border twitter"
-							onclick="test1()">下载</a></span></div>
+		<div ><center><font size="5"><%=r.getTname() %><span style="margin-left: 60px;"><a onclick="test1()">下载</a></span></font></center></div>
+		
 		<span style="width: 150px;float: left;margin-left: 180px;">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 240px">点检时间:<%=r.getCreatetime() %></span>
 		<%
 		}else{

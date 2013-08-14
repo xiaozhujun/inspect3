@@ -18,21 +18,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-
+<link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-<center>
+<div id="t1">
+        <div id="title"><p>报表查询</div>
+        <div>
 
-<h1>报表查询</h1>
-<hr width="950">
+
 <form  method="post" action="MMServlet">
 
-起始时间:
+<p>起始时间:
 
 <input type="text" id="s" class="Wdate" onClick="WdatePicker()" name="stime">
 终止时间:
-<input type="text" id="e" class="Wdate" onClick="WdatePicker()" name="etime"><br>
-<hr width="950">
+<input type="text" id="e" class="Wdate" onClick="WdatePicker()" name="etime">
+
 
 报表:
 <select id="table" name="tid">
@@ -59,16 +60,16 @@
 <option value="word">Word格式</option>
 </select>
 
-<input type="submit" value="查询">
+<p><input type="submit" value="查询"></p>
 </form>
-</center>
-<hr width="950">
-<center>
 
 
 
 
-</center>
+
+
+</div>
+</div>
 
 </body>
 </html>

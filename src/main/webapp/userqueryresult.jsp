@@ -19,7 +19,6 @@
 <title>Insert title here</title>
 <style type="text/css">
 .zebra td,.zebra th {
-
 	padding: 10px;
 	border-bottom: 1px solid #f2f2f2;
 }
@@ -38,7 +37,6 @@
 
 .zebra th {
 	width: 150px;
-	
 	text-align: center;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
 	border-bottom: 1px solid #ccc;
@@ -86,6 +84,51 @@
 	border-radius: 0 0 6px 0;
 }
 
+#title {
+	background-color: #DCDCDC;
+	font-size: 15px;
+	height: 22px;
+	margin-left: 240px;
+	margin-top: 120px;
+}
+
+#title1 {
+	background-color: #DCDCDC;
+	font-size: 15px;
+	height: 22px;
+}
+
+#title2 {
+	background-color: #DCDCDC;
+	font-size: 15px;
+	height: 22px;
+	margin-left: 244px;
+}
+
+#title:HOVER {
+	background-color: #DFE9F6;
+}
+
+#title1:HOVER {
+	background-color: #DFE9F6;
+}
+
+#title2:HOVER {
+	background-color: #DFE9F6;
+}
+
+p {
+	margin-left: 12px;
+	margin-top: 2px;
+}
+
+#tt {
+	margin-left: 300px;
+}
+
+.demo {
+	margin-left: 240px;
+}
 </style>
 
 
@@ -94,7 +137,7 @@
 	src="My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript">
 function  test(x){
-	// var t=document.getElementById("'<%=r.getCreatetime() %>'").value;
+	// var t=document.getElementById("'<%=r.getCreatetime()%>'").value;
 	 var type=document.getElementById("type").value;
 	 var stime=document.getElementById("s").value;
 	 var tid=document.getElementById("tid").value;
@@ -103,17 +146,16 @@ function  test(x){
      window.location.href="showreport.jsp?type="+type+"&stime="+stime+"&tid="+tid+"&etime="+etime+"&ct="+x;
  }
 function  test1(x){
-	// var t=document.getElementById("'<%=r.getCreatetime() %>'").value;
-	 var type=document.getElementById("type").value;
-	 var stime=document.getElementById("s").value;
-	 var tid=document.getElementById("tid").value;
-	 var etime=document.getElementById("e").value;
-	
-     window.location.href="usershowInfo.jsp?type="+type+"&stime="+stime+"&tid="+tid+"&etime="+etime+"&ct="+x;
- }
+	// var t=document.getElementById("'<%=r.getCreatetime()%>
+	'").value;
+		var type = document.getElementById("type").value;
+		var stime = document.getElementById("s").value;
+		var tid = document.getElementById("tid").value;
+		var etime = document.getElementById("e").value;
 
-
-
+		window.location.href = "usershowInfo.jsp?type=" + type + "&stime="
+				+ stime + "&tid=" + tid + "&etime=" + etime + "&ct=" + x;
+	}
 </script>
 </head>
 <body>
@@ -122,46 +164,48 @@ function  test1(x){
 		<jsp:include page="header.jsp"></jsp:include>
 		<jsp:include page="nav.jsp"></jsp:include>
 		<jsp:include page="leftusermenu.jsp"></jsp:include>
-		<p>
-			<center><font size="5" color="#68C1D">报表查询</font></center>
-		</p>
-		
-		<hr width="950px">
-		<center>
+		<div id="title">报表查询</div>
+
+
 		<form method="post" action="MMServlet">
+			<div id="tt">
+				<p>
+					起始时间: <input type="text" id="s" class="Wdate"
+						onClick="WdatePicker()" name="stime"> 终止时间: <input
+						type="text" id="e" class="Wdate" onClick="WdatePicker()"
+						name="etime"><br>
+				</p>
+				<p>
+					报表: <select id="table" name="tid">
+						<%
+							DBImpl d1 = new DBImpl();
+							List<InspectTableRecord> tlist = d1.getTable();
 
-			起始时间: <input type="text" id="s" class="Wdate" onClick="WdatePicker()"
-				name="stime"> 终止时间: <input type="text" id="e" class="Wdate"
-				onClick="WdatePicker()" name="etime"><br>
-			<hr width="950">
+							Iterator l1 = tlist.iterator();
+							while (l1.hasNext()) {
+								r = (InspectTableRecord) l1.next();
+						%>
+						<option value="<%=r.getTid()%>"><%=r.getTname()%>
 
-			报表: <select id="table" name="tid">
-				<%
-					DBImpl d1 = new DBImpl();
-					List<InspectTableRecord> tlist = d1.getTable();
-
-					Iterator l1 = tlist.iterator();
-					while (l1.hasNext()) {
-						r = (InspectTableRecord) l1.next();
-				%>
-				<option value="<%=r.getTid()%>"><%=r.getTname()%>
-
-				</option>
-				<%
-					}
-				%>
-			</select> 格式: <select id="t" name="type">
-				<option value="pdf">pdf格式</option>
-				<option value="html">html格式</option>
-				<option value="excel">Excel格式</option>
-				<option value="word">Word格式</option>
-			</select> <input type="submit" value="查询">
+						</option>
+						<%
+							}
+						%>
+					</select> 格式: <select id="t" name="type">
+						<option value="pdf">pdf格式</option>
+						<option value="html">html格式</option>
+						<option value="excel">Excel格式</option>
+						<option value="word">Word格式</option>
+					</select> <span style="margin-left: 10px"> <input type="submit"
+						value="查询"></span>
+			</div>
 		</form>
-	</center>
-	<hr width="950">
-	
+		<%
+			out.println("<div id='title2'>查询结果:</div>");
+		%>
+
 		<div class="demo">
-			<center><table class="zebra">
+			<table class="zebra">
 				<thead>
 					<tr>
 
@@ -178,7 +222,7 @@ function  test1(x){
 							String e = (String) request.getAttribute("e");
 							String t = (String) request.getAttribute("t");
 							String type = (String) request.getAttribute("type");
-							if(s!=null&&e!=null&&t!=null&&type!=null){
+							if (s != null && e != null && t != null && type != null) {
 								int tid = Integer.parseInt(t);
 								SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
 								Date d11 = sf.parse(s);
@@ -204,10 +248,10 @@ function  test1(x){
 					<%
 						}
 						} else {
-							out.println("请输入查询条件!!");
+							out.println("<div id='title1'>请输入查询条件!!</div>");
 						}
 					%>
-                     
+
 
 				</tbody>
 
@@ -216,11 +260,11 @@ function  test1(x){
 
 
 			</table>
-			
-		</center>
-			
+
+
+
 		</div>
-	
+
 	</div>
 </body>
 </html>
