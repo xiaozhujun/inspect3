@@ -16,23 +16,25 @@
 <link rel="stylesheet" href="styles/social-buttons.css">
 <script type="text/javascript">
 	function test1() {
-
 		var x = document.getElementById("c").value;
-
 		var type = document.getElementById("type").value;
 		var stime = document.getElementById("s").value;
 		var tid = document.getElementById("tid").value;
 		var etime = document.getElementById("e").value;
-
 		window.location.href = "showreport.jsp?type=" + type + "&stime="
 				+ stime + "&tid=" + tid + "&etime=" + etime + "&ct=" + x;
 	}
 </script>
 <style type="text/css">
+body{
+width: 1400px;
+height: 2000px;
+}
 .demo {
+
 	width: 1129px;
-	height: 1200px;
-	margin-left: 120px;
+	height: 2000px;
+	margin-left: 244px;
 	margin-top: 50px;
 }
 </style>
@@ -42,8 +44,7 @@
 		<jsp:include page="nav.jsp"></jsp:include>
 		<jsp:include page="leftmenu.jsp"></jsp:include>
 		<div class="demo">
-
-			<%
+		    <%
 				String ss = request.getParameter("stime");
 				String ee = request.getParameter("etime");
 				String tt = request.getParameter("tid");
@@ -57,29 +58,29 @@
 					r = d1.getT(tid1, cretime1);
 			%>
 			<div>
-				<center>
-					<font size="5"><%=r.getTname()%><span
-						style="margin-left: 60px;"><a onclick="test1()">下载</a></span></font>
-				</center>
+				
+					<font size="5" style="margin-left: 350px"><%=r.getTname()%><span
+						style="margin-left: 220px;cursor: pointer;"><a onclick="test1()"><font size="4">下载</font></a></span></font>
+				
 			</div>
 
-			<span style="width: 150px; float: left; margin-left: 90px;">门机编号:_______</span><span
+			<span style="width: 150px; float: left; margin-left: 40px;">门机编号:_______</span><span
 				style="margin-left: 180px">点检人员:<%=r.getUsername()%></span><span
-				style="float: right; margin-right: 240px">点检时间:<%=r.getCreatetime()%></span>
+				style="float: right; margin-right: 300px">点检时间:<%=r.getCreatetime()%></span>
 			<%
 				} else {
 					System.out.println("error");
 				}
 			%>
 
-			<div style="margin-left: 120px;">
+			<div >
 				<table border="1"
-					style="border-collapse: collapse; margin-left: 20px">
+					style="border-collapse: collapse; ">
 					<thead>
 						<tr>
-							<th width="150px">机构</th>
-							<th width="350px">点检项</th>
-							<th width="350px">点检结果</th>
+							<th width="150px"><center>机构</center></th>
+							<th width="350px"><center>点检项</center></th>
+							<th width="350px"><center>点检结果</center></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -136,8 +137,6 @@
 				</table>
 			</div>
 		</div>
-
 	</div>
-
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-   
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,7 +27,7 @@ a:LINK {
 </head>
 <body>
 	<div id="main">
-		<div  id="menu">
+		<div id="menu">
 			<ul id="_menu">
 				<li id="c_report"><h2>报表管理</h2>
 					<ul>
@@ -96,7 +96,7 @@ a:LINK {
 					<ul>
 						<li id="i_inspecttagrfid_new"><a title="添加 标签"
 							href="/inspect/inspecttagrfids?userform">添加 标签</a></li>
-							<li id="i_device_new"><a title="添加 设备"
+						<li id="i_device_new"><a title="添加 设备"
 							href="/inspect/devices?userform">添加 设备</a></li>
 					</ul>
 					<ul>
@@ -104,11 +104,10 @@ a:LINK {
 							href="/inspect/inspecttagrfids?page=1&size=10&role=0">查询标签</a></li>
 						<li id="i_device_list"><a title="查询设备"
 							href="/inspect/devices?page=1&size=10&role=0">查询设备</a></li>
-					</ul>
-			</li>
+					</ul></li>
 			</ul>
 		</div>
-		</div>
-		
+	</div>
+
 </body>
 </html>

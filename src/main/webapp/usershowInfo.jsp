@@ -6,7 +6,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib uri="/WEB-INF/pagingTag.tld" prefix="pt"%>
+<%@ taglib uri="/WEB-INF/pagingTag.tld" prefix="pt"%>
 <jsp:useBean id="r" class="model.InspectTableRecord"></jsp:useBean>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -29,25 +29,22 @@ function  test1(){
 
 </script>
 <style type="text/css">
-.demo{
-
-width:1129px;
-height: 1200px;
-margin-left: 120px;
-margin-top: 50px;
-
+.demo {
+	width: 1129px;
+	height: 2000px;
+	margin-left: 244px;
+	margin-top: 50px;
 }
-
 </style>
 </head>
 <body>
 	<div id="wrapper">
-		
+
 		<jsp:include page="nav.jsp"></jsp:include>
-		 <jsp:include page="leftusermenu.jsp"></jsp:include>
-		 <div class="demo">
-		
-		<%
+		<jsp:include page="leftusermenu.jsp"></jsp:include>
+		<div class="demo">
+
+			<%
 		String ss = request.getParameter("stime");
 		String ee = request.getParameter("etime");
 		String tt = request.getParameter("tid");
@@ -61,28 +58,36 @@ margin-top: 50px;
 			r=d1.getT(tid1, cretime1);
 			
 		%>
-		<div ><center><font size="5"><%=r.getTname() %><span style="margin-left: 60px;"><a onclick="test1()">下载</a></span></font></center></div>
-		
-		<span style="width: 150px;float: left;margin-left: 90px;">门机编号:_______</span><span style="margin-left: 180px">点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 240px">点检时间:<%=r.getCreatetime() %></span>
-		<%
+			<div>
+
+				<font size="5" style="margin-left: 350px"><%=r.getTname()%> <span
+					style="margin-left: 220px; cursor: pointer;"><a
+						onclick="test1()"><font size="4">下载</font></a></span></font>
+
+			</div>
+
+			<span style="width: 150px; float: left; margin-left: 40px;">门机编号:_______</span><span
+				style="margin-left: 180px">点检人员:<%=r.getUsername()%></span><span
+				style="float: right; margin-right: 300px">点检时间:<%=r.getCreatetime()%></span>
+			<% 		
 		}else{
 			System.out.println("error");
 		}
 		%>
-	
-		
-			<div style="margin-left: 120px;">
-			<table  border="1"  style="border-collapse:collapse;margin-left: 20px">
-				<thead>
-					<tr>
-					    <th width="150px">机构</th>
-						<th width="350px">点检项</th>
-						<th width="350px">点检结果</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<%
+
+
+			<div>
+				<table border="1" style="border-collapse: collapse;">
+					<thead>
+						<tr>
+							<th width="150px"><center>机构</center></th>
+							<th width="350px"><center>点检项</center></th>
+							<th width="350px"><center>点检结果</center></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<%
 							String s = request.getParameter("stime");
 							String e = request.getParameter("etime");
 							String t = request.getParameter("tid");
@@ -100,38 +105,39 @@ margin-top: 50px;
 									List<InspectTableRecord> l1 = d.getT(r.getTagid(), tid, cretime);
 						%>
 
-                         <span><input type="hidden" id="s" value="'<%=s%>'">
-							<input type="hidden" id="type" value="<%=type%>"> <input
-							type="hidden" id="tid" value="<%=tid%>"> <input
-							type="hidden" id="e" value="'<%=e%>'"> <input type="hidden" id="c" value="<%=ct%>"></span>
-						
-						<td align="center" rowspan="<%=l1.size() %>"><%=r.getTagname()%></td>
-						<%
+							<span><input type="hidden" id="s" value="'<%=s%>'">
+								<input type="hidden" id="type" value="<%=type%>"> <input
+								type="hidden" id="tid" value="<%=tid%>"> <input
+								type="hidden" id="e" value="'<%=e%>'"> <input
+								type="hidden" id="c" value="<%=ct%>"></span>
+
+							<td align="center" rowspan="<%=l1.size() %>"><%=r.getTagname()%></td>
+							<%
 						    
 						     Iterator it1 = l1.iterator();
 						     while (it1.hasNext()) {
 									r = (InspectTableRecord) it1.next();
 						%>
-						
-						<td align="center"><%=r.getItemname()%></td>
-						<td align="center"><%=r.getTvalue()%></td>
-						
+
+							<td align="center"><%=r.getItemname()%></td>
+							<td align="center"><%=r.getTvalue()%></td>
 
 
-					</tr>
-					<%
+
+						</tr>
+						<%
 						     }
 						}
 						} else {
 							System.out.println("出错了!");
 						}
 					%>
-				</tbody>
-			</table>
-		</div>
+					</tbody>
+				</table>
 			</div>
-			
 		</div>
+
+	</div>
 
 </body>
 </html>
