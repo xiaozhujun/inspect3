@@ -146,8 +146,7 @@ function  test(x){
      window.location.href="showreport.jsp?type="+type+"&stime="+stime+"&tid="+tid+"&etime="+etime+"&ct="+x;
  }
 function  test1(x){
-	// var t=document.getElementById("'<%=r.getCreatetime()%>
-	'").value;
+	// var t=document.getElementById("'<%=r.getCreatetime()%>'").value;
 		var type = document.getElementById("type").value;
 		var stime = document.getElementById("s").value;
 		var tid = document.getElementById("tid").value;
@@ -156,6 +155,20 @@ function  test1(x){
 		window.location.href = "usershowInfo.jsp?type=" + type + "&stime="
 				+ stime + "&tid=" + tid + "&etime=" + etime + "&ct=" + x;
 	}
+function check(){
+	var s=document.getElementById("s").value;
+	var e=document.getElementById("e").value;
+    if(s==""){
+    	alert("请输入查询条件!");
+        return false;
+    }
+    else if(e==""){
+    	alert("请输入查询条件!");
+    	return false;
+    }
+	
+}
+
 </script>
 </head>
 <body>
@@ -167,7 +180,7 @@ function  test1(x){
 		<div id="title">报表查询</div>
 
 
-		<form method="post" action="MMServlet">
+		<form method="post" action="MMServlet" onsubmit="return check()">
 			<div id="tt">
 				<p>
 					起始时间: <input type="text" id="s" class="Wdate"

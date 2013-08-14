@@ -63,7 +63,7 @@ margin-top: 50px;
 		%>
 		<div ><center><font size="5"><%=r.getTname() %><span style="margin-left: 60px;"><a onclick="test1()">下载</a></span></font></center></div>
 		
-		<span style="width: 150px;float: left;margin-left: 180px;">门机编号:_______</span><span>点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 240px">点检时间:<%=r.getCreatetime() %></span>
+		<span style="width: 150px;float: left;margin-left: 90px;">门机编号:_______</span><span style="margin-left: 180px">点检人员:<%=r.getUsername() %></span><span style="float: right; margin-right: 240px">点检时间:<%=r.getCreatetime() %></span>
 		<%
 		}else{
 			System.out.println("error");
@@ -71,7 +71,8 @@ margin-top: 50px;
 		%>
 	
 		
-			<center><table  border="1"  style="border-collapse:collapse;margin-left: 20px">
+			<div style="margin-left: 120px;">
+			<table  border="1"  style="border-collapse:collapse;margin-left: 20px">
 				<thead>
 					<tr>
 					    <th width="150px">机构</th>
@@ -127,7 +128,7 @@ margin-top: 50px;
 					%>
 				</tbody>
 			</table>
-			</center>
+		</div>
 			</div>
 			
 		</div>

@@ -11,28 +11,24 @@ import java.util.Date;
 import model.MyDataSource;
 
 public class insertToDb {
-	// 负责将解析的数据插入到相应的数据表中
-	// 有个表名:tname
-	// 标签名:item名
-	// values值，
-	// 在上传的同时，将数据插入到数据库中
+
 	private MyDataSource ds = new MyDataSource();
     public void closeSource(Connection connection,PreparedStatement statement,ResultSet rs){
-    	if(rs!= null){   // 关闭记录集  
+    	if(rs!= null){   
     			    try{  
     		        rs.close() ;  
     		    }catch(SQLException e){  
     			        e.printStackTrace() ;  
     			    }  
     			}  
-    			if(statement!= null){   // 关闭声明  
+    			if(statement!= null){   
     		    try{  
     		    	statement.close() ;  
     			    }catch(SQLException e){  
     		        e.printStackTrace() ;  
     			    }  
     			}  
-    			if(connection!= null){  // 关闭连接对象  
+    			if(connection!= null){  
     			    try{  
     			    	connection.close() ;  
     			    }catch(SQLException e){  
@@ -127,7 +123,7 @@ public class insertToDb {
 	}
 
 	public int getTid(String name) {
-		System.out.println(name+"表名");
+		
 		String sql = "select id from inspect_table where tname=?";
 		Connection connection = ds.getConnection();
 		PreparedStatement statement = null;
@@ -272,7 +268,7 @@ public class insertToDb {
 
 		System.out.println(d1);
 
-		int x = d.getItemid(4, 1, "梯子栏杆");
+		int x = d.getItemid(4, 1, "姊瓙鏍忔潌");
 		System.out.println(x);
 	}
 

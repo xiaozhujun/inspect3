@@ -58,7 +58,7 @@
 
 		String type = request.getParameter("type");
 		File reportFile = new File(this.getServletContext().getRealPath(
-				"/report/InspectReport.jasper"));
+				"/report/inspectReport.jasper"));
 		JasperReport jasperReport = (JasperReport) JRLoader
 				.loadObject(reportFile.getPath());
 

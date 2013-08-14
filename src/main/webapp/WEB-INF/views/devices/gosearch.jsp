@@ -17,6 +17,22 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function check(){
+	var s=document.getElementById("s").value;
+	var e=document.getElementById("e").value;
+    if(s==""){
+    	alert("请输入查询条件!");
+        return false;
+    }
+    else if(e==""){
+    	alert("请输入查询条件!");
+    	return false;
+    }
+	
+}
+
+</script>
 <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -28,7 +44,7 @@
 
 
 
-<form  method="post" action="MServlet">
+<form  method="post" action="MServlet" onsubmit="return check()">
 
 <p>起始时间:
 

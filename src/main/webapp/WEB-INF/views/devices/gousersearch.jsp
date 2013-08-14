@@ -19,6 +19,22 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 <link rel="stylesheet" href="styles/styles.css">
+<script type="text/javascript">
+function check(){
+	var s=document.getElementById("s").value;
+	var e=document.getElementById("e").value;
+    if(s==""){
+    	alert("请输入查询条件!");
+        return false;
+    }
+    else if(e==""){
+    	alert("请输入查询条件!");
+    	return false;
+    }
+	
+}
+
+</script>
 </head>
 <body>
 <div id="t1">
@@ -26,7 +42,7 @@
         <div>
 
 
-<form  method="post" action="MMServlet">
+<form  method="post" action="MMServlet" onsubmit="return check()">
 
 <p>起始时间:
 
